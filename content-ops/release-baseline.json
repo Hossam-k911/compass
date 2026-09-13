@@ -1,0 +1,22 @@
+{
+  "angular": {
+    "tag": "v22.1.6",
+    "url": "https://github.com/angular/angular/releases/tag/v22.1.6",
+    "publishedAt": "2026-09-09T20:10:26Z"
+  },
+  "ngrx": {
+    "tag": "22.0.1",
+    "url": "https://github.com/ngrx/platform/tree/22.0.1",
+    "publishedAt": null
+  },
+  "rxjs": {
+    "tag": "7.8.2",
+    "url": "https://github.com/ReactiveX/rxjs/tree/7.8.2",
+    "publishedAt": null
+  },
+  "typescript": {
+    "tag": "v7.0.2",
+    "url": "https://github.com/microsoft/TypeScript/releases/tag/v7.0.2",
+    "publishedAt": "2026-08-20T18:09:49Z"
+  }
+}

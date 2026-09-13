@@ -1,0 +1,2143 @@
+{
+  "schemaVersion": 1,
+  "id": "angular-senior",
+  "title": "Angular",
+  "level": "Senior",
+  "description": "From web fundamentals to the decisions that matter in production.",
+  "topics": [
+    {
+      "id": "topic-1",
+      "title": "HTML, CSS & Sass",
+      "titleAr": "HTML وCSS وSass",
+      "stage": "Web foundations",
+      "description": "Why does semantic HTML matter instead of using divs everywhere? How would you build a responsive UI that also supports RTL?",
+      "sources": [
+        {
+          "title": "Official documentation",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q-1",
+          "prompt": {
+            "ar": "إيه الفرق بين semantic HTML وdiv لكل حاجة؟",
+            "en": "Why does semantic HTML matter instead of using divs everywhere?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> العنصر الدلالي يصف معنى المحتوى وسلوكه: <code>button</code> للفعل، <code>a</code> للتنقل، <code>nav</code> للروابط الرئيسية، و<code>main</code> للمحتوى الأساسي. ده يحسّن استخدام لوحة المفاتيح وقارئات الشاشة، ويساعد محركات البحث تفهم بنية الصفحة. أبدأ بالعنصر الصحيح قبل إضافة ARIA؛ لأن ARIA لا يضيف وحده كل سلوك العنصر الأصلي. اختبر التنقل بـTab وEnter/Space، والـlabels والـfocus. <a href=\"https://angular.dev/best-practices/a11y\">Angular accessibility</a></p>\n",
+            "en": "<p>Semantic elements communicate meaning and built-in behavior. I use a button for an action, an anchor for navigation, and landmarks such as main and nav to structure the page. This improves keyboard and screen-reader support and helps search engines understand the content. I prefer the correct native element before adding ARIA.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-2",
+          "prompt": {
+            "ar": "تعمل responsive وRTL بشكل قابل للصيانة إزاي؟",
+            "en": "How would you build a responsive UI that also supports RTL?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> أبدأ بتخطيط مرن بـFlexbox/Grid ووحدات نسبية، ثم breakpoints حسب انكسار المحتوى. لا أفترض أن اتجاه اللغة مجرد <code>text-align</code>. استخدم CSS logical properties مثل <code>margin-inline-start</code> و<code>padding-inline-end</code> و<code>inset-inline-start</code> بدل <code>left/right</code> حين يكون المعنى «بداية/نهاية السطر». اختبر العربية والإنجليزية، النص الطويل، والتكبير. </p>\n<pre><code class=\"language-css\">.card__icon { margin-inline-end: .75rem; }\n.badge { inset-inline-start: .5rem; }\n</code></pre>\n<p><strong>سؤال متابعة CSS مهم:</strong> لو style لا يُطبّق، افحص cascade وspecificity وinheritance وترتيب القواعد قبل استخدام <code>!important</code>. ولو عنصر فوق آخر بشكل غير متوقع، افحص stacking contexts التي قد تنشأ من <code>position</code> مع <code>z-index</code> أو <code>transform</code>؛ رقم <code>z-index</code> كبير داخل context أدنى لن يتغلب على context خارجي أعلى.</p>\n<p><strong>CSS follow-up (EN):</strong> If a style does not apply, I check the cascade, specificity, inheritance, and source order before reaching for <code>!important</code>. If an element appears behind another one, I inspect stacking contexts; a large <code>z-index</code> inside a lower context cannot escape that context.</p>\n",
+            "en": "<p>I start with flexible layouts using Grid or Flexbox and add breakpoints where the content actually needs them. For RTL, I use logical properties such as margin-inline-start instead of hard-coded left and right values. Then I test both language directions, long text, zoom, and keyboard navigation.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-3",
+          "prompt": {
+            "ar": "إيه BEM وSass، وإمتى يفيدوا؟",
+            "en": "What are BEM and Sass, and when would you use them?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> BEM طريقة تسمية CSS: <code>block__element--modifier</code> مثل <code>card__badge--featured</code>، فتوضح تبعية العنصر وحالته وتقلل تضارب الـselectors. Sass تضيف variables وmixins وnesting، لكن nesting العميق يصعّب فهم الـspecificity. Sass وسيلة تنظيم، وليست بديلًا عن CSS الصحيح أو naming واضح.</p>\n",
+            "en": "<p>BEM is a naming convention that makes the relationship between a block, its elements, and modifiers explicit, for example card__badge--featured. Sass helps organize styles with variables, mixins, and nesting. I keep nesting shallow because deep selectors make specificity and maintenance harder.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-4",
+          "prompt": {
+            "ar": "هتحسن الصور والـicons إزاي؟",
+            "en": "How would you optimize images and icons?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> الصور: حجم مناسب، صيغة مناسبة، أبعاد ثابتة لمنع layout shift، lazy loading لما هو خارج الشاشة، وأولوية للصورة الرئيسية. الأيقونات: اختر SVG للأيقونات القابلة للتخصيص أو subset من icon font عند الحاجة؛ تحميل مكتبة أيقونات كاملة عشان رمزين يزيد الـpayload. قِس حجم الـbundle والشبكة قبل وبعد. Angular يضم أدوات لتحسين الصور، وقياس LCP/CLS يوضح أثر التغيير. <a href=\"https://angular.dev/best-practices/performance\">Angular performance</a> · <a href=\"https://web.dev/articles/vitals\">Core Web Vitals</a></p>\n",
+            "en": "<p>I serve appropriately sized images, reserve their dimensions to avoid layout shifts, lazy-load off-screen content, and prioritize the main image. For icons, I choose an appropriate SVG or a small subset rather than shipping an entire icon library for a few glyphs. I verify the result with bundle and network measurements.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-5",
+          "prompt": {
+            "ar": "SEO في تطبيق Angular يعتمد على إيه؟",
+            "en": "What affects SEO in an Angular application?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> عناوين ووصف واضحان، semantic HTML، روابط قابلة للزحف، محتوى يظهر لمحركات البحث، وأداء جيد. SSR قد يساعد في إتاحة HTML أولي وتحسين الظهور الأول، لكنه لا يصلح محتوى ضعيفًا أو metadata ناقصة. اختبر الـHTML المرسل فعليًا، لا الشكل بعد تشغيل JavaScript فقط. <a href=\"https://angular.dev/best-practices/performance\">Angular performance</a></p>\n",
+            "en": "<p>I focus on meaningful content, semantic HTML, titles and metadata, crawlable links, and loading performance. Server-side rendering can make initial HTML available earlier, but it does not compensate for missing content or metadata. I inspect the actual HTML response as well as the client-rendered page.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-71",
+          "prompt": {
+            "ar": "اشرح box model وbox-sizing، وإيه سبب عنصر عرضه أكبر من المتوقع؟",
+            "en": "Why can an element be wider than its declared width?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> في <code>content-box</code>، <code>width</code> يحدد المحتوى فقط، والـpadding والـborder يزودوا العرض النهائي. في <code>border-box</code> يدخلوا داخل العرض المحدد؛ الـmargin يظل خارجه. أفحص كمان <code>min-width</code> الافتراضي لعناصر Flex/Grid، والصور أو النصوص الطويلة التي تمنع الانكماش. <code>box-sizing: border-box</code> قاعدة مفيدة للمشروع، لكن لا تحل overflow سببه content غير قابل للكسر.</p>\n",
+            "en": "<p>With <code>content-box</code>, padding and borders add to the declared width; <code>border-box</code> includes them in it, while margins remain outside. I also inspect min-size constraints in flex or grid items and unbreakable content. A border-box reset helps predict sizing, but I still diagnose the actual overflow source.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-72",
+          "prompt": {
+            "ar": "عند تعارض قواعد CSS، تحدد القاعدة الفائزة إزاي؟",
+            "en": "How do you debug a CSS rule that does not apply?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> أفحص origin وimportance، ثم cascade layers، ثم specificity، ثم scoping proximity إن وُجد، وأخيرًا source order؛ inheritance لا تكسب declaration مباشرة على نفس العنصر. <code>!important</code> لا تستخدمها كحل أول. في DevTools أراجع computed style والقواعد المشطوبة. لو selector معقد، أقلل specificity وأستخدم طبقات/أسماء واضحة بدل التصعيد المستمر.</p>\n",
+            "en": "<p>I inspect the computed style and cascade: origin and importance, layers, specificity, scope proximity where relevant, and source order. Inheritance only matters when the element has no winning direct declaration for that property. I avoid fighting specificity with repeated <code>!important</code> and simplify the stylesheet structure.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-73",
+          "prompt": {
+            "ar": "Flexbox أم Grid؟ وإيه معنى minmax(0, 1fr)؟",
+            "en": "When do you choose Flexbox or Grid, and why use minmax(0, 1fr)?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> Flexbox أنسب لترتيب عناصر في محور واحد مع توزيع مرن، وGrid لتخطيط صفوف وأعمدة معًا. <code>1fr</code> قد يحتفظ بحد أدنى تلقائي مبني على المحتوى في بعض الحالات؛ <code>minmax(0, 1fr)</code> يسمح للعمود بالانكماش، ثم أعالج overflow في المحتوى نفسه. أختار بناءً على علاقة العناصر، لا على أن أحدهما أحدث. للـresponsive أستخدم <code>repeat(auto-fit, minmax(...))</code> حين يناسب المحتوى بدل breakpoints عشوائية.</p>\n",
+            "en": "<p>Flexbox is natural for one-dimensional alignment; Grid is strong when rows and columns must coordinate. <code>minmax(0, 1fr)</code> removes an automatic minimum that can make a track overflow. I still handle long content explicitly and choose layout based on the relationship between elements.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-74",
+          "prompt": {
+            "ar": "Sass في مشروع كبير: @use vs @import، وmixin vs placeholder؟",
+            "en": "How would you structure Sass in a large application?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>@use</code> يحمل module بnamespace واضح ويمنع تلوث الأسماء؛ Sass <code>@import</code> القديم deprecated. Mixin يولّد declarations حيث تستدعيه ويمكنه أخذ arguments، بينما <code>%placeholder</code> مع <code>@extend</code> يدمج selectors وقد ينتج selectors غير متوقعة إذا توسع الاستخدام. أفضّل CSS custom properties للقيم التي تتغير وقت التشغيل أو حسب theme، وSass variables للقيم المحسوبة أثناء build.</p>\n",
+            "en": "<p>I use modules through <code>@use</code> with clear namespaces rather than deprecated Sass <code>@import</code>. Mixins are good for reusable declaration patterns with parameters; placeholders and <code>@extend</code> can combine selectors, so I use them carefully. I choose CSS custom properties for runtime theming and Sass variables for build-time values.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-13",
+      "title": "HTML in depth",
+      "titleAr": "HTML وHTML5 — مراجعة Senior مركزة",
+      "stage": "Web foundations",
+      "description": "What belongs in a minimal modern HTML document, and why? How do you choose semantic landmarks and heading levels?",
+      "sources": [
+        {
+          "title": "Official documentation",
+          "url": "https://html.spec.whatwg.org/multipage/"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q-49",
+          "prompt": {
+            "ar": "اكتب skeleton صحيح لصفحة HTML حديثة، واشرح دور كل سطر.",
+            "en": "What belongs in a minimal modern HTML document, and why?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>&lt;!doctype html&gt;</code> يطلب standards mode بدل quirks mode. <code>lang</code> يحدد لغة المستند لقارئات الشاشة والبحث، و<code>dir</code> يحدد اتجاه النص عند الحاجة. <code>charset</code> يحدد الترميز، و<code>viewport</code> يجعل عرض الصفحة على الموبايل مطابقًا لعرض الجهاز، و<code>title</code> اسم الصفحة في التبويب ونتائج البحث. <code>meta description</code> وصف مفيد للصفحات العامة، وليس ضمانًا لترتيب البحث.</p>\n<pre><code class=\"language-html\">&lt;!doctype html&gt;\n&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt;\n  &lt;head&gt;\n    &lt;meta charset=&quot;utf-8&quot;&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;\n    &lt;title&gt;الطلبات | التطبيق&lt;/title&gt;\n    &lt;meta name=&quot;description&quot; content=&quot;تابع طلباتك وحالتها&quot;&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;main&gt;&lt;h1&gt;الطلبات&lt;/h1&gt;&lt;/main&gt;\n  &lt;/body&gt;\n&lt;/html&gt;\n</code></pre>\n",
+            "en": "<p>I use the HTML doctype for standards mode, a document language and direction where relevant, UTF-8 encoding, a viewport declaration for mobile layout, a descriptive title, and meaningful content inside <code>main</code>. A page-specific meta description can help describe a public page, but it does not guarantee ranking.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-50",
+          "prompt": {
+            "ar": "تختار header, nav, main, section, article, aside, وfooter إزاي؟",
+            "en": "How do you choose semantic landmarks and heading levels?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>header</code> و<code>footer</code> مقدمة ونهاية الصفحة أو جزء منها؛ <code>nav</code> لمجموعة روابط تنقل مهمة؛ <code>main</code> للمحتوى الأساسي الفريد للصفحة؛ <code>article</code> لمحتوى مستقل يمكن فهمه وحده مثل مقال أو بطاقة خبر؛ <code>section</code> لتجميع موضوعي له عنوان مناسب؛ <code>aside</code> لمحتوى جانبي مرتبط. لا أستخدم عنصرًا semantic لمجرد شكله. أرتب العناوين <code>h1</code> ثم <code>h2</code> بحسب الهيكل، ولا أختار المستوى بسبب حجم الخط؛ CSS للشكل. لو <code>section</code> بلا معنى موضوعي، <code>div</code> أنسب.</p>\n",
+            "en": "<p>I choose elements by meaning: <code>main</code> is the page&#39;s primary content, <code>nav</code> groups major navigation, <code>article</code> stands independently, <code>section</code> groups a titled theme, and <code>aside</code> is related supplementary content. I keep headings in a logical hierarchy and style them with CSS. I use <code>div</code> when no semantic element fits.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-51",
+          "prompt": {
+            "ar": "إمتى تستخدم a وإمتى button؟ وإيه مشكلة clickable div؟",
+            "en": "When do you use a link versus a button?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>a href</code> للانتقال إلى URL أو مكان في الصفحة، و<code>button</code> لتنفيذ فعل داخل الواجهة مثل فتح dialog أو حفظ تعديل. الاتنين لهما keyboard behavior وfocus وsemantics أصلًا. <code>div (click)</code> لا يوفّر كل ده تلقائيًا، فتضطر تقلّد Enter/Space والتركيز والدور والحالات. الرابط بلا <code>href</code> لا يصبح رابط تنقل حقيقي. داخل <code>form</code> اكتب <code>type=&quot;button&quot;</code> للزر غير المخصص للإرسال، لأن default للـ<code>button</code> هو submit.</p>\n",
+            "en": "<p>A link navigates to a destination; a button performs an action. Native elements already support keyboard interaction, focus, and accessible semantics. A clickable <code>div</code> requires recreating those behaviors and is easy to get wrong. In a form, I explicitly set <code>type=&quot;button&quot;</code> for actions that should not submit it.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-52",
+          "prompt": {
+            "ar": "هل HTML5 يقسم العناصر إلى block وinline؟ وماذا يحدث في nesting غير صحيح؟",
+            "en": "Why is “block versus inline” not enough to reason about valid HTML?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> block/inline أساسًا سلوك عرض CSS قد يتغير، بينما HTML الحديث يصف <strong>content categories</strong> وقواعد المحتوى المسموح داخل كل عنصر. مثلًا لا تضع <code>button</code> داخل <code>button</code>، ولا عنصرًا تفاعليًا داخل زر. والـparser قد يصلح markup غير صحيح: <code>&lt;p&gt;نص&lt;div&gt;صندوق&lt;/div&gt;&lt;/p&gt;</code> سيغلق <code>p</code> تلقائيًا قبل <code>div</code>، فيختلف DOM عما تتخيله. افحص DOM الفعلي في DevTools واستخدم validator وقت الحاجة.</p>\n",
+            "en": "<p>Display is a CSS concern; HTML has content categories and nesting rules. Invalid nesting may be repaired by the parser, so the resulting DOM can differ from the source. For example, a paragraph closes before a <code>div</code>, and nested interactive controls are invalid. I inspect the actual DOM when markup behaves unexpectedly.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-53",
+          "prompt": {
+            "ar": "اشرح id, class, data-*, boolean attributes, hidden, lang, وdir.",
+            "en": "What are common global attributes and boolean-attribute pitfalls?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>id</code> فريد داخل المستند ويستخدم للربط مثل <code>label for</code> أو fragment URL؛ <code>class</code> لتجميع عناصر للـCSS/JS؛ <code>data-*</code> لبيانات مخصصة يمكن قراءتها عبر <code>dataset</code>، وليس لتخزين secrets. الـboolean attribute مثل <code>disabled</code> وجوده يعني true حتى لو كتبت <code>disabled=&quot;false&quot;</code> في HTML. <code>hidden</code> يخفي عنصرًا لا ينبغي عرضه حاليًا؛ لا تستخدمه كوسيلة authorization. <code>lang</code> للغة المحتوى، و<code>dir=&quot;rtl&quot;</code> لاتجاه النص؛ يمكن تطبيقهما على جزء داخل صفحة ثنائية اللغة.</p>\n",
+            "en": "<p>An <code>id</code> uniquely identifies an element in a document, classes group elements, and <code>data-*</code> holds non-sensitive custom data. For HTML boolean attributes, presence means true, so <code>disabled=&quot;false&quot;</code> still disables the control. <code>hidden</code> controls presentation, while <code>lang</code> and <code>dir</code> describe language and text direction, including mixed-language regions.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-54",
+          "prompt": {
+            "ar": "كيف تبني form سليمة: action, method, name, label, وfieldset؟",
+            "en": "What makes an HTML form work correctly without JavaScript?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> الـform يمكن إرسالها بدون JavaScript. <code>action</code> يحدد الوجهة و<code>method=&quot;get&quot;</code> يضع البيانات في URL المناسب للبحث غير الحساس؛ <code>post</code> يرسل body لتغيير البيانات، مع HTTPS والتحقق على السيرفر. قيمة <code>name</code> هي مفتاح البيانات المرسلة؛ <code>id</code> وحده لا يكفي. اربط <code>label for</code> بـ<code>input id</code>، واستخدم <code>fieldset</code> و<code>legend</code> لتجميع حقول مترابطة. الزر <code>type=&quot;submit&quot;</code> يرسل النموذج.</p>\n<pre><code class=\"language-html\">&lt;form action=&quot;/search&quot; method=&quot;get&quot;&gt;\n  &lt;label for=&quot;query&quot;&gt;Search products&lt;/label&gt;\n  &lt;input id=&quot;query&quot; name=&quot;q&quot; type=&quot;search&quot; required&gt;\n  &lt;button type=&quot;submit&quot;&gt;Search&lt;/button&gt;\n&lt;/form&gt;\n</code></pre>\n",
+            "en": "<p>The form needs an action and an appropriate method; controls need <code>name</code> attributes for submission and associated labels for usability. I use GET for non-sensitive searches and POST for changes, with HTTPS and server-side validation. <code>fieldset</code> and <code>legend</code> describe related controls, and a submit button triggers native form behavior.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-55",
+          "prompt": {
+            "ar": "input type, validation attributes, autocomplete, وnovalidate: ما حدودها؟",
+            "en": "How do native input types and constraint validation fit into a production form?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>type=&quot;email&quot;</code>, <code>number</code>, <code>date</code>, <code>search</code>, <code>tel</code>, <code>password</code> تؤثر في سلوك المتصفح ولوحة مفاتيح الموبايل وبعض التحقق، لكن اختر النوع حسب <strong>معنى</strong> البيانات؛ رقم تليفون <code>tel</code> وليس <code>number</code>. <code>required</code>, <code>min</code>, <code>max</code>, <code>minlength</code>, <code>pattern</code> تدعم constraint validation، و<code>autocomplete</code> يعطي المتصفح hint مناسبًا مثل <code>email</code> أو <code>current-password</code>. <code>novalidate</code> يوقف التحقق التلقائي عند الإرسال؛ لا يعني أن البيانات صحيحة. التحقق client-side لتحسين UX، أما التحقق الأمني والنهائي فعلى السيرفر.</p>\n",
+            "en": "<p>I choose input types by data meaning, which can improve mobile keyboards and native validation. Attributes such as <code>required</code>, <code>min</code>, and <code>pattern</code> provide useful feedback, and <code>autocomplete</code> helps users complete fields. <code>novalidate</code> opts out of automatic submission validation. None of these replaces validation on the server.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-56",
+          "prompt": {
+            "ar": "الفرق بين disabled وreadonly وhidden في form؟",
+            "en": "How do disabled, readonly, and hidden form controls differ?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>disabled</code> يمنع التعديل والتركيز المعتاد ولا يرسل قيمة الحقل مع form submission. <code>readonly</code> يمنع التعديل في أنواع الحقول التي تدعمه، لكن القيمة تُرسل ويمكن التركيز عليه غالبًا. <code>hidden</code> أو <code>type=&quot;hidden&quot;</code> لا يوفر حماية للقيمة؛ المستخدم يستطيع تعديل request. لو احتجت عرض قيمة للقراءة فقط أقرر هل إرسالها مطلوب أصلًا، ولا أعتمد على أي قيمة من العميل كحقيقة موثوقة.</p>\n",
+            "en": "<p>Disabled controls are generally not focusable and are not submitted. Readonly controls, where supported, remain submitted and can usually receive focus. A hidden field is merely invisible in the UI; its value can be changed by the client, so the server must not treat it as trusted.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-57",
+          "prompt": {
+            "ar": "ما قواعد accessibility الأساسية التي تتوقعها في مراجعة HTML؟",
+            "en": "What is your practical HTML accessibility checklist?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> أبدأ بـnative semantics، عناوين مرتبة، <code>lang</code> صحيح، labels لكل controls، <code>alt</code> للصور حسب غرضها، تنقل بالكيبورد مع focus ظاهر، نص رابط واضح، ورسائل أخطاء مفهومة مرتبطة بالحقل (<code>aria-describedby</code> عند الحاجة). أستخدم <code>aria-label</code> فقط عندما لا يوجد اسم نصي مناسب، ولا أضيف <code>role=&quot;button&quot;</code> إلى <code>button</code> أصلًا. <code>placeholder</code> مثال/تلميح وليس بديلًا للـlabel. أراجع UI بحالة zoom ومع قارئ شاشة أو فحوص آلية، لكن الفحص الآلي وحده لا يكفي.</p>\n",
+            "en": "<p>I start with native semantic elements, a logical heading order, document language, associated form labels, purpose-based image alternatives, keyboard access with visible focus, meaningful link text, and understandable errors connected to inputs. I add ARIA only where native HTML does not express the needed information. Placeholder text is not a label, and automated checks complement manual keyboard and assistive-technology testing.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-58",
+          "prompt": {
+            "ar": "كيف تكتب alt، ومتى تستخدم picture, srcset, sizes, وlazy loading؟",
+            "en": "How do you make images accessible and performant?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> الصورة المعلوماتية تحتاج <code>alt</code> يشرح المعلومة؛ صورة الزخرفة <code>alt=&quot;&quot;</code>؛ ولو الصورة داخل رابط أو زر فالنص يشرح <strong>الفعل</strong>. <code>srcset</code> و<code>sizes</code> يتيحان للمتصفح اختيار حجم مناسب حسب العرض، و<code>picture</code> لتغيير القصّة الفنية أو الصيغة عند الحاجة. حدّد <code>width</code> و<code>height</code> أو aspect ratio لتقليل layout shift. استخدم <code>loading=&quot;lazy&quot;</code> للصور البعيدة أسفل الصفحة، ولا تعمل lazy للـhero/LCP image؛ يمكن إعطاؤها أولوية مناسبة بعد القياس. صورة CSS الخلفية للزينة، وليست بديلًا عن صورة تحمل معلومة.</p>\n",
+            "en": "<p>I write alt text for the image&#39;s purpose: essential information for informative images, an empty alternative for decoration, and the action for a functional image. <code>srcset</code> and <code>sizes</code> serve appropriate resolutions; <code>picture</code> supports art direction or format choices. I reserve image dimensions to limit layout shift, lazy-load offscreen images, and keep the LCP image eager and appropriately prioritized.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-59",
+          "prompt": {
+            "ar": "كيف تستخدم audio, video, وtrack بشكل قابل للاستخدام؟",
+            "en": "What should you consider when embedding audio or video?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> أضيف <code>controls</code> ليتمكن المستخدم من التشغيل والتحكم، وأوفر صيغة أو أكثر مع fallback مناسب. الفيديو الذي يحتوي كلامًا يحتاج captions باستخدام <code>&lt;track kind=&quot;captions&quot;&gt;</code>، والمحتوى الصوتي المهم يحتاج transcript حسب السياق. <code>autoplay</code> خاصة بالصوت مقيدة بسياسات المتصفح ومزعجة للمستخدم؛ لا أبني تجربة أساسية عليها. <code>poster</code> يعطي صورة قبل تشغيل الفيديو، وأضع أبعادًا أو نسبة عرض لتجنب القفز في التخطيط.</p>\n",
+            "en": "<p>I provide native controls, appropriate media sources, captions for spoken video, and a transcript where useful. I avoid relying on autoplay because browser policies restrict audible autoplay and it harms usability. A poster and reserved dimensions make video loading more stable.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-60",
+          "prompt": {
+            "ar": "ما الفرق بين normal script وdefer وasync وtype=\"module\"؟",
+            "en": "Compare classic, deferred, async, and module scripts."
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> الـclassic script العادي في الـHTML يوقف parsing أثناء تحميله/تنفيذه. <code>defer</code> يحمّل بالتوازي، وينفذ بعد انتهاء parsing وبترتيب ظهوره <strong>قبل</strong> <code>DOMContentLoaded</code>. <code>async</code> يحمّل بالتوازي وينفذ بمجرد جاهزيته؛ لا تعتمد على ترتيب بين scripts async أو توقيته بالنسبة لانتهاء parsing. Module script يُعامل deferred افتراضيًا مع تحميل dependencies، و<code>async</code> للـmodule يغير هذا السلوك. <code>DOMContentLoaded</code> لا ينتظر الصور، لكنه ينتظر deferred/module scripts المعتادة. لو scripts تعتمد على ترتيب بعضها، <code>defer</code> أو modules أفضل من <code>async</code> المستقل.</p>\n",
+            "en": "<p>A parser-inserted classic script can block parsing. Deferred scripts download in parallel and run after parsing, in document order, before <code>DOMContentLoaded</code>. Async scripts run when ready, so their order is not guaranteed. Module scripts defer by default while loading their dependency graph; an async module changes that scheduling. I choose based on dependencies and when the code needs the DOM.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-61",
+          "prompt": {
+            "ar": "متى تستخدم preload, preconnect, وmodulepreload؟",
+            "en": "How do HTML resource hints help, and when can they hurt?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>preload</code> يخبر المتصفح عن resource مهم مبكرًا، مثل خط أساسي أو صورة LCP لم يكتشفها سريعًا؛ <code>preconnect</code> يفتح اتصالًا مبكرًا مع origin خارجي تحتاجه الصفحة قريبًا؛ <code>modulepreload</code> يجهّز module وdependencies مناسبة. لا أضيف hints لكل الملفات: قد تزاحم الموارد الأهم وتضر الأداء. أبدأ بقياس network waterfall وLCP، ثم أضيف hint واحدًا له سبب واضح وأقيس النتيجة.</p>\n",
+            "en": "<p>Preload can expose a critical resource early, preconnect can prepare a needed third-party origin, and modulepreload can prepare module resources. Overusing hints competes for bandwidth and may worsen performance. I inspect the loading waterfall, target a measured bottleneck, and verify the impact.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-62",
+          "prompt": {
+            "ar": "ما علاقة HTML بالـSEO؟ وماذا يضيف SSR في تطبيق Angular؟",
+            "en": "What can HTML do for SEO, and what changes with Angular SSR?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> HTML واضح فيه <code>title</code> فريد، meta description ملائمة، headings منطقية، روابط <code>href</code> حقيقية، <code>lang</code>، نص محتوى ظاهر، وcanonical URL للصفحات التي تحتاجه، يساعد محركات البحث والمستخدمين. Robots directives تتحكم في الفهرسة عند الحاجة. SSR يجعل الـHTML الأولي يحمل المحتوى بدل الاعتماد الكامل على تنفيذ JS، لكن فائدته تتوقف على نوع الصفحة ومحرك البحث والقياس؛ ولا يصلح تلقائيًا محتوى ضعيفًا أو metadata مكررة. أفحص <strong>View Source/response HTML</strong> وليس DOM بعد hydration فقط.</p>\n",
+            "en": "<p>I provide unique titles, useful descriptions, logical headings, real crawlable links, meaningful page content, language, and canonical URLs where needed. SSR can include content in the initial HTML response rather than requiring client-side rendering first. I verify the response HTML and metadata per route and measure the result; SSR alone is not an SEO guarantee.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-63",
+          "prompt": {
+            "ar": "كيف تراجع iframe أمنيًا ومن ناحية accessibility؟",
+            "en": "What do you check before embedding a third-party iframe?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> أعطي الـiframe <code>title</code> يصف محتواه لقارئ الشاشة، و<code>loading=&quot;lazy&quot;</code> لو خارج الشاشة. أحدد <code>sandbox</code> بأقل صلاحيات يحتاجها المحتوى، وأستخدم <code>allow</code> للميزات المطلوبة فقط، و<code>referrerpolicy</code> حسب سياسة الخصوصية. لا أفترض أن iframe من origin آخر يمكنني قراءة DOM داخله؛ Same-Origin Policy تمنع ذلك عادة، والتواصل المنضبط يكون بـ<code>postMessage</code> مع التحقق من <code>origin</code> والرسالة. تحميل third-party له أثر أداء وخصوصية فأقيسه.</p>\n",
+            "en": "<p>I give it a descriptive title, consider lazy loading, restrict capabilities with <code>sandbox</code> and <code>allow</code>, and set an appropriate referrer policy. Cross-origin DOM access is restricted; if communication is necessary, I use <code>postMessage</code> with origin and payload checks. I also measure its performance and privacy impact.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-64",
+          "prompt": {
+            "ar": "هل localStorage, sessionStorage, وCookies جزء من HTML نفسه؟ وأيهما تختار؟",
+            "en": "How do localStorage, sessionStorage, and cookies differ?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> دي Web Platform APIs مرتبطة بعصر HTML5، وليست HTML tags. <code>localStorage</code> يبقى عبر جلسات المتصفح، و<code>sessionStorage</code> مربوط بالتبويب/الجلسة؛ الاتنين synchronous وقابلان للوصول من JS لنفس origin، فلا أخزن فيهما secrets. Cookies تُرسل مع HTTP requests بحسب خصائصها؛ للجلسة الحساسة أفضل cookie بخصائص <code>HttpOnly</code>, <code>Secure</code>, و<code>SameSite</code> وفق تصميم الـbackend، مع مراعاة CSRF. التخزين المناسب يعتمد على العمر المطلوب والـthreat model، وليس شعارًا عامًا.</p>\n",
+            "en": "<p>They are web platform storage mechanisms, not HTML elements. Local storage persists across browser sessions; session storage is scoped to a tab session. Both are synchronous and readable by same-origin JavaScript, so I avoid putting secrets there. Cookies can accompany requests; for sensitive sessions I prefer a properly designed HttpOnly, Secure, SameSite cookie strategy and account for CSRF.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-65",
+          "prompt": {
+            "ar": "إمتى تستخدم canvas وSVG وWeb Workers؟",
+            "en": "When would you choose SVG, canvas, or a Web Worker?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> SVG مناسب لرسومات vector وعناصر يمكن تكبيرها والتعامل معها كعناصر DOM؛ <code>canvas</code> سطح رسم bitmap مناسب للرسم المتكرر أو مشاهد كثيفة، لكن يجب توفير بديل accessible للمعلومات والتفاعلات. Web Worker ينقل computation ثقيلة خارج main thread، لكنه لا يتعامل مع DOM مباشرة. لا أضع كل مشكلة performance في Worker؛ أبدأ بتحديد blocking task ثم أقيس أثر النقل والتواصل بين threads.</p>\n",
+            "en": "<p>SVG suits scalable vector graphics with DOM-level structure. Canvas is useful for dense or frequently redrawn scenes, with accessibility alternatives for meaningful content. A Web Worker handles heavy computation off the main thread but cannot directly manipulate the DOM. I profile first and account for message-transfer overhead.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-66",
+          "prompt": {
+            "ar": "كيف تبني data table سليمة وقابلة للقراءة؟",
+            "en": "What makes an HTML data table semantic and accessible?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> استخدم <code>&lt;table&gt;</code> للبيانات الجدولية فقط، وليس layout. <code>caption</code> يوضح غرض الجدول، <code>th scope=&quot;col&quot;</code> و<code>scope=&quot;row&quot;</code> يربطان العناوين بالخلايا، و<code>thead/tbody/tfoot</code> ينظمون المحتوى. للجداول المعقدة قد أستخدم <code>headers</code>/<code>id</code> وربما تبسيط العرض على الموبايل بدل تمرير جدول ضخم دون تفكير. لو قائمة cards لا علاقة صفوف/أعمدة فيها، أستخدم list أو articles.</p>\n",
+            "en": "<p>I use a table for genuinely tabular data, add a useful caption, identify row and column headers with <code>th</code> and <code>scope</code>, and group rows where helpful. Complex associations may require explicit header IDs. I also design a usable small-screen presentation rather than using tables for page layout.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-67",
+          "prompt": {
+            "ar": "ما الفرق بين source HTML وDOM؟ ولماذا innerHTML خطر مع نص غير موثوق؟",
+            "en": "How do source HTML and the live DOM differ, and where does XSS enter?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> المتصفح يفسر source HTML ويبني DOM، وقد يصلح markup غير صحيح، ثم JavaScript/Angular يغير DOM لاحقًا. <code>textContent</code> يعرض النص كنص؛ <code>innerHTML</code> يفسر markup، فإدخال user content غير موثوق فيه قد يؤدي إلى XSS. في Angular استخدم binding العادي وآليات sanitization، ولا تتجاوزها بـ<code>bypassSecurityTrust...</code> إلا بعد مراجعة مصدر المحتوى وسياقه بعناية. <code>View Source</code> يريك response الأولي، وElements في DevTools يريك DOM الحالي.</p>\n",
+            "en": "<p>The browser parses source markup into a DOM, repairs some invalid markup, and scripts or frameworks can then change it. <code>textContent</code> treats input as text, while <code>innerHTML</code> parses markup, so untrusted content can introduce XSS. In Angular I rely on normal bindings and contextual sanitization rather than bypassing them casually. View Source and the Elements panel answer different questions.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-68",
+          "prompt": {
+            "ar": "Code review: ما العيوب في المثال، وإزاي تصلحها؟",
+            "en": "Review this markup for semantics, submission bugs, and accessibility."
+          },
+          "answer": {
+            "ar": "<pre><code class=\"language-html\">&lt;div onclick=&quot;save()&quot;&gt;Save&lt;/div&gt;\n&lt;form action=&quot;/profile&quot; method=&quot;post&quot;&gt;\n  &lt;input id=&quot;email&quot; type=&quot;email&quot; placeholder=&quot;Email&quot;&gt;\n  &lt;button onclick=&quot;preview()&quot;&gt;Preview&lt;/button&gt;\n  &lt;button&gt;Submit&lt;/button&gt;\n&lt;/form&gt;\n&lt;img src=&quot;avatar.jpg&quot;&gt;\n</code></pre>\n<p><strong>الإجابة بالعربي:</strong> <code>Save</code> يجب أن يكون <code>&lt;button type=&quot;button&quot;&gt;</code> مع اسم واضح (أو <code>a href</code> لو ينقل). <code>email</code> يحتاج <code>&lt;label for=&quot;email&quot;&gt;</code> و<code>name=&quot;email&quot;</code> حتى يُرسل؛ placeholder ليس label. زر Preview داخل form default بتاعه submit، فليكن <code>type=&quot;button&quot;</code>، وزر الإرسال <code>type=&quot;submit&quot;</code> بوضوح. الصورة: لو avatar معلوماتية ضع <code>alt</code> مناسبًا مثل اسم الشخص، ولو زخرفية <code>alt=&quot;&quot;</code>، وحدد dimensions قدر الإمكان. تجنب inline handlers في التطبيق؛ اربط events من كود التطبيق، وتحقق من البيانات على السيرفر.</p>\n",
+            "en": "<p>The Save action should use a real button, or a link if it navigates. The email control needs an associated label and a <code>name</code> to submit its value; a placeholder is insufficient. Preview needs <code>type=&quot;button&quot;</code> to avoid accidental form submission, while Submit should be explicit. Give the image a purpose-appropriate alt value and dimensions. I would wire behavior in application code and validate submitted data server-side.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-69",
+          "prompt": {
+            "ar": "إمتى تستخدم details/summary, dialog, وtemplate؟",
+            "en": "What do details, dialog, and template provide natively?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>&lt;details&gt;&lt;summary&gt;...&lt;/summary&gt;...&lt;/details&gt;</code> إفصاح بسيط قابل للفتح والإغلاق بسلوك keyboard جاهز، مناسب لـFAQ لا لتجربة معقدة بلا مراجعة UX. <code>&lt;dialog&gt;</code> نافذة أصلية؛ فتحها بـ<code>showModal()</code> يضعها في top layer ويجعل باقي الصفحة غير تفاعلية ضمن سلوك modal، ويمكن غلقها بـ<code>close()</code>؛ انتبه لإدارة focus والاسم الواضح واختبار الإغلاق. <code>&lt;template&gt;</code> يحتفظ بmarkup غير مرسوم حتى تستخدمه من JavaScript. وفي Web Components، <code>slot</code> يحدد موضع المحتوى الممرر داخل shadow tree؛ هذه ميزة متقدمة وليست لازمة لكل تطبيق Angular.</p>\n",
+            "en": "<p><code>details</code> and <code>summary</code> provide a built-in disclosure control. A modal <code>dialog</code> opened with <code>showModal()</code> participates in the top layer and modal interaction model; I still test its accessible name, focus, and closing behavior. <code>template</code> stores inert markup for later use. Slots are relevant when building Web Components, not a default requirement for Angular components.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-70",
+          "prompt": {
+            "ar": "ماذا تقصد بـ“HTML5 APIs” مثل History, Geolocation, وDrag and Drop؟",
+            "en": "Are History, Geolocation, and Drag and Drop part of the HTML syntax?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> دي browser APIs، وليست tags أو مزايا مضمونة لمجرد كتابة doctype HTML5. History API مثل <code>pushState</code> يغير URL/history بدون reload، لكن التطبيق مسؤول عن تحديث الواجهة والتعامل مع <code>popstate</code>. Geolocation يحتاج secure context وإذن المستخدم؛ لا تطلبه قبل حاجة واضحة له، ووفر fallback عند الرفض. Native Drag and Drop يحتاج دعم keyboard/touch بديل في الواجهات المهمة؛ لا تفترض أنه حل accessibility كامل. في Angular غالبًا أستخدم Router للتنقل وواجهة مناسبة للـdrag بدل التعامل الخام مع APIs بلا داعٍ.</p>\n",
+            "en": "<p>They are browser APIs often grouped under the historical “HTML5” umbrella, not HTML elements. History APIs change navigation state without automatically rendering the application; geolocation requires a secure context and user permission. Native drag and drop needs accessible keyboard and touch alternatives. In Angular I normally use the Router for navigation and choose an interaction library only when the product needs it.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-2",
+      "title": "JavaScript & the runtime",
+      "titleAr": "JavaScript — الأساسيات وأسئلة الـoutput",
+      "stage": "Language essentials",
+      "description": "Explain scope, hoisting, and the temporal dead zone. What do the examples print? How is this determined in JavaScript?",
+      "sources": [
+        {
+          "title": "Official documentation",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q-6",
+          "prompt": {
+            "ar": "اشرح scope وhoisting وTemporal Dead Zone.",
+            "en": "Explain scope, hoisting, and the temporal dead zone. What do the examples print?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> JavaScript تنشئ الـbindings قبل تنفيذ الكود. <code>var</code> له function scope وتكون قيمته <code>undefined</code> قبل الـassignment. <code>let</code> و<code>const</code> لهما block scope، والوصول لهما قبل سطر التهيئة يرمي <code>ReferenceError</code> بسبب الـTDZ. Function declaration يمكن استدعاؤها قبل موضعها في نفس النطاق؛ function expression تتبع نوع المتغير الحامل لها.</p>\n\n<pre><code class=\"language-js\">console.log(b);\nlet b = 2;\n// ReferenceError في أول سطر؛ السطر الثاني لا يُنفّذ\n</code></pre>\n",
+            "en": "<p>JavaScript creates bindings before executing a scope. A var binding is function-scoped and reads as undefined before its assignment, so the first snippet prints undefined and then 2. Let and const are block-scoped and cannot be accessed before initialization; the second snippet throws a ReferenceError on the first line.</p>\n"
+          },
+          "codeHtml": "<pre><code class=\"language-js\">console.log(a);\nvar a = 2;\nconsole.log(a);\n// undefined, ثم 2\n</code></pre>",
+          "kind": "output",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-7",
+          "prompt": {
+            "ar": "this بتتحدد إزاي؟",
+            "en": "How is this determined in JavaScript?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> في الـordinary function تعتمد على <strong>طريقة الاستدعاء</strong>: <code>obj.method()</code> تربطها بـ<code>obj</code>؛ <code>call/apply/bind</code> يحدّدونها صراحة. الـarrow function لا تنشئ <code>this</code> خاصة بها بل تستخدم <code>this</code> من السياق المحيط وقت تعريفها. لذلك نقل method إلى متغير قد يغيّر <code>this</code>، بينما arrow داخل method تحتفظ بسياق الـmethod.</p>\n<pre><code class=\"language-js\">function createUser(name) {\n  return {\n    name,\n    say() {\n      const arrow = () =&gt; console.log(this.name);\n      arrow();\n    },\n  };\n}\ncreateUser(&#39;Mona&#39;).say(); // Mona\n</code></pre>\n",
+            "en": "<p>For a regular function, this mainly depends on how the function is called: a method call uses its receiver, while call, apply, or bind can set it explicitly. An arrow function captures this from the surrounding lexical scope. In the example, the arrow is created inside say, so it prints Mona.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-8",
+          "prompt": {
+            "ar": "إيه prototype chain؟",
+            "en": "What is the prototype chain, and what does the example print?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> عند قراءة خاصية غير موجودة على object، يبحث المحرك في prototype ثم prototype الخاص به حتى نهاية السلسلة. الـclass syntax تبسيط لنموذج الوراثة القائم على prototypes، وليست نسخة من inheritance في اللغات الأخرى. فرّق بين own property وinherited property، وبين <code>Object.create</code> ونسخ البيانات.</p>\n\n",
+            "en": "<p>When a property is not found directly on an object, JavaScript looks up its prototype chain. <code>Object.create(base)</code> makes <code>base</code> the prototype of <code>user</code>, so <code>user.role</code> evaluates to <code>viewer</code>. <code>Object.hasOwn(user, &#39;role&#39;)</code> is false because <code>role</code> is inherited rather than owned by <code>user</code>.</p>\n"
+          },
+          "codeHtml": "<pre><code class=\"language-js\">const base = { role: &#39;viewer&#39; };\nconst user = Object.create(base);\nuser.name = &#39;Ali&#39;;\nconsole.log(user.role, Object.hasOwn(user, &#39;role&#39;));\n// viewer false\n</code></pre>",
+          "kind": "output",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-9",
+          "prompt": {
+            "ar": "إيه closure؟ وهل هي memory leak؟",
+            "en": "What is a closure? Is every closure a memory leak? What is the output?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> closure هي function تحتفظ بإمكانية الوصول للـlexical environment الذي أُنشئت فيه، حتى بعد انتهاء استدعاء الـouter function. مفيدة لعمل private state وcallbacks. ليست leak في حد ذاتها؛ تصبح مشكلة إذا احتفظ callback طويل العمر بمرجع كبير لم نعد نحتاجه. <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures\">MDN closures</a> · <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Memory_management\">MDN memory management</a></p>\n<p><strong>توقع الـoutput:</strong></p>\n\n<p><strong>الحل بالعربي:</strong> <code>1 2 1 3</code>. كل استدعاء <code>counter()</code> أنشأ بيئة مستقلة؛ <code>a</code> و<code>b</code> لا يشتركان في <code>n</code>.</p>\n",
+            "en": "<p>A closure is a function that retains access to the lexical environment in which it was created. Each call to counter creates a separate n, so the output is 1, 2, 1, 3. A closure is not inherently a leak; it becomes a problem if a long-lived callback keeps large or obsolete objects reachable unnecessarily.</p>\n"
+          },
+          "codeHtml": "<pre><code class=\"language-js\">function counter() {\n  let n = 0;\n  return () =&gt; ++n;\n}\nconst a = counter();\nconst b = counter();\nconsole.log(a(), a(), b(), a());\n</code></pre>",
+          "kind": "output",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-10",
+          "prompt": {
+            "ar": "ليه نتيجة حلقة var مع timers بتفاجئ ناس؟",
+            "en": "What does the var loop print, and why?"
+          },
+          "answer": {
+            "ar": "\n<p><strong>الحل بالعربي:</strong> <code>end</code> ثم <code>3 3 3</code>. الـcallbacks تقرأ نفس binding الخاص بـ<code>var</code> بعد انتهاء الحلقة. غيّرها إلى <code>let</code> لتحصل على <code>end</code> ثم <code>0 1 2</code>، لأن كل iteration لها binding مستقل.</p>\n",
+            "en": "<p>It prints end first, followed by 3, 3, 3. The timer callbacks run after the loop, and all three callbacks read the same function-scoped var binding. Replacing var with let creates a distinct binding for each iteration, giving end, 0, 1, 2.</p>\n"
+          },
+          "codeHtml": "<pre><code class=\"language-js\">for (var i = 0; i &lt; 3; i++) {\n  setTimeout(() =&gt; console.log(i), 0);\n}\nconsole.log(&#39;end&#39;);\n</code></pre>",
+          "kind": "output",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-11",
+          "prompt": {
+            "ar": "اشرح event loop وترتيب microtasks/macrotasks.",
+            "en": "Explain the event loop and predict the exact console order."
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> الكود المتزامن ينتهي أولًا. بعدها تُنفّذ microtasks الجاهزة مثل <code>Promise.then</code> و<code>queueMicrotask</code> قبل الانتقال إلى timer task التالية. الـ<code>setTimeout(..., 0)</code> لا يعني التنفيذ فورًا. المهم تتبع متى <strong>تُجدول</strong> كل callback، لا ترتيب كتابتها فقط.</p>\n\n<p><strong>الحل بالعربي:</strong> <code>A B P1 M P2 T</code>. <code>P2</code> تُضاف للـmicrotask queue أثناء تنفيذ <code>P1</code>، خلف <code>M</code> الموجودة بالفعل.</p>\n",
+            "en": "<p>The output is A, B, P1, M, P2, T. Synchronous code runs first. Promise callbacks and queueMicrotask callbacks run as microtasks before the timer task. P2 is scheduled while P1 runs, so it is placed behind M, which was already queued.</p>\n"
+          },
+          "codeHtml": "<pre><code class=\"language-js\">console.log(&#39;A&#39;);\nsetTimeout(() =&gt; console.log(&#39;T&#39;), 0);\nPromise.resolve().then(() =&gt; {\n  console.log(&#39;P1&#39;);\n  Promise.resolve().then(() =&gt; console.log(&#39;P2&#39;));\n});\nqueueMicrotask(() =&gt; console.log(&#39;M&#39;));\nconsole.log(&#39;B&#39;);\n</code></pre>",
+          "kind": "output",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-12",
+          "prompt": {
+            "ar": "await بتعمل إيه في ترتيب التنفيذ؟",
+            "en": "What does await change in execution order?"
+          },
+          "answer": {
+            "ar": "<pre><code class=\"language-js\">async function task() {\n  console.log(&#39;1&#39;);\n  await Promise.resolve();\n  console.log(&#39;2&#39;);\n}\nconsole.log(&#39;3&#39;);\ntask();\nPromise.resolve().then(() =&gt; console.log(&#39;4&#39;));\nconsole.log(&#39;5&#39;);\n</code></pre>\n<p><strong>الحل بالعربي:</strong> <code>3 1 5 2 4</code>. استدعاء <code>task()</code> يبدأ synchronously حتى <code>await</code>، ثم تكمل الدالة في microtask. استكمالها جُدول قبل callback الذي يطبع <code>4</code>.</p>\n",
+            "en": "<p>The output is 3, 1, 5, 2, 4. Calling an async function runs its body synchronously until the first await. The continuation after await is scheduled as a microtask before the later Promise callback that prints 4.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-13",
+          "prompt": {
+            "ar": "Promise vs Observable؟",
+            "en": "What is the difference between a Promise and an Observable?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> Promise تمثل نتيجة مستقبلية واحدة وتبدأ العملية عند إنشائها؛ Observable قد تصدر صفرًا أو أكثر من القيم، واشتراكها يبدأ التنفيذ في الحالات الباردة. Promise لها <code>then/catch/finally</code>؛ Observable تستخدم operators وsubscription يمكن إنهاؤه. <code>async/await</code> واجهة للتعامل مع Promises، وليست بديلًا شاملًا عن streams أو cancellation.</p>\n",
+            "en": "<p>A Promise represents one eventual result, and its executor starts when the Promise is created. An Observable can represent a stream of zero or more values; a cold Observable normally starts its work for each subscriber. Observables support composition and subscription cleanup, while async/await is syntax for working with Promises.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-75",
+          "prompt": {
+            "ar": "ما ناتج الكود؟ فسر this والـarrow function.",
+            "en": "What does this code print, and is the second value environment-independent?"
+          },
+          "answer": {
+            "ar": "\n<p><strong>الإجابة بالعربي:</strong> أول سطر <code>Mona</code>. الثاني <strong>ليس <code>Mona</code></strong>: الـarrow لا تنشئ <code>this</code> جديدة، بل تلتقط <code>this</code> من lexical scope الخارجي. ناتج السطر الثاني يعتمد على بيئة التشغيل والـtop-level <code>this</code>، فقد يكون <code>undefined</code> أو يحدث خطأ لو كانت <code>this</code> نفسها <code>undefined</code> في ذلك السياق. ما ينفعش أقول ناتج ثابت دون تحديد البيئة. استخدم method عادية حين تحتاج receiver هو <code>user</code>.</p>\n",
+            "en": "<p>The regular method returns <code>Mona</code> because the call receiver is <code>user</code>. The arrow captures the surrounding lexical <code>this</code>, not the object, so its result is environment-dependent and may even throw if that surrounding <code>this</code> is undefined. I would not claim one universal second output without specifying the execution context.</p>\n"
+          },
+          "codeHtml": "<pre><code class=\"language-js\">const user = {\n  name: &#39;Mona&#39;,\n  regular() { return this.name; },\n  arrow: () =&gt; this.name,\n};\nconsole.log(user.regular());\nconsole.log(user.arrow());\n</code></pre>",
+          "kind": "output",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-76",
+          "prompt": {
+            "ar": "اطلع ترتيب الـconsole، ووضح أين تدخل microtasks.",
+            "en": "What is the console order, and why?"
+          },
+          "answer": {
+            "ar": "\n<p><strong>الإجابة بالعربي:</strong> الترتيب <code>A E C D B</code>. الـsynchronous code يخلص أولًا؛ <code>then</code> و<code>queueMicrotask</code> يدخلان microtask queue بترتيب إضافتهما، ويُنفذان قبل timer task التالي. <code>setTimeout(..., 0)</code> يعني أقرب فرصة لاحقة وليس تنفيذًا فوريًا. لو microtask أنشأت microtask أخرى، تُفرغ الطابور قبل الانتقال إلى task التالية، ولذلك يمكن إساءة استخدامها وتأخير الرسم.</p>\n",
+            "en": "<p>The output is <code>A E C D B</code>. Synchronous statements run first. The promise callback and <code>queueMicrotask</code> then run in enqueue order before the timer task. A zero-delay timer schedules a later task; it does not interrupt the current call stack.</p>\n"
+          },
+          "codeHtml": "<pre><code class=\"language-js\">console.log(&#39;A&#39;);\nsetTimeout(() =&gt; console.log(&#39;B&#39;), 0);\nPromise.resolve().then(() =&gt; console.log(&#39;C&#39;));\nqueueMicrotask(() =&gt; console.log(&#39;D&#39;));\nconsole.log(&#39;E&#39;);\n</code></pre>",
+          "kind": "output",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-77",
+          "prompt": {
+            "ar": "ما ناتج الكود؟ وما الفرق بين shallow copy وdeep copy؟",
+            "en": "What prints, and what does object spread actually copy?"
+          },
+          "answer": {
+            "ar": "\n<p><strong>الإجابة بالعربي:</strong> <code>Alex false true</code>. الـspread نسخ المستوى الأول فقط: <code>a</code> و<code>b</code> كائنين مختلفين لكن <code>profile</code> نفس المرجع. عند تحديث state في Angular/NgRx لا أعدل nested object بالخطأ؛ أنسخ المسار المطلوب أو أستخدم طريقة immutable واضحة. <code>structuredClone</code> قد يكون حلًا لبعض البيانات، لكن ليس بديلًا عامًا: لا ينسخ كل الأنواع/السلوكيات بنفس معنى التطبيق.</p>\n",
+            "en": "<p>It prints <code>Alex false true</code>. Spread creates a new outer object but keeps the nested <code>profile</code> reference. For immutable state changes, I copy the modified path rather than mutating a shared nested object. I do not treat generic deep cloning as a default state-update strategy.</p>\n"
+          },
+          "codeHtml": "<pre><code class=\"language-js\">const a = { profile: { city: &#39;Cairo&#39; } };\nconst b = { ...a };\nb.profile.city = &#39;Alex&#39;;\nconsole.log(a.profile.city, a === b, a.profile === b.profile);\n</code></pre>",
+          "kind": "output",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-78",
+          "prompt": {
+            "ar": "Promise combinators الأربعة: تختار أي واحد في سيناريو dashboard؟",
+            "en": "How do you choose among all, allSettled, race, and any?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>Promise.all</code> ينتظر نجاح الجميع ويُرفض عند أول rejection، مع أن الطلبات الأخرى لا تُلغى تلقائيًا. <code>allSettled</code> يعطيني نتيجة نجاح/فشل لكل طلب، مناسب لو widgets مستقلة. <code>race</code> يعطي أول promise تستقر، نجاحًا أو فشلًا؛ <code>any</code> يعطي أول نجاح ويرفض بـ<code>AggregateError</code> لو الكل فشل. لو أحتاج إلغاء فعلي للـfetch أستخدم <code>AbortController</code>، لا أعتمد على combinator وحده.</p>\n",
+            "en": "<p><code>all</code> requires every result and rejects on a rejection; <code>allSettled</code> reports every outcome independently. <code>race</code> settles with the first settlement, while <code>any</code> resolves with the first fulfillment and fails only if all reject. None of these automatically cancels the other requests; I use an abort mechanism when cancellation matters.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-79",
+          "prompt": {
+            "ar": "ما ناتج closure دي، ولماذا يحتفظ المتغير بقيمته؟",
+            "en": "What is the output, and what state does each closure retain?"
+          },
+          "answer": {
+            "ar": "\n<p><strong>الإجابة بالعربي:</strong> <code>1 2 1 3</code>. كل استدعاء <code>makeCounter()</code> ينشئ lexical environment مستقلة، والـfunction الراجعة تحتفظ بالوصول إلى <code>count</code> الخاصة بها بعد انتهاء الاستدعاء الأصلي. Closure ليست leak بحد ذاتها؛ قد تطيل عمر بيانات كبيرة إذا احتفظت بها callback أو listener طويل العمر. أزيل listeners/subscriptions التي لم أعد أحتاجها.</p>\n",
+            "en": "<p>The output is <code>1 2 1 3</code>. Each <code>makeCounter</code> call creates its own lexical environment. The returned function keeps access to that call&#39;s <code>count</code>. A closure is normal JavaScript behavior; retaining unnecessary large objects through long-lived callbacks is the memory concern.</p>\n"
+          },
+          "codeHtml": "<pre><code class=\"language-js\">function makeCounter() {\n  let count = 0;\n  return () =&gt; ++count;\n}\nconst first = makeCounter();\nconst second = makeCounter();\nconsole.log(first(), first(), second(), first());\n</code></pre>",
+          "kind": "output",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-80",
+          "prompt": {
+            "ar": "Event delegation وdebounce وthrottle: إمتى تستخدم كل واحد؟",
+            "en": "When would you use delegation, debounce, and throttle?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> Event delegation يضع listener على parent مستقر ويحدد العنصر المقصود من event target؛ مفيد لقائمة ديناميكية، مع الانتباه للـbubbling والعناصر المتداخلة. Debounce ينفذ بعد توقف الأحداث فترة، مناسب لبحث بعد الكتابة؛ throttle يحد التنفيذ لمرة خلال interval، مناسب لمراقبة scroll/resize حسب الحالة. أستخدم <code>event.target.closest(...)</code> بحذر وأتأكد أنه داخل الـcontainer، ولا أنسى cleanup للـlistener.</p>\n",
+            "en": "<p>Delegation handles bubbling events at a stable ancestor, useful for dynamic lists. Debounce waits for a quiet period, such as after typing; throttle caps execution frequency for repeated events such as scrolling. I validate the matched target stays within the container and remove listeners when their owner is destroyed.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-3",
+      "title": "TypeScript",
+      "titleAr": "TypeScript",
+      "stage": "Language essentials",
+      "description": "Why is unknown safer than any at an API boundary? What is a discriminated union, and why is it useful?",
+      "sources": [
+        {
+          "title": "Official documentation",
+          "url": "https://www.typescriptlang.org/docs/handbook/intro.html"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q-14",
+          "prompt": {
+            "ar": "لماذا unknown أفضل من any عند حدود الـAPI؟",
+            "en": "Why is unknown safer than any at an API boundary?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>any</code> يعطل فحص النوع، بينما <code>unknown</code> يجبرني أتحقق قبل استخدام القيمة. البيانات القادمة من الشبكة غير مضمونة حتى لو كتبت لها interface؛ الأنواع لا تجري runtime validation. أتحقق من الشكل عند حدود النظام ثم أتعامل مع نوع موثوق داخله.</p>\n",
+            "en": "<p>Any disables useful type checks. Unknown forces me to validate or narrow the value before using it. A TypeScript interface does not validate a network response at runtime, so I check external data at the boundary and only then expose a trusted application type.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-15",
+          "prompt": {
+            "ar": "اشرح union narrowing وdiscriminated union بمثال.",
+            "en": "What is a discriminated union, and why is it useful?"
+          },
+          "answer": {
+            "ar": "<pre><code class=\"language-ts\">type LoadState&lt;T&gt; =\n  | { status: &#39;loading&#39; }\n  | { status: &#39;success&#39;; data: T }\n  | { status: &#39;error&#39;; message: string };\n\nfunction label(state: LoadState&lt;string&gt;): string {\n  switch (state.status) {\n    case &#39;loading&#39;: return &#39;Loading&#39;;\n    case &#39;success&#39;: return state.data;\n    case &#39;error&#39;: return state.message;\n  }\n}\n</code></pre>\n<p><strong>الإجابة بالعربي:</strong> <code>status</code> يميّز الحالات، فيعرف TypeScript أي properties متاحة في كل فرع. ده أنسب من object مليان حقول optional تسمح بحالة غير منطقية مثل <code>success</code> بلا <code>data</code>. <a href=\"https://www.typescriptlang.org/docs/handbook/2/narrowing\">TypeScript narrowing</a></p>\n",
+            "en": "<p>A discriminated union gives each valid case a distinct tag, such as loading, success, or error. TypeScript narrows the type when I check that tag, so success has data while error has a message. This prevents impossible combinations that a single object with many optional fields would allow.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-16",
+          "prompt": {
+            "ar": "إيه قيمة Generics عمليًا؟",
+            "en": "What problem do TypeScript generics solve?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> تربط نوع الإدخال بنوع الإخراج دون فقد المعلومة كما يحدث مع <code>any</code>، وتتيح API قابلة لإعادة الاستخدام مع الحفاظ على type safety.</p>\n<pre><code class=\"language-ts\">function first&lt;T&gt;(items: readonly T[]): T | undefined {\n  return items[0];\n}\nconst name = first([&#39;Ali&#39;, &#39;Mona&#39;]); // string | undefined\n</code></pre>\n",
+            "en": "<p>Generics preserve the relationship between input and output types while keeping an API reusable. In the first function, an array of strings produces string or undefined, whereas an array of numbers produces number or undefined. Using any would lose that relationship.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-81",
+          "prompt": {
+            "ar": "type vs interface: كيف تختار بدون قواعد مطلقة؟",
+            "en": "How do you choose between a TypeScript type alias and an interface?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> الاتنين يصفان object shapes في حالات كثيرة. <code>interface</code> مناسبة لعقد object قابل للامتداد وdeclaration merging عند الحاجة؛ <code>type</code> أكثر مرونة للـunions والـtuples والـmapped/conditional types. لا أحوّلها لنقاش أسلوب فارغ؛ أختار convention ثابتًا للفريق، وأستخدم discriminated union للحالات المتبادلة بدل optional fields كثيرة.</p>\n",
+            "en": "<p>Both model object shapes. Interfaces support extension and declaration merging; type aliases also represent unions, tuples, and type transformations. I follow team conventions for ordinary object contracts and use a discriminated union when I need mutually exclusive states.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-82",
+          "prompt": {
+            "ar": "لماذا strictNullChecks وunknown مهمان عند API boundary؟",
+            "en": "Why are TypeScript assertions insufficient for API responses?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> TypeScript لا يتحقق من JSON وقت التشغيل. أستقبل البيانات الخارجية كـ<code>unknown</code> أو type غير موثوق، ثم أتحقق من shape قبل استخدامها. <code>strictNullChecks</code> يجبرني أتعامل مع <code>null</code>/<code>undefined</code> بدل crash لاحق. <code>as User</code> لا يفعل validation؛ هو assertion للمترجم فقط. أميز أيضًا بين optional property <code>x?: T</code> وقيمة <code>T | undefined</code> حسب العقد.</p>\n",
+            "en": "<p>TypeScript types disappear at runtime. An assertion does not validate JSON. I validate untrusted data at the boundary and use <code>unknown</code> until it is narrowed. Strict null checks force explicit handling of missing values, which prevents many runtime failures.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-83",
+          "prompt": {
+            "ar": "تستخدم Partial, Pick, Omit, وRecord إمتى؟",
+            "en": "Give practical uses for common TypeScript utility types."
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>Pick&lt;User, &#39;id&#39; | &#39;name&#39;&gt;</code> يحدد subset، و<code>Omit</code> يحذف حقولًا من contract، و<code>Partial</code> يجعل properties اختيارية، و<code>Record&lt;Key, Value&gt;</code> يصف mapping بمفاتيح معلومة. مثال: update DTO قد يكون <code>Partial&lt;Pick&lt;User, &#39;name&#39; | &#39;phone&#39;&gt;&gt;</code>، لكن يجب منع تحديث <code>id</code> على السيرفر كذلك. لا أفرط في تركيب utility types لحد ما العقد يصبح صعب القراءة.</p>\n",
+            "en": "<p><code>Pick</code> selects fields, <code>Omit</code> removes fields, <code>Partial</code> makes fields optional, and <code>Record</code> models a key-to-value map. They help derive DTO shapes consistently, but I keep API contracts readable and still enforce field permissions on the server.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-4",
+      "title": "OOP, SOLID & patterns",
+      "titleAr": "OOP وSOLID وDesign Patterns",
+      "stage": "Engineering fundamentals",
+      "description": "Explain the four pillars of OOP and how they apply to Angular. Can you explain SOLID with practical Angular examples?",
+      "sources": [
+        {
+          "title": "Official documentation",
+          "url": "https://angular.dev/guide/di"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q-17",
+          "prompt": {
+            "ar": "اشرح أركان OOP باختصار وبدون مبالغة.",
+            "en": "Explain the four pillars of OOP and how they apply to Angular."
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <strong>Encapsulation</strong> إخفاء تفاصيل الحالة خلف API واضحة. <strong>Abstraction</strong> عرض ما يحتاجه المستهلك وإخفاء التنفيذ. <strong>Inheritance</strong> إعادة استخدام/تخصيص السلوك بعلاقة <code>is-a</code>، ولا تُستخدم لمجرد مشاركة بضعة أسطر. <strong>Polymorphism</strong> التعامل مع تطبيقات مختلفة عبر عقد مشترك. في Angular غالبًا composition وDI أوضح من inheritance ثقيلة.</p>\n",
+            "en": "<p>Encapsulation controls access to state and behavior. Abstraction exposes a useful contract without exposing every implementation detail. Inheritance models a genuine is-a relationship, and polymorphism lets different implementations satisfy the same contract. In Angular, composition and dependency injection are often clearer than deep inheritance hierarchies.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-18",
+          "prompt": {
+            "ar": "اشرح SOLID بالإنجليزي مع مثال واحد واضح لكل مبدأ.",
+            "en": "Can you explain SOLID with practical Angular examples?"
+          },
+          "answer": {
+            "ar": "<table>\n<thead>\n<tr>\n<th>Principle</th>\n<th>إجابة قصيرة تصلح للمقابلة</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><strong>S — Single Responsibility</strong></td>\n<td>“A class should have one reason to change. I keep HTTP access in a data service and UI rendering in a component.”</td>\n</tr>\n<tr>\n<td><strong>O — Open/Closed</strong></td>\n<td>“I extend behavior through a new strategy rather than editing a large conditional every time a payment method is added.”</td>\n</tr>\n<tr>\n<td><strong>L — Liskov Substitution</strong></td>\n<td>“An implementation must honor the contract expected by its callers; a subtype must not unexpectedly throw for a supported operation.”</td>\n</tr>\n<tr>\n<td><strong>I — Interface Segregation</strong></td>\n<td>“I prefer small focused contracts; a read-only view should not depend on write methods it never uses.”</td>\n</tr>\n<tr>\n<td><strong>D — Dependency Inversion</strong></td>\n<td>“High-level logic depends on an abstraction or injection token, while DI supplies the concrete implementation.”</td>\n</tr>\n</tbody></table>\n<p><strong>ملحوظة:</strong> لا تبيع كل مبدأ كقاعدة مطلقة؛ اشرح trade-off في مشروع حقيقي.</p>\n<p><strong>الإجابة بالعربي:</strong> المسؤولية الواحدة تعني سببًا واضحًا للتغيير، وOpen/Closed إضافة سلوك دون تعديل متكرر للكود المستقر، وLiskov احترام العقد عند استبدال implementation، وInterface Segregation عقودًا صغيرة، وDependency Inversion اعتماد المنطق الأعلى على abstraction تربطها DI بالتنفيذ.</p>\n",
+            "en": "<p>Single Responsibility means a component renders the UI while a service owns data access. Open/Closed means I can add a new strategy without repeatedly changing a large conditional. Liskov Substitution means an implementation honors its contract. Interface Segregation keeps contracts focused. Dependency Inversion lets high-level logic depend on an abstraction, with Angular DI providing the concrete implementation. I apply these principles where they reduce change risk, not as rigid rules.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-19",
+          "prompt": {
+            "ar": "Design Patterns في Angular: تذكر إيه؟",
+            "en": "Which design patterns have you used in Angular?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <strong>Facade</strong> تخفي تعقيد store/services خلف API مناسبة للـcomponent. <strong>Observer</strong> يظهر في Observable وsubscription. <strong>Strategy</strong> لاختيار سلوك متبدّل، مثل حساب سعر أو validation حسب نوع المستخدم. <strong>Adapter</strong> يحوّل API خارجي إلى نموذج التطبيق. DI وسيلة لتوصيل التطبيق المناسب للعقد. اذكر pattern فقط حين يحل مشكلة واضحة؛ كثرة الطبقات بلا حاجة تزيد التعقيد.</p>\n",
+            "en": "<p>A Facade can expose a simple feature API over a store or several services. Observer appears in RxJS streams. Strategy lets me replace a business rule, and Adapter translates an external API model into my application model. I describe the problem and trade-off first, then name the pattern; I do not add abstraction just to use a pattern.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-84",
+          "prompt": {
+            "ar": "Composition vs inheritance في Angular: ماذا تختار ولماذا؟",
+            "en": "When is composition preferable to inheritance in Angular?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> أفضّل composition لمعظم UI behaviors: component يستخدم service أو directive أو projected content بدل base component متضخم. Inheritance يفيد فقط لعقد مشترك حقيقي ومستقر، لكن lifecycle وDI وtemplate behavior قد تجعل التسلسل صعب الفهم. مثال: بدل <code>BaseListComponent</code> فيه فلترة وتصدير وصلاحيات، أفصل data source/service وdirectives صغيرة وأركب المطلوب.</p>\n",
+            "en": "<p>Composition lets a component combine focused services, directives, and content without inheriting a large base class. I reserve inheritance for a stable genuine is-a relationship. It reduces coupling and makes each behavior easier to test and replace.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-85",
+          "prompt": {
+            "ar": "طبّق Dependency Inversion وOpen/Closed بمثال payment UI.",
+            "en": "Show Dependency Inversion and Open/Closed in an Angular feature."
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> component لا يعتمد مباشرة على <code>StripeService</code>، بل على abstraction/token مثل <code>PAYMENT_GATEWAY</code> له <code>pay()</code>؛ الـprovider يختار implementation. إضافة gateway جديد تتم بإضافة implementation/provider بدل تعديل component في كل مرة. لكن لا أبني abstraction قبل وجود سبب أو اختلاف حقيقي؛ الهدف تقليل coupling وإتاحة الاختبار، وليس زيادة الملفات.</p>\n",
+            "en": "<p>A checkout component depends on a payment-gateway contract through an injection token, not a concrete provider. Different implementations can be supplied without rewriting the component. I introduce that abstraction when there is a real variation or testing need, rather than abstracting every service automatically.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-86",
+          "prompt": {
+            "ar": "Observer, Strategy, وFacade: أمثلة عملية لا مجرد تعريفات.",
+            "en": "Where have you used Observer, Strategy, or Facade in Angular?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> Observer يظهر في Observable streams أو event subscriptions؛ المستهلكون يتفاعلون مع تغيّر المصدر. Strategy يبدّل خوارزمية حسب السياق، مثل pricing أو validation policy تُحقن كعقد. Facade يقدم API أصغر لfeature معقدة، مثل methods/selectors فوق NgRx، لكنه لا يجب أن يخفي كل تفاصيل الحالة أو يصبح service عملاق. أذكر trade-off والسبب قبل اسم الـpattern.</p>\n",
+            "en": "<p>Observable subscriptions are a form of Observer. A replaceable validation or pricing policy is Strategy. A feature facade can expose focused commands and view state over NgRx. I use each pattern to solve a concrete coupling or complexity problem and avoid adding a facade that merely forwards every store operation.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-5",
+      "title": "Algorithms, Git & HTTP",
+      "titleAr": "Data Structures وGit وHTTP",
+      "stage": "Engineering fundamentals",
+      "description": "Compare an array with a linked list. What does Big O describe, and how do time and space trade off?",
+      "sources": [
+        {
+          "title": "Official documentation",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q-20",
+          "prompt": {
+            "ar": "Array vs linked list، وإزاي تختار؟",
+            "en": "Compare an array with a linked list."
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> Array تتيح وصولًا مفهرسًا سريعًا عادةً <code>O(1)</code>، والبحث الخطي <code>O(n)</code>. الإدخال في وسطها يحتاج تحريك عناصر <code>O(n)</code>. Linked list يصل إدخال العقدة فيها إلى <code>O(1)</code> <strong>إذا كان مرجع الموضع معروفًا</strong>، لكن الوصول للعنصر رقم <code>k</code> يحتاج traversal <code>O(n)</code>، مع تكلفة ذاكرة للروابط. في JavaScript اليومية اختار array إلا إذا متطلبات فعلية تثبت غير ذلك.</p>\n",
+            "en": "<p>An array gives indexed access in O(1) but inserting in the middle generally shifts elements and costs O(n). A linked list can insert a node in O(1) if I already have the position, but finding an index takes O(n) and links cost extra memory. For ordinary JavaScript UI work, I start with an array unless requirements justify another structure.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-21",
+          "prompt": {
+            "ar": "اشرح Big O وtime/space complexity في مثال.",
+            "en": "What does Big O describe, and how do time and space trade off?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> Big O يصف كيف تنمو كلفة الخوارزمية مع حجم الإدخال؛ لا يقيس زمنًا ثابتًا بالميلي ثانية. حلقتان متداخلتان على <code>n</code> قد تكونان <code>O(n²)</code>، واستخدام <code>Set</code> إضافية لحفظ العناصر قد يخفّض زمن البحث مقابل <code>O(n)</code> مساحة. اسأل عن حجم البيانات وقيود الذاكرة قبل اختيار الحل.</p>\n",
+            "en": "<p>Big O describes how resource use grows as input size grows, not an exact runtime in milliseconds. Nested loops over n items can be O(n squared). Adding a Set may reduce repeated lookups at the cost of O(n) extra space. I choose based on expected input size and constraints, then measure when performance matters.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-22",
+          "prompt": {
+            "ar": "HTTP: تفرق بين 401 و403 و500؟ وإيه دور caching؟",
+            "en": "What do HTTP 401, 403, and 500 mean, and how does caching affect a frontend?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>401</code> يعني أن طلب الوصول يحتاج اعتمادًا صالحًا، <code>403</code> يعني أن الوصول مرفوض حتى بعد فهم الطلب، و<code>500</code> خطأ من السيرفر. تعامل مع retry بحذر، خاصة في العمليات غير idempotent. التخزين المؤقت يحسن السرعة لكنه يحتاج سياسة freshness/invalidation مناسبة؛ لا تخزن بيانات حساسة بلا تصميم واضح.</p>\n",
+            "en": "<p>A 401 response means valid authentication is required, a 403 means access is forbidden, and a 500 indicates a server-side failure. I handle retries carefully, especially for non-idempotent writes. Caching can improve latency, but it needs a clear freshness and invalidation policy and careful treatment of sensitive data.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-23",
+          "prompt": {
+            "ar": "إيه Git workflow تقول عليه في المقابلة؟",
+            "en": "Describe your Git and deployment workflow."
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> branch صغيرة مرتبطة بتغيير واحد، commits مفهومة، مراجعة diff، اختبارات قبل PR، ثم حل التعارضات بفهم التغييرات لا بمجرد اختيار طرف كامل. أعرف الفرق بين <code>merge</code> و<code>rebase</code> ومتى يُفضَّل كل واحد حسب سياسة الفريق. في deployment راجع build environment، config، smoke test، وطريقة rollback.</p>\n",
+            "en": "<p>I keep changes small, review the diff, write clear commits, run relevant checks, and open a reviewable pull request. I resolve conflicts by understanding both changes rather than choosing one side blindly. For deployment, I check configuration and build output, run a smoke test, and know how to roll back if a release fails.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-87",
+          "prompt": {
+            "ar": "تختار Array, Map, أو Set للبحث وإزالة التكرار إزاي؟",
+            "en": "How do you choose among Array, Map, and Set in a frontend feature?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>Array</code> للترتيب والتكرار والفهرسة، لكن البحث عن عنصر غالبًا O(n). <code>Map</code> مناسب lookup بمفتاح، و<code>Set</code> لعضوية قيم فريدة؛ عمليات lookup/add متوسطة الأداء تقارب O(1)، لا ضمان مطلق لكل حالة. لو بيانات API كثيرة وتحتاج lookup متكرر، أبني index واحدًا بدل <code>find</code> داخل loop تتحول إلى O(n²). أقيس حجم البيانات الحقيقي قبل التعقيد.</p>\n",
+            "en": "<p>Arrays preserve order and support iteration, but repeated linear lookups can be costly. Maps index values by key; Sets model unique membership. For repeated lookups over a large collection, I build an index once instead of nesting <code>find</code> calls. Average complexity guides the choice, then I measure the actual workload.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-88",
+          "prompt": {
+            "ar": "HTTP methods وidempotency وcaching: ما الذي يهم الـfrontend؟",
+            "en": "Why does HTTP idempotency matter when retrying requests?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>GET</code> للقراءة ويفترض أن يكون safe وقابلًا للكاش حسب headers؛ <code>POST</code> لإنشاء/تنفيذ عملية غالبًا غير idempotent؛ <code>PUT</code> يستبدل resource و<code>DELETE</code> غالبًا idempotent من حيث الحالة النهائية، و<code>PATCH</code> لتعديل جزئي وقد يكون idempotent حسب العملية. لا أعيد محاولة mutation عشوائيًا، خصوصًا الدفع أو إنشاء الطلب، إلا مع idempotency key أو عقد backend واضح. أفهم <code>Cache-Control</code>, <code>ETag</code> و<code>304</code> عند تشخيص stale data.</p>\n",
+            "en": "<p>A retry must not accidentally create duplicate side effects. GET is safe by intent; PUT and DELETE are idempotent in their intended semantics, while POST usually is not. PATCH depends on its operation. For mutations such as payment, I require a backend idempotency strategy before automatic retries and inspect cache headers when reads appear stale.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-89",
+          "prompt": {
+            "ar": "CORS وpreflight: هل إصلاحها في Angular؟",
+            "en": "How do you diagnose a CORS error and preflight failure?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> CORS سياسة متصفح يحددها <strong>رد السيرفر</strong>. طلب cross-origin غير simple قد يسبقه <code>OPTIONS</code> preflight يسأل عن method/headers المسموحة. <code>mode: &#39;no-cors&#39;</code> لا يمنحني response قابلة للقراءة، وAngular interceptor لا يضيف صلاحية CORS. الحل في إعدادات backend أو reverse proxy الموثوق، مع <code>Access-Control-Allow-Origin</code> مضبوط؛ وعند credentials لا تستخدم wildcard. في dev قد أستخدم proxy محلي فقط لتسهيل التطوير.</p>\n",
+            "en": "<p>I inspect the browser Network panel for the OPTIONS preflight and response headers. The server must allow the requesting origin, method, and headers; a frontend interceptor cannot grant that permission. I avoid broad wildcard rules for credentialed requests and use a development proxy only as a local convenience.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-6",
+      "title": "Angular core & DI",
+      "titleAr": "Angular core وDI",
+      "stage": "The Angular platform",
+      "description": "What makes up an Angular component, and how should components communicate? How do component lifecycle and change detection work?",
+      "sources": [
+        {
+          "title": "Official documentation",
+          "url": "https://angular.dev/guide/di/hierarchical-dependency-injection"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q-24-a",
+          "prompt": {
+            "ar": "مكوّن Angular حديث بيتكوّن من إيه، وإزاي تمرّر بيانات؟",
+            "en": "What makes up an Angular component, and how should components communicate?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> Component تجمع class وtemplate وstyles وmetadata. مرّر البيانات من الأب للابن عبر inputs، والأحداث بالعكس عبر outputs؛ استخدم service عندما تكون المشاركة عبر أجزاء أوسع أو تمثل business state. Standalone components تسمح بتحديد dependencies مباشرة في <code>imports</code>، بينما تطبيقات أقدم قد تستخدم NgModules. افهم الاثنين لأنك قد تعمل على codebase قديمة وحديثة. لا تختبئ وراء service لتفادي data flow بسيط بين أب وابنه.</p>\n",
+            "en": "<p>An Angular component combines a class, template, styles, and metadata. I use inputs for parent-to-child data and outputs for child-to-parent events; a service is appropriate for broader shared state or business behavior. Standalone components declare dependencies in imports, while older applications may still use NgModules. I keep simple parent-child communication explicit.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-24",
+          "prompt": {
+            "ar": "Component lifecycle وchange detection: ماذا تشرح؟",
+            "en": "How do component lifecycle and change detection work?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> component تُنشأ، تستقبل inputs، تُفحص/تُعرض، ثم تُدمّر. اختر hook حسب سبب العمل: إعداد يعتمد على inputs، أو تعامل مع view بعد إنشائها، أو cleanup عند التدمير. Change detection تربط state بالـtemplate؛ لا تضع عمليات مكلفة أو side effects غير محسوبة في تعبيرات template تتكرر. <code>OnPush</code> يقلل نطاق الفحص في تطبيقات مناسبة، وSignals المقروءة في template تُبلغ Angular بالتغير. راجع سلوك النسخة المستخدمة في المشروع بدل تعميم تفاصيل قد تختلف. <a href=\"https://angular.dev/guide/components/lifecycle\">Angular lifecycle</a> · <a href=\"https://angular.dev/best-practices/performance\">Angular performance</a></p>\n",
+            "en": "<p>A component is created, receives inputs, renders and gets checked, and is eventually destroyed. I choose lifecycle hooks according to when work is valid and clean up resources when the instance ends. Change detection keeps the template in sync with state. I avoid expensive work in frequently evaluated template expressions and use OnPush or signals when their update model fits the application.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-25",
+          "prompt": {
+            "ar": "DI scopes وعلاقتها بالـmemory leaks؟",
+            "en": "How do Angular DI scopes relate to memory leaks?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>providedIn: &#39;root&#39;</code> يتيح instance مشتركة طوال عمر التطبيق. Provider على component يعطي instance مرتبطة بتلك الشجرة؛ ويمكن توفير dependencies على route أيضًا. الـscope يحدد <strong>عمر ومشاركة الـinstance</strong>، وليس leak تلقائيًا. الخطر أن service طويلة العمر تحتفظ بـsubscription أو callback أو cache أو reference إلى component/DOM لم تعد لازمة. أعالج السبب: cleanup، إلغاء listeners والاشتراكات، وتحديد سياسة cache. مثال: component تشترك في stream طويلة العمر بـ<code>takeUntilDestroyed</code>، أو تعرض stream بـ<code>async</code> pipe. <a href=\"https://angular.dev/guide/di/defining-dependency-providers\">Angular DI</a> · <a href=\"https://angular.dev/ecosystem/rxjs-interop/take-until-destroyed\">takeUntilDestroyed</a></p>\n<pre><code class=\"language-ts\">private readonly destroyRef = inject(DestroyRef);\n\nngOnInit() {\n  this.notifications$\n    .pipe(takeUntilDestroyed(this.destroyRef))\n    .subscribe(message =&gt; this.show(message));\n}\n</code></pre>\n",
+            "en": "<p>A root-provided service is shared for the application lifetime, whereas a component-provided instance is scoped to that component tree; routes can have providers too. Scope affects lifetime and sharing, but does not cause a leak by itself. I look for long-lived subscriptions, listeners, caches, or references that retain components or DOM nodes. I use cleanup mechanisms such as the async pipe or takeUntilDestroyed where appropriate.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-26",
+          "prompt": {
+            "ar": "Service على root أم component أم route؟",
+            "en": "When would you provide a service at root, component, or route level?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> Root لما البيانات/السلوك مشتركان فعلًا عبر التطبيق. Component لما أحتاج instance معزولة لكل نسخة من widget أو feature قصيرة العمر. Route لما التبعية تخص feature في جزء معين من التنقل. أراجع مشاركة الحالة المتوقعة؛ provider في component قد ينشئ نسخًا متعددة بالخطأ إذا كنا نريد state موحدة. <a href=\"https://angular.dev/guide/di/defining-dependency-providers\">Angular DI</a> · <a href=\"https://angular.dev/guide/routing/define-routes\">Route providers</a></p>\n",
+            "en": "<p>I use root for genuinely application-wide behavior, a component provider for isolated per-instance state, and a route provider for a feature-specific dependency. The key question is which consumers must share the same instance and for how long. Providing a supposed singleton on every component can accidentally create multiple independent stores.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-27",
+          "prompt": {
+            "ar": "إمتى تستخدم directive أو pipe أو component؟",
+            "en": "When would you create a component, directive, or pipe?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> Component لو عندي UI مستقل بtemplate. Directive لتغيير سلوك/مظهر عنصر موجود. Pipe لتحويل قيمة للعرض بشكل واضح، مع الانتباه إلى purity والكلفة. لا أضع business logic ثقيل في template أو pipe لمجرد اختصار الكود.</p>\n",
+            "en": "<p>I use a component for a reusable piece of UI with its own template, a directive to add behavior to an existing element, and a pipe for a clear display transformation. I avoid placing heavy business logic in template expressions or pipes simply to shorten component code.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-90",
+          "prompt": {
+            "ar": "ماذا يحدث فعليًا مع OnPush؟ ومتى لا يكفي وحده؟",
+            "en": "What does Angular OnPush change detection do, and what can still go wrong?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>OnPush</code> يقلل فحص subtree عندما لا توجد إشارة تستدعيه؛ Angular يراجعها مع تغير input reference، أحداث داخل subtree، async pipe/signals التي تبلغ عن تغير، أو طلب mark صريح حسب السياق. لو عدلت object input in-place قد لا يتغير reference فتظهر UI قديمة؛ تحديث immutable أو signal صحيح أوضح. <code>OnPush</code> لا يعالج request بطيئًا أو DOM ثقيلًا أو selector يعيد حسابًا مكلفًا؛ أقيس قبل اختياره كحل.</p>\n",
+            "en": "<p>OnPush lets Angular skip a component subtree until it is notified through inputs, events, reactive reads, or explicit marking. In-place mutation of an input object may not provide a new reference. It is useful for predictable rendering, but it does not fix slow networking, excessive DOM, or expensive computation by itself.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-91",
+          "prompt": {
+            "ar": "providedIn: 'root' vs component provider vs route provider في مثال memory.",
+            "en": "How can DI scope influence memory retention without being a leak by itself?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> root service يعيش عادة طوال عمر التطبيق، فلو احتفظ بـsubscription أو cache أو reference لمكون قديم ستظل البيانات محتجزة. component provider يعطي instance لكل subtree ويُدمّر مع المكون؛ route provider يربطها بـroute injector، لكن مدة حياته تتأثر بإدارة الـroute/reuse ولا أعتمد على افتراض ساذج. scope يحدد عمر الـservice، لكن leak يحصل بسبب references وsubscriptions غير المنظفة. استخدم <code>DestroyRef</code>, <code>takeUntilDestroyed</code>, async pipe، وحدود cache واضحة.</p>\n",
+            "en": "<p>A root service can live for the whole application, so subscriptions or references it stores may retain old views or data. A component-scoped provider follows that component&#39;s injector lifetime, and a route provider follows its route environment injector lifecycle. The actual leak is an unwanted retained reference or side effect; I manage teardown and cache lifetime explicitly.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-92",
+          "prompt": {
+            "ar": "ngOnInit, ngAfterViewInit, ngOnDestroy, وDestroyRef: متى تستخدمهم؟",
+            "en": "Where do you initialize view-dependent work and clean up subscriptions?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>ngOnInit</code> لتهيئة تعتمد على inputs بعد ضبطها أول مرة؛ <code>ngAfterViewInit</code> عندما أحتاج view/query جاهزة، لا لوضع كل API calls تلقائيًا؛ <code>ngOnDestroy</code> لتنظيف موارد أنشأها المكون. <code>DestroyRef.onDestroy</code> أو <code>takeUntilDestroyed</code> يربط cleanup بعمر injection context. أفضّل declarative template/async pipe حيث يمكن، ولا أنشئ subscription يدوية لمجرد نقل قيمة إلى متغير.</p>\n",
+            "en": "<p>I use <code>ngOnInit</code> for initialization after initial inputs, <code>ngAfterViewInit</code> only when the rendered view or queries are needed, and destruction hooks for owned resources. <code>DestroyRef</code> and <code>takeUntilDestroyed</code> make teardown follow the relevant injection context. I prefer template bindings and async pipe for simple streams.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-93",
+          "prompt": {
+            "ar": "Standalone components وlazy routes: ما أثرهم على architecture والـbundle؟",
+            "en": "Why use standalone components and lazy routes in a large Angular app?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> Standalone component يعلن imports التي يحتاجها مباشرة، ويسهل تنظيم features دون NgModule لمجرد التجميع. <code>loadComponent</code>/<code>loadChildren</code> يؤخران تحميل route code حتى الحاجة، لكن مقدار التوفير يعتمد على dependency graph وshared chunks. أراجع bundle analyzer وroute network waterfall، وأنتبه إلى أن provider في route أو root يغير lifetime/instance sharing، وليس مجرد مكان import.</p>\n",
+            "en": "<p>Standalone declarations make dependencies explicit, while lazy route loading can defer feature code until navigation. The real bundle effect depends on shared dependencies and chunking, so I inspect generated bundles. Provider placement also affects instance scope and state lifetime, not just code organization.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-94",
+          "prompt": {
+            "ar": "Component communication: Inputs/Outputs، service، أو store؟",
+            "en": "How do you choose a communication mechanism between Angular components?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> parent-child القريب: inputs وoutputs أو model binding حسب واجهة المكون؛ siblings داخل feature: service scoped للـfeature قد تكفي؛ state مشتركة بين routes أو تحتاج tracing/effects: store أو facade مدروس. لا أستخدم global NgRx لفتح dropdown، ولا event bus عامة تخفي مصدر التغيير. أفصل server state عن UI state وأحدد صاحب البيانات وعمرها قبل اختيار الآلية.</p>\n",
+            "en": "<p>I use explicit inputs and outputs for local parent-child interaction, a scoped service for feature-level collaboration, and a store when state is shared broadly or needs coordinated effects and traceability. I first identify ownership, lifetime, and whether the state is server data or local UI state.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-7",
+      "title": "Routing, forms & authentication",
+      "titleAr": "Routing وForms وHTTP وAuthentication",
+      "stage": "The Angular platform",
+      "description": "How are canMatch and a route resolver different? How would you design a large reactive form?",
+      "sources": [
+        {
+          "title": "Official documentation",
+          "url": "https://angular.dev/guide/routing"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q-28",
+          "prompt": {
+            "ar": "canMatch مقابل resolver؛ ما دور كل منهما؟",
+            "en": "How are canMatch and a route resolver different?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> Guard يقرر مطابقة/الدخول لمسار بحسب سياسة التنقل؛ <code>canMatch</code> مفيد عند اختيار route من عدة routes أو منع مطابقتها. Resolver يجلب بيانات يحتاجها المسار <strong>قبل</strong> عرضه، لكنه قد يؤخر التنقل؛ استخدمه حين يمنع صفحة بلا بيانات أساسية، وإلا فحالة loading داخل الصفحة قد تكون UX أفضل. Guards على العميل ليست حماية صلاحيات كافية؛ السيرفر يفرض authorization. <a href=\"https://angular.dev/guide/routing/route-guards\">Angular guards</a> · <a href=\"https://angular.dev/guide/routing/data-resolvers\">Resolvers</a></p>\n",
+            "en": "<p>A guard controls whether a route can be matched or entered; canMatch is useful when route matching itself is conditional. A resolver fetches required data before the route renders, which can remove an empty initial state but may delay navigation. Client-side guards are a UX mechanism, not a substitute for server-side authorization.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-29",
+          "prompt": {
+            "ar": "تصميم Reactive Form كبيرة؟",
+            "en": "How would you design a large reactive form?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> أقسمها إلى مجموعات/مكونات واضحة، أعرّف validation متزامنة وغير متزامنة عند الحاجة، وأفصل server errors عن أخطاء الإدخال. أتحكم في حقول مشروطة وحالات disabled بدقة، وأختبر سيناريوهات valid/invalid والـsubmit. <code>FormArray</code> مناسبة لعناصر ديناميكية. لا أربط كل keystroke بطلب API؛ أستخدم debounce/cancellation حسب الحالة. <a href=\"https://angular.dev/guide/forms\">Angular Forms</a></p>\n",
+            "en": "<p>I split it into coherent groups, define synchronous and asynchronous validation deliberately, and model dynamic rows with FormArray when appropriate. I keep server errors distinct from local validation and test valid, invalid, and submission states. For API checks triggered by typing, I debounce and cancel stale requests according to the product behavior.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-30",
+          "prompt": {
+            "ar": "لماذا HttpInterceptor؟",
+            "en": "Why would you use an Angular HTTP interceptor?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> للسلوك المشترك عبر الطلبات: token، logging، retry policy، caching أو error normalization. لا أجعل interceptor واحدًا يتحكم بكل منطق التطبيق. أتعامل مع <code>HttpRequest</code> بشكل immutable عبر <code>clone</code> عند تعديل headers. Angular تدعم functional interceptors، وترتيب السلسلة يؤثر في السلوك. <a href=\"https://angular.dev/guide/http/interceptors\">Angular interceptors</a></p>\n",
+            "en": "<p>An interceptor centralizes behavior that applies across requests, such as authentication headers, logging, caching, or a consistent error policy. I keep feature-specific business logic outside the interceptor. When changing a request, I clone it because request objects are immutable, and I pay attention to interceptor ordering.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-31",
+          "prompt": {
+            "ar": "Authentication vs Authorization؟",
+            "en": "What is the difference between authentication and authorization?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> Authentication تثبت هوية المستخدم، Authorization تحدد ما يحق له فعله. Angular guard قد يحسّن تجربة التنقل، لكن API يجب أن تتحقق من الصلاحية في كل عملية محمية. ناقش token expiry وتجديده وتعدد الطلبات عند التجديد، وتجنب عرض أسرار في الـclient. <a href=\"https://angular.dev/guide/routing/route-guards\">Angular route guards</a></p>\n",
+            "en": "<p>Authentication establishes who the user is; authorization determines what that user may do. A frontend guard can improve navigation and presentation, but the backend must enforce permission checks on protected operations. I also plan for token expiry and concurrent requests during token refresh.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-95",
+          "prompt": {
+            "ar": "Route guard يحمّي البيانات؟ اشرح canMatch وauthorization الصحيح.",
+            "en": "Can an Angular route guard enforce authorization?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> guard يحسن navigation UX ويمنع تفعيل route غير مسموحة في العميل، لكن كود العميل قابل للتعديل ولا يحمي API. السيرفر يتحقق من authentication وauthorization <strong>لكل request</strong>. <code>canMatch</code> يحدد هل route match أصلاً، وقد يسمح بتجربة route بديلة؛ <code>canActivate</code> يقرر بعد المطابقة. أستخدم redirect/UrlTree بدل side effect navigation عند الإمكان، وأتعامل مع session expiry و403 بوضوح.</p>\n",
+            "en": "<p>A guard controls client-side navigation, not server security. The backend must authorize every protected request. <code>canMatch</code> affects route matching and can permit an alternative route; <code>canActivate</code> checks activation after matching. I return a redirect result where appropriate and handle expired sessions and 403 responses coherently.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-96",
+          "prompt": {
+            "ar": "Dynamic Reactive Form: كيف تدير validation وasync validation؟",
+            "en": "How would you structure a large dynamic reactive form?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> أبني <code>FormGroup</code>/<code>FormArray</code> حسب schema واضحة، وأستخدم <code>Validators</code> للقيود المحلية وasync validator لشرط يعتمد على server مثل username availability. أتحكم في إظهار الأخطاء بعد touched/submit، وأتعامل مع pending state وrace/cancellation. لا أكرر business rules في الـUI دون عقد server، والتحقق النهائي عند submit على backend. لو form كبيرة، أفصل الأقسام إلى components دون فقدان علاقة controls بالـparent form.</p>\n",
+            "en": "<p>I model repeated fields with <code>FormArray</code>, keep validation rules close to the form model, and use async validators only for server-dependent checks. I show errors at useful times, account for pending and stale responses, and rely on backend validation as the final authority. I split the UI into focused components while keeping the form contract clear.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-97",
+          "prompt": {
+            "ar": "Interceptor فيه retry أو refresh token: ما الـrace conditions؟",
+            "en": "How do you avoid duplicate refresh calls and unsafe retries in an interceptor?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> لو عدة requests رجعت 401 معًا، لا أرسل refresh لكل واحدة؛ أشارك refresh واحدًا وأعيد الطلبات بعد نجاحه. أمنع refresh loop عندما refresh نفسه يفشل، وأخرج المستخدم/أنظف session بصورة منضبطة. retry للـGET الشبكي قد يكون مناسبًا مع backoff، لكن لا أعيد POST حساسًا بلا idempotency contract. أستخدم interceptor للسياسة المشتركة فقط، وليس لإخفاء أخطاء feature عن المستخدم.</p>\n",
+            "en": "<p>I coordinate concurrent 401 responses around one refresh operation, replay requests after success, and stop retry loops if refresh fails. I retry only requests whose semantics and backend contract permit it, with bounded backoff. A generic interceptor should not silently hide feature-specific errors.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-8",
+      "title": "RxJS & async flows",
+      "titleAr": "RxJS — الجزء الأكثر ارتباطًا بسيناريوهات Angular",
+      "stage": "Reactive applications",
+      "description": "What is the difference between cold and hot Observables? How do switchMap, mergeMap, concatMap, and exhaustMap differ?",
+      "sources": [
+        {
+          "title": "Official documentation",
+          "url": "https://rxjs.dev/guide/operators"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q-32",
+          "prompt": {
+            "ar": "Cold vs hot Observable؟",
+            "en": "What is the difference between cold and hot Observables?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> في cold stream كل subscriber يبدأ مصدرًا مستقلًا غالبًا؛ مثال <code>HttpClient</code> request عند الاشتراك. في hot stream المصدر مشترك ويواصل الإصدار مستقلًا عن اشتراك جديد؛ مثال أحداث المستخدم أو Subject. لا تعتمد على الاسم فقط: افحص سلوك المصدر و<code>share/shareReplay</code> وسياسة إعادة الاشتراك والـcache.</p>\n",
+            "en": "<p>A cold Observable typically starts independent work for each subscriber; an HTTP request is a common example. A hot source is shared and can emit regardless of a new subscriber, as with many event streams or Subjects. I inspect the actual source and any sharing operators because subscription and caching behavior determine the result.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-33",
+          "prompt": {
+            "ar": "الفرق بين الـflattening operators الأربعة؟",
+            "en": "How do switchMap, mergeMap, concatMap, and exhaustMap differ?"
+          },
+          "answer": {
+            "ar": "<p>| Operator | ماذا يفعل مع قيمة جديدة والطلب السابق مستمر؟ | مثال مناسب |\n|---|---|\n| <code>switchMap</code> | يلغي الاشتراك في السابق ويتابع الأحدث | بحث مباشر؛ نتيجة أحدث كلمة فقط |\n| <code>mergeMap</code> | يشغّلها بالتوازي | عمليات مستقلة؛ مع الانتباه للتوازي والترتيب |\n| <code>concatMap</code> | يضعها في طابور ويحافظ على ترتيب التنفيذ | عمليات يجب أن تصل بالترتيب |\n| <code>exhaustMap</code> | يتجاهل الجديدة حتى تنتهي الحالية | منع تكرار submit أثناء الطلب |</p>\n<p><strong>جواب Senior:</strong> أختار وفق <strong>سياسة التزامن المطلوبة</strong>: أحدث فقط، الكل بالتوازي، الكل بالترتيب، أو الأول حتى يكتمل. في عمليات حفظ مهمة لا أستخدم <code>switchMap</code> لمجرد أنه شائع؛ إلغاء السابق قد يسقط عملية مطلوبة. <a href=\"https://rxjs.dev/guide/higher-order-observables\">RxJS higher-order Observables</a></p>\n",
+            "en": "<p>SwitchMap keeps the newest inner subscription, so it suits live search. MergeMap runs inner work concurrently when operations are independent. ConcatMap queues work and preserves order. ExhaustMap ignores new values until the current inner work completes, which can prevent duplicate submits. I choose based on the required concurrency policy, especially whether a previous write may be canceled.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-34",
+          "prompt": {
+            "ar": "كيف تمنع memory leaks من RxJS؟",
+            "en": "How do you prevent RxJS memory leaks?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> حدّد أولًا عمر الـsource والـsubscription. <code>HttpClient</code> request المفردة تنتهي عادةً بعد الاستجابة؛ stream أحداث أو interval قد تستمر. استخدم <code>async</code> pipe، <code>takeUntilDestroyed</code>، أو cleanup مناسب. راجع <code>shareReplay</code> وSubjects وcallbacks في root services، وراقب Heap snapshots أو عدد الاشتراكات عند فتح الصفحة وإغلاقها مرارًا. إزالة كل subscribe يدويًا ليست هدفًا بذاته؛ الهدف دورة حياة صحيحة. <a href=\"https://angular.dev/ecosystem/rxjs-interop/take-until-destroyed\">Angular RxJS interop</a></p>\n",
+            "en": "<p>I first identify whether the source completes by itself or can continue indefinitely. I use the async pipe, takeUntilDestroyed, or explicit cleanup for long-lived subscriptions and listeners. I also inspect shared streams, Subjects, caches, and root services, then verify the fix with repeated navigation and memory or subscription measurements.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-98",
+          "prompt": {
+            "ar": "Subject, BehaviorSubject, وReplaySubject: ما الفرق في late subscriber؟",
+            "en": "What will a late subscriber receive from Subject, BehaviorSubject, and ReplaySubject?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>Subject</code> يبث القيم الجديدة فقط لمن اشترك وقت البث. <code>BehaviorSubject</code> يحتاج initial value ويعطي آخر قيمة فور الاشتراك. <code>ReplaySubject(n)</code> يعيد آخر <code>n</code> قيم (وقد يخزنها حتى انتهاء عمره)، فانتبه للـbuffer والذاكرة. الاختيار حسب contract وليس التفضيل الشخصي؛ وفي Angular Signals/store قد يكون تمثيل state الحالي أوضح من Subject مكشوف للجميع.</p>\n",
+            "en": "<p>A plain Subject only emits future values. BehaviorSubject immediately supplies its current value and requires an initial value. ReplaySubject replays its configured buffer to late subscribers, which has a memory cost. I choose according to whether consumers need events, current state, or history.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-99",
+          "prompt": {
+            "ar": "combineLatest, forkJoin, وzip: أيهم لطلبات HTTP وأيهم live filters؟",
+            "en": "When do you use combineLatest, forkJoin, and zip?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>combineLatest</code> يخرج بعد أول قيمة من كل source، ثم عند تغير أي واحد؛ مناسب لfilters حية، لكنه لن يخرج لو source لم يبث. <code>forkJoin</code> ينتظر completion من الجميع ويعطي آخر قيمة لكل واحد؛ مناسب لطلبات HTTP أحادية القيمة، لكنه لا يخرج مع source لا ينتهي. <code>zip</code> يزاوج القيمة رقم 1 مع رقم 1 وهكذا؛ مفيد عندما تتوافق emissions بالترتيب. أقرر أيضًا كيف أعرض partial errors/loading.</p>\n",
+            "en": "<p><code>combineLatest</code> reacts whenever any source updates after all have emitted once. <code>forkJoin</code> waits for all sources to complete and returns their latest values, which suits one-shot HTTP calls but not never-ending streams. <code>zip</code> pairs emissions by position. I choose based on emission and completion behavior, not just output shape.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-100",
+          "prompt": {
+            "ar": "ليه shareReplay(1) ممكن يعمل memory leak أو stale data؟",
+            "en": "What are the trade-offs of shareReplay in an Angular service?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>shareReplay</code> يشارك subscription ويخزن آخر emission. لو source طويل العمر وobservable مشتركة محفوظة في root service، قد يستمر الاشتراك/الـcache أطول من المطلوب، خاصة مع إعدادات لا تفصل عند صفر subscribers. أحدد lifetime وسياسة invalidation، وأفكر في <code>shareReplay({ bufferSize: 1, refCount: true })</code> حين يناسب، لكن <code>refCount</code> قد يعيد التنفيذ عند اشتراك جديد. HTTP finite غالبًا مختلف عن live stream لا ينتهي. لا أستعمله كوصفة ثابتة.</p>\n",
+            "en": "<p>It can avoid duplicate work and replay the latest value, but the cached value and source subscription may outlive the view that needed them. I decide whether the source completes, when it should disconnect, and how data is invalidated. <code>refCount</code> can release a live source when unused, but may trigger a new execution later.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-101",
+          "prompt": {
+            "ar": "catchError داخل أم خارج switchMap؟ وماذا يحدث للـstream؟",
+            "en": "Why does catchError placement matter in a search stream?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> لو <code>catchError</code> داخل inner HTTP observable، أتعامل مع فشل request واحد وأبقي outer search stream حيًا ليستقبل كتابة جديدة. لو وضعته بعد <code>switchMap</code> وأرجعت fallback observable ينتهي، قد تنتهي سلسلة البحث كلها بعد أول خطأ. أضع error boundary في مستوى الاستمرار المطلوب، وأعرض error state للمستخدم؛ لا أبتلع الخطأ بصمت.</p>\n",
+            "en": "<p>Catching inside the switched inner request lets one failed request recover while the outer input stream continues. Catching after <code>switchMap</code> handles failure at the outer chain and may terminate future search handling if the recovery stream completes. I place the boundary according to the intended lifetime and surface errors in the UI.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-9",
+      "title": "Signals & NgRx",
+      "titleAr": "Signals وNgRx",
+      "stage": "Reactive applications",
+      "description": "When do you use signal, computed, and effect? When would you use NgRx instead of Angular Signals?",
+      "sources": [
+        {
+          "title": "Official documentation",
+          "url": "https://ngrx.io/guide/store"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q-35",
+          "prompt": {
+            "ar": "signal وcomputed وeffect: إمتى كل واحدة؟",
+            "en": "When do you use signal, computed, and effect?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>signal</code> حالة قابلة للتغيير؛ <code>computed</code> قيمة مشتقة تُحسب من dependencies وتُقرأ synchronously؛ <code>effect</code> يربط التغير بسلوك خارجي لا يناسب الاشتقاق المباشر. لا أضع تعديل state مشتق داخل effect إن أمكن التعبير عنه بـ<code>computed</code>؛ ده يقلل الدورات والتعقيد. Signals يمكن وصلها بـRxJS عند التعامل مع streams وطلبات غير متزامنة. <a href=\"https://angular.dev/guide/signals\">Angular Signals</a></p>\n",
+            "en": "<p>A signal stores writable reactive state. Computed derives a read-only value from other signals, and effect is for synchronizing changes with an external or non-reactive side effect. I prefer computed for derivation instead of using an effect to copy derived state. I connect signals with RxJS when I need asynchronous streams.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-36",
+          "prompt": {
+            "ar": "NgRx vs Angular Signals؟",
+            "en": "When would you use NgRx instead of Angular Signals?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> ليست مقارنة «واحد يلغي الثاني». Signals أداة تفاعلية ممتازة للـlocal/feature state والاشتقاق داخل Angular. NgRx Store يفيد حين توجد state مشتركة ومعقدة، transitions موحدة، effects واضحة، وإمكانية تتبّع الأحداث واختبارها. أبدأ بأبسط مستوى يفي بالمتطلبات؛ إذا زاد عدد المستهلكين والـside effects والتزامن، أقيّم Store. يمكن عرض بيانات NgRx داخل واجهة تستخدم Signals. القرار يتبع <strong>نطاق الحالة وتعقيد تدفقها</strong> لا حجم المشروع بالاسم. <a href=\"https://angular.dev/guide/signals\">Angular Signals</a> · <a href=\"https://ngrx.io/guide/store/why\">NgRx Store</a></p>\n",
+            "en": "<p>I do not treat them as mutually exclusive. Signals are a good fit for local or feature-level reactive state and derived values. NgRx Store becomes useful when shared state has many transitions, effects, and consumers and we benefit from explicit actions, predictable updates, and debugging tools. I choose based on state scope and complexity, and I can use signals in a UI backed by NgRx.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-37",
+          "prompt": {
+            "ar": "NgRx performance والمشاكل الشائعة؟",
+            "en": "How would you optimize NgRx and avoid state-related leaks?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> استخدم selectors نقية ومركبة ومحددة، وتجنب اختيار object كبير لكل component بلا حاجة. Memoization تساعد عندما تبقى inputs كما هي؛ إذا صنعت مراجع جديدة بلا داعٍ تفقد الفائدة. تعامل مع state بشكل immutable، ولا تضع فيها بيانات مشتقة يمكن حسابها. افحص effects التي تعيد dispatch بلا توقف، subscriptions طويلة العمر، وcache تكبر دون حد. قِس render count وselector recomputation قبل التعديل. <a href=\"https://ngrx.io/guide/store/selectors\">NgRx selectors</a> · <a href=\"https://ngrx.io/guide/store/why\">NgRx Store</a></p>\n<p><strong>سؤال متابعة:</strong> أين تضع API call؟ في Effect أو طبقة service يتعامل معها Effect، لا في reducer؛ reducer يحسب state الجديدة دون side effects. اختيار <code>switchMap/concatMap/mergeMap/exhaustMap</code> داخل Effect يظل قرارًا عن سياسة التزامن، لا وصفة ثابتة لكل action.</p>\n",
+            "en": "<p>I select only the data each view needs, use pure memoized selectors, and avoid creating new object references unnecessarily. I keep reducers pure and immutable, and put asynchronous work in effects or services used by effects. I inspect effect loops, long-lived subscriptions, and unbounded caches. I measure selector recomputation and renders before claiming an optimization.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-38",
+          "prompt": {
+            "ar": "Facade فوق NgRx: دائمًا جيدة؟",
+            "en": "Is a Facade over NgRx always a good idea?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> مفيدة حين تقدم API مستقرة للـfeature وتخفي تفاصيل actions/selectors عن الـUI، أو تسهّل تغيير التنفيذ والاختبار. تصبح عبئًا إذا كانت مجرد wrappers واحد لواحد بلا منطق أو تبسيط. أقرر وفق تعقيد feature وحجم الفريق.</p>\n",
+            "en": "<p>No. A Facade is useful if it gives a feature a stable, simpler API and hides meaningful store or service complexity. If it merely mirrors every action and selector one-to-one, it adds a layer without reducing coupling. I evaluate it against the feature complexity and team needs.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-102",
+          "prompt": {
+            "ar": "متى تكفي Signals، ومتى يصبح NgRx مفيدًا؟",
+            "en": "How do you decide between Angular Signals and NgRx?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> Signal ممتازة لstate متزامنة محلية وderived values بـ<code>computed</code>. NgRx يفيد عندما state مشتركة واسعة، updates/events كثيرة، effects معقدة، وتحتاج أدوات tracing واتفاقًا واضحًا على التغييرات. ممكن يستخدم التطبيق الاثنين: NgRx للـfeature/global state وSignals للـlocal UI أو selectors عبر interop. لا أنقل كل state إلى store، ولا أستخدم <code>effect</code> لتقليد reducer من غير داعٍ.</p>\n",
+            "en": "<p>Signals are strong for local synchronous state and derived values. NgRx adds structured events, reducers, effects, selectors, and tooling when state and side effects span features. They can coexist; I decide based on ownership, lifetime, coordination complexity, and debugging needs rather than treating one as a universal replacement.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-103",
+          "prompt": {
+            "ar": "لماذا selector memoization قد لا ينقذك من re-renders؟",
+            "en": "What can undermine NgRx selector memoization and UI performance?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> selector يعيد استخدام الناتج عندما inputs نفسها لم تتغير، لكن لو reducer يرجع references جديدة بلا تغير حقيقي أو selector factory تُنشأ داخل كل render، ستضيع الفائدة. أختار state normalized وselectors مركبة صغيرة، وأتجنب mapping ثقيل في template أو إنشاء arrays/objects جديدة كل مرة. أستخدم trackBy/<code>track</code> مناسبًا للقوائم، وأقيس component renders وselector recomputations قبل التعديل.</p>\n",
+            "en": "<p>Memoization depends on stable input references and selector instances. Unnecessary immutable copies, newly created selector factories, and view mappings that allocate fresh objects can still cause work. I normalize state where useful, compose focused selectors, use stable list identity, and profile before optimizing.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-104",
+          "prompt": {
+            "ar": "Effect طويل العمر يسبب leak إزاي رغم إن NgRx يدير الاشتراك؟",
+            "en": "Can an NgRx effect still cause retained subscriptions or memory growth?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> NgRx يدير subscription الخاصة بالـeffect، لكن inner streams أو manual subscriptions أو timers أنشأتها داخل service قد تستمر. <code>mergeMap</code> إلى stream لا ينتهي لكل action قد يراكم subscriptions، و<code>shareReplay</code>/cache في root قد تحتفظ ببيانات قديمة. أختار flattening operator حسب سياسة التزامن، وأربط stream بعمرها مثل <code>takeUntil</code> عند logout أو route leave، ولا أعمل <code>subscribe</code> داخل effect بلا سبب.</p>\n",
+            "en": "<p>Yes. NgRx owns the effect subscription, but an effect can start long-lived inner streams, timers, or manual subscriptions that accumulate. I choose the flattening policy deliberately, define cancellation and feature lifetime, and inspect caches and retained data when memory grows across navigation or logout.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-10",
+      "title": "Performance, SSR & testing",
+      "titleAr": "Performance وSSR وSecurity وTesting",
+      "stage": "Production readiness",
+      "description": "An Angular page is slow. What do you do before suggesting OnPush? What do SSR and hydration provide, and what can go wrong?",
+      "sources": [
+        {
+          "title": "Official documentation",
+          "url": "https://angular.dev/best-practices/runtime-performance"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q-39",
+          "prompt": {
+            "ar": "صفحة Angular بطيئة؛ ماذا تفعل قبل اقتراح OnPush؟",
+            "en": "An Angular page is slow. What do you do before suggesting OnPush?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> أحدد نوع البطء: تحميل أولي، render متكرر، interaction بطيئة، network، أم صورة كبيرة. أستخدم DevTools/Lighthouse والـperformance profiler، أضع baseline، ثم أختبر تغييرًا واحدًا. حلول محتملة حسب السبب: lazy routes و<code>@defer</code>، تحسين الصور، تقليل حسابات template، <code>track</code> للقوائم، selectors مشتقة بكفاءة، أو ضبط change detection. LCP للتحميل المرئي، INP للاستجابة، CLS لثبات التخطيط. لا أصف optimization ناجحًا من غير قياس. <a href=\"https://angular.dev/best-practices/performance\">Angular performance</a> · <a href=\"https://web.dev/articles/vitals\">Core Web Vitals</a></p>\n",
+            "en": "<p>I identify whether the bottleneck is initial loading, network, rendering, or interaction. I collect a baseline with browser and Angular profiling tools, then test one targeted change at a time. Depending on the cause, I may use lazy loading, image optimization, list tracking, cheaper template computation, better selectors, or change-detection adjustments. I validate the result with relevant metrics, not intuition.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-40",
+          "prompt": {
+            "ar": "SSR وhydration: فائدتهم ومخاطرهم؟",
+            "en": "What do SSR and hydration provide, and what can go wrong?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> SSR يولّد HTML مبدئيًا على السيرفر؛ hydration تربط الصفحة المعروضة بالـclient interactivity. مفيدان خصوصًا للصفحات العامة/المحتوى الذي يحتاج عرضًا أوليًا وSEO. التحديات: استخدام <code>window/document</code> على السيرفر، اختلاف HTML بين السيرفر والعميل، caching بيانات خاصة بمستخدم، وتكلفة الخادم. القرار حسب نوع الصفحات والقياسات؛ ليس كل dashboard داخلي يحتاج SSR. <a href=\"https://angular.dev/guide/hydration\">Angular hydration</a> · <a href=\"https://angular.dev/best-practices/performance\">Angular performance</a></p>\n",
+            "en": "<p>SSR generates initial HTML on the server, and hydration attaches client interactivity to that HTML. They can help public, content-heavy pages with initial display and indexing. I watch for browser-only APIs on the server, server-client HTML mismatches, private data in shared caches, and extra server cost. I choose them based on page requirements and measurements.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-41",
+          "prompt": {
+            "ar": "كيف تمنع XSS في Angular؟",
+            "en": "How do you prevent XSS in an Angular application?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> استخدم template binding الطبيعي بدل تركيب HTML من user input. Angular تتعامل مع القيم غير الموثوقة عبر escaping/sanitization بحسب السياق؛ تجاوز الحماية عبر trusted/bypass APIs يحتاج مراجعة شديدة لمصدر القيمة. اعزل HTML الغني، وفكر في CSP/Trusted Types حسب التطبيق. ولا تخلط بين XSS وحماية API: authorization على السيرفر. <a href=\"https://angular.dev/best-practices/security\">Angular security</a></p>\n",
+            "en": "<p>I use normal template bindings rather than constructing HTML from untrusted input. Angular escapes or sanitizes untrusted values according to their context, and bypassing those protections requires careful review. I consider CSP or Trusted Types where appropriate and ensure backend authorization independently of client-side guards.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-42",
+          "prompt": {
+            "ar": "تختبر إيه في Angular؟",
+            "en": "What would you test in an Angular feature?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> اختبر السلوك المهم، لا تفاصيل التنفيذ: service business rule، component interaction وDOM الناتج، validation، request/error handling، selector أو reducer أو effect له منطق. Mock عند حدود الشبكة أو الأنظمة الخارجية، ولا تكتب اختبارًا يكرر نفس implementation. TestBed وHTTP testing utilities تتيحان طلبات وهمية والتحقق من الاستجابة والخطأ. <a href=\"https://angular.dev/guide/testing\">Angular testing</a> · <a href=\"https://angular.dev/guide/http/testing\">HTTP testing</a></p>\n",
+            "en": "<p>I test important behavior rather than implementation details: business rules in services, user interactions and rendered output in components, form validation, and HTTP success and error paths. I mock external boundaries, not every internal call. TestBed and HTTP testing tools help me verify behavior without live network requests.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-105",
+          "prompt": {
+            "ar": "LCP وINP وCLS سيئين: تشخّص كل واحد إزاي؟",
+            "en": "How would you diagnose poor LCP, INP, and CLS rather than guessing fixes?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> LCP: أحدد العنصر الرئيسي ووقت اكتشافه/تحميله، server response، CSS/JS blocking، وأولوية الصورة. INP: أسجل interaction بطيء وأقسمه input delay، processing، وpresentation؛ أبحث عن long tasks وrender كثيف. CLS: أشاهد layout shifts ومصدرها، وأثبت أبعاد صور/إعلانات ومحتوى يُضاف قبل العنصر المرئي. أستخدم field data حين متاحة ومعها lab profiling، وأقيس قبل/بعد على نفس السيناريو.</p>\n",
+            "en": "<p>For LCP I identify the candidate element and its discovery, fetch, and render delays. For INP I profile the slow interaction and separate input delay, processing, and presentation work. For CLS I inspect shift sources and reserve space for images and dynamic content. I compare field and lab data and verify a measured improvement.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-106",
+          "prompt": {
+            "ar": "ماذا تختبر في feature Angular مهمة، وماذا لا يستحق اختبارًا هشًا؟",
+            "en": "What is a practical testing strategy for a senior Angular feature?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> أختبر behavior يهم المستخدم: form validation/submission، حالة loading/error، authorization UI، routing، وcancellation عند request متأخر. Unit tests للمنطق الصافي والـreducers/selectors، component tests للتفاعل والـDOM، وE2E لمسار حرج واحد أو اثنين. لا أختبر implementation detail مثل اسم private method أو عدد <code>detectChanges</code>؛ هذه اختبارات هشة لا تحمي السلوك. أختبر keyboard/accessibility في المسارات المهمة.</p>\n",
+            "en": "<p>I test user-visible behavior and important failure paths, use unit tests for pure logic, component tests for interaction and DOM state, and a small number of critical end-to-end flows. I avoid tests tied to private implementation details and include keyboard and accessibility checks where the feature depends on them.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        }
+      ]
+    },
+    {
+      "id": "topic-11",
+      "title": "Senior engineering scenarios",
+      "titleAr": "سيناريوهات Senior — إجابات مختصرة في الصميم",
+      "stage": "Production readiness",
+      "description": "A search box shows stale results after fast typing. How would you fix it? A user clicks Save three times. Which RxJS flattening operator would you choose?",
+      "sources": [
+        {
+          "title": "Official documentation",
+          "url": "https://angular.dev/style-guide"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q-43",
+          "prompt": {
+            "ar": "Search box يرسل طلبًا مع كل حرف، والنتائج القديمة تظهر فوق الجديدة. الحل؟",
+            "en": "A search box shows stale results after fast typing. How would you fix it?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> <code>valueChanges</code> مع <code>debounceTime</code> و<code>distinctUntilChanged</code> ثم <code>switchMap</code> للطلب؛ عالج loading/error/empty states. السبب: نحتاج أحدث query فقط. اختبر rapid typing والانتقال خارج الصفحة. لا أستخدم <code>concatMap</code> لأنه يجعل النتائج القديمة تتراكم.</p>\n",
+            "en": "<p>I debounce the input, skip unchanged values, and use switchMap so each new query replaces the previous inner request. I also handle loading, error, and empty states and clean up when the view is destroyed. This matches the product rule that only the latest query matters.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-44",
+          "prompt": {
+            "ar": "زر Save ضغطه المستخدم ٣ مرات. تختار operator إيه؟",
+            "en": "A user clicks Save three times. Which RxJS flattening operator would you choose?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> السؤال ناقص حتى أعرف سياسة المنتج. لو المطلوب تجاهل الضغطات أثناء حفظ جارٍ: <code>exhaustMap</code> مع تعطيل الزر. لو كل تغيير لازم يُحفظ وبالترتيب: <code>concatMap</code>. لو عمليات مستقلة يمكن تنفيذها بالتوازي: <code>mergeMap</code> بحذر. لا ألغي عملية حفظ سابقة بـ<code>switchMap</code> إلا إن السلوك المطلوب يجيز ذلك.</p>\n",
+            "en": "<p>I first clarify the intended product behavior. If extra clicks should be ignored while one save is running, I use exhaustMap and disable the button. If every change must be saved in order, I use concatMap. If writes are independent, mergeMap may work. I avoid switchMap for essential writes unless cancellation is explicitly safe.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-45",
+          "prompt": {
+            "ar": "صفحة تتدهور بعد فتحها وإغلاقها عدة مرات. ماذا تحقق؟",
+            "en": "A page gets slower every time you leave and revisit it. How do you investigate?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> أثبت المشكلة أولًا عبر repeated navigation وHeap snapshots/عداد listeners. أفحص subscriptions لأحداث وintervals، <code>shareReplay</code>/Subjects، closures، root service يحتفظ بcomponent، observers، والـDOM references. أصلح موضع الاحتفاظ، ثم أقارن الذاكرة وعدد listeners بعد الإصلاح. DI scope قد يشرح مدة حياة instance لكنه ليس سببًا كافيًا وحده.</p>\n",
+            "en": "<p>I reproduce the issue with repeated navigation and compare heap snapshots, listener counts, and active subscriptions. I check event handlers, intervals, shared streams, Subjects, and root services holding references to old components or DOM nodes. I remove the retention source and repeat the same measurement to prove the fix.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-46",
+          "prompt": {
+            "ar": "إمتى تنقل state من component signal إلى NgRx؟",
+            "en": "When would you move component state from a signal to NgRx?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> عندما تصبح الحالة مشتركة عبر features، ولها transitions وأحداث وside effects متعددة يصعب تتبعها، وتحتاج قواعد موحدة أو devtools/tests على مستوى التطبيق. لو state محلية واضحة، إضافة Store قد تزيد التكلفة الذهنية بلا فائدة. أذكر مثالًا من مشروع، مثل cart أو workflow متعدد الصفحات، مع سبب الاختيار.</p>\n",
+            "en": "<p>I would consider NgRx when the state becomes shared across features, has many explicit transitions or side effects, and is hard to debug locally. A component signal remains simpler for isolated UI state. I would justify the move with a real workflow and the coordination problem it solves, rather than using application size alone.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-47",
+          "prompt": {
+            "ar": "تطبيق UI يحتاج RTL وSEO وperformance معًا؛ ما ترتيبك؟",
+            "en": "How would you approach a UI that needs RTL, SEO, and good performance?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> أبدأ بـsemantic HTML ومحتوى واضح، CSS logical properties وتصميم responsive، وأقيس LCP/INP/CLS. أحدد الصفحات العامة التي قد تستفيد من SSR، ثم أقيس HTML الأولي والـhydration. أحسّن الصور والـbundle بحسب bottleneck. أختبر العربية والإنجليزية والكيبورد على الأجهزة المستهدفة.</p>\n",
+            "en": "<p>I start with semantic content and a responsive layout using logical CSS properties. I measure LCP, INP, and CLS, then decide whether public pages benefit from SSR. I optimize images and JavaScript based on the measured bottleneck and test both language directions, keyboard use, and the actual initial HTML.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-48",
+          "prompt": {
+            "ar": "كيف تقدم code review محترم؟",
+            "en": "What does a useful code review comment look like?"
+          },
+          "answer": {
+            "ar": "<p><strong>الإجابة بالعربي:</strong> أحدد المشكلة وأثرها ثم أقترح تعديلًا قابلًا للتنفيذ، وأفرق بين bug وperformance risk وتفضيل أسلوبي. أراجع correctness، cancellation وcleanup، types، accessibility، tests، وحجم التغيير. مثال: “This subscription remains active after navigation; could we bind it through the async pipe or takeUntilDestroyed so reopening the page does not duplicate events?”</p>\n",
+            "en": "<p>I describe the concrete issue and its impact, then propose a practical fix. I distinguish a correctness or security issue from a style preference. For example, I might point out a subscription that survives navigation and suggest the async pipe or takeUntilDestroyed, with a test for repeated page visits.</p>\n"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "imported",
+            "lastReviewedAt": null,
+            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        }
+      ]
+    },
+    {
+      "id": "introduction",
+      "title": "Tell your story",
+      "titleAr": "تقديم نفسك وخبرتك",
+      "stage": "Interview preparation",
+      "description": "A clear, honest introduction and a structured project story.",
+      "sources": [],
+      "questions": [
+        {
+          "id": "intro-1",
+          "prompt": {
+            "en": "Tell me about yourself and a project you are proud of.",
+            "ar": "عرّف نفسك واتكلم عن مشروع فخور بيه."
+          },
+          "kind": "discussion",
+          "codeHtml": "",
+          "answer": {
+            "en": "<p>I am a frontend developer with [X years] of experience, focusing on [your main technologies]. In my current or most recent role at [company], I worked on [product and users], where I was responsible for [your actual scope].</p><p>One project I am proud of is [project]. We faced [specific challenge]. I chose [approach] because [reason and trade-off]. I implemented [your contribution] and validated the result using [measurement or feedback]. The outcome was [verified result].</p><p>I am looking for a role where I can contribute to [relevant engineering challenge] and continue growing in [specific area].</p><p><strong>Keep it to 60–90 seconds.</strong> Replace every placeholder with a true detail. If you do not have a measured result, describe an observable outcome instead of inventing a percentage. Prepare follow-ups about alternatives, testing, and what you would change.</p>",
+            "ar": "<p>أنا Frontend Developer عندي [عدد سنين خبرتك]، وتركيزي الأساسي على [التكنولوجيز]. في آخر شغل ليا في [الشركة] اشتغلت على [نوع المنتج ومين بيستخدمه]، وكنت مسؤول عن [دورك الفعلي].</p><p>من المشاريع اللي فخور بيها [المشروع]. واجهتنا مشكلة [محددة]، واخترت [الحل] بسبب [السبب والـ trade-off]. مساهمتي كانت [اللي نفذته بنفسك]، وتأكدنا من النتيجة عن طريق [قياس أو feedback]. النتيجة كانت [نتيجة حقيقية].</p><p>بدور على دور أقدر أضيف فيه في [احتياج مرتبط بالوظيفة] وأتطور في [مجال محدد].</p><p><strong>خلي الإجابة من دقيقة لدقيقة ونص.</strong> بدّل الأقواس ببيانات حقيقية. لو معندكش قياس، اذكر نتيجة لاحظتوها بدل ما تخترع نسبة. حضّر تفاصيل البدائل والاختبارات وإيه اللي هتعمله بشكل مختلف.</p>"
+          },
+          "review": {
+            "status": "draft",
+            "lastReviewedAt": null,
+            "versionNotes": "Customizable template; not a personal biography."
+          }
+        }
+      ]
+    }
+  ]
+}

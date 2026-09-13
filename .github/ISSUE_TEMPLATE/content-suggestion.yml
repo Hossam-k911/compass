@@ -1,0 +1,27 @@
+name: Suggest a content update
+description: Propose a focused question or correction, with evidence.
+title: '[Content] '
+body:
+  - type: textarea
+    id: topic
+    attributes:
+      label: Topic and proposed change
+      description: Include an existing question ID when correcting content.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Public sources and dates
+      description: Link official documentation, a release, or a public job requirement. Avoid confidential interview material and personal data.
+    validations:
+      required: true
+  - type: input
+    id: context
+    attributes:
+      label: Technology version and seniority
+  - type: textarea
+    id: explanation
+    attributes:
+      label: Why this matters and how to verify it
+      description: Include a minimal reproducible example when relevant.
