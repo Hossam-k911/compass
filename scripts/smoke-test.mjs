@@ -65,11 +65,11 @@ try {
     await page.getByRole('heading', { name: 'No matching questions.' }).waitFor();
     await page.goto(base + '#/practice');
     await page.getByRole('combobox', { name: 'Practice question type' }).selectOption('output');
-    await page.locator('.shared-code pre').waitFor();
+    await page.locator('.shared-code pre').first().waitFor();
     assert.equal(await page.locator('.answers').count(), 0);
     await page.getByRole('button', { name: 'Reveal & compare' }).click();
     await page.getByRole('button', { name: 'Revisit later' }).click();
-    assert.equal(await page.locator('.answers').count(), 0);
+    await expect(page.locator('.answers')).toHaveCount(0);
     await page.goto(base + '#/progress');
     await page.getByRole('heading', { name: 'Your progress, your pace.' }).waitFor();
     const before = await page.evaluate(() => localStorage.getItem('compass.progress.v1'));

@@ -9,6 +9,7 @@
     "start": "ng serve --host 127.0.0.1",
     "build": "ng build",
     "check:content": "node scripts/check-content.mjs",
+    "check:exercises": "node scripts/check-exercises.mjs",
     "check:updates": "node scripts/check-updates.mjs"
   },
   "dependencies": {
