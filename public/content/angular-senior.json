@@ -616,12 +616,51 @@
             "ar": "<p><strong>الإجابة بالعربي:</strong> JavaScript تنشئ الـbindings قبل تنفيذ الكود. <code>var</code> له function scope وتكون قيمته <code>undefined</code> قبل الـassignment. <code>let</code> و<code>const</code> لهما block scope، والوصول لهما قبل سطر التهيئة يرمي <code>ReferenceError</code> بسبب الـTDZ. Function declaration يمكن استدعاؤها قبل موضعها في نفس النطاق؛ function expression تتبع نوع المتغير الحامل لها.</p>\n\n<pre><code class=\"language-js\">console.log(b);\nlet b = 2;\n// ReferenceError في أول سطر؛ السطر الثاني لا يُنفّذ\n</code></pre>\n",
             "en": "<p>JavaScript creates bindings before executing a scope. A var binding is function-scoped and reads as undefined before its assignment, so the first snippet prints undefined and then 2. Let and const are block-scoped and cannot be accessed before initialization; the second snippet throws a ReferenceError on the first line.</p>\n"
           },
-          "codeHtml": "<pre><code class=\"language-js\">console.log(a);\nvar a = 2;\nconsole.log(a);\n// undefined, ثم 2\n</code></pre>",
+          "codeHtml": "",
           "kind": "output",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "ECMAScript behavior · output reproduced in Node.js 24 ESM.",
+            "sources": [
+              {
+                "title": "MDN · let and temporal dead zone",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let"
+              },
+              {
+                "title": "MDN · var",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var"
+              }
+            ]
+          },
+          "exercise": {
+            "runtime": "Node.js 24 · ECMAScript module",
+            "cases": [
+              {
+                "label": {
+                  "en": "Predict the console",
+                  "ar": "توقع ترتيب الـ console"
+                },
+                "code": "console.log(a);\nvar a = 2;\nconsole.log(a);",
+                "expected": {
+                  "stdout": [
+                    "undefined",
+                    "2"
+                  ]
+                }
+              },
+              {
+                "label": {
+                  "en": "What happens with let?",
+                  "ar": "ماذا يحدث مع let؟"
+                },
+                "code": "console.log(b);\nlet b = 2;\nconsole.log(b);",
+                "expected": {
+                  "stdout": [],
+                  "error": "ReferenceError"
+                }
+              }
+            ]
           }
         },
         {
@@ -635,11 +674,34 @@
             "en": "<p>For a regular function, this mainly depends on how the function is called: a method call uses its receiver, while call, apply, or bind can set it explicitly. An arrow function captures this from the surrounding lexical scope. In the example, the arrow is created inside say, so it prints Mona.</p>\n"
           },
           "codeHtml": "",
-          "kind": "discussion",
+          "kind": "output",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "ECMAScript behavior · output reproduced in Node.js 24 ESM.",
+            "sources": [
+              {
+                "title": "MDN · this",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this"
+              }
+            ]
+          },
+          "exercise": {
+            "runtime": "Node.js 24 · ECMAScript module",
+            "cases": [
+              {
+                "label": {
+                  "en": "Predict the console",
+                  "ar": "توقع ترتيب الـ console"
+                },
+                "code": "const user = {\n  name: \"Mona\",\n  say() {\n    const read = () => this.name;\n    return read();\n  },\n};\nconsole.log(user.say());",
+                "expected": {
+                  "stdout": [
+                    "Mona"
+                  ]
+                }
+              }
+            ]
           }
         },
         {
@@ -652,12 +714,35 @@
             "ar": "<p><strong>الإجابة بالعربي:</strong> عند قراءة خاصية غير موجودة على object، يبحث المحرك في prototype ثم prototype الخاص به حتى نهاية السلسلة. الـclass syntax تبسيط لنموذج الوراثة القائم على prototypes، وليست نسخة من inheritance في اللغات الأخرى. فرّق بين own property وinherited property، وبين <code>Object.create</code> ونسخ البيانات.</p>\n\n",
             "en": "<p>When a property is not found directly on an object, JavaScript looks up its prototype chain. <code>Object.create(base)</code> makes <code>base</code> the prototype of <code>user</code>, so <code>user.role</code> evaluates to <code>viewer</code>. <code>Object.hasOwn(user, &#39;role&#39;)</code> is false because <code>role</code> is inherited rather than owned by <code>user</code>.</p>\n"
           },
-          "codeHtml": "<pre><code class=\"language-js\">const base = { role: &#39;viewer&#39; };\nconst user = Object.create(base);\nuser.name = &#39;Ali&#39;;\nconsole.log(user.role, Object.hasOwn(user, &#39;role&#39;));\n// viewer false\n</code></pre>",
+          "codeHtml": "",
           "kind": "output",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "ECMAScript behavior · output reproduced in Node.js 24 ESM.",
+            "sources": [
+              {
+                "title": "MDN · Prototype chain",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain"
+              }
+            ]
+          },
+          "exercise": {
+            "runtime": "Node.js 24 · ECMAScript module",
+            "cases": [
+              {
+                "label": {
+                  "en": "Predict the console",
+                  "ar": "توقع ترتيب الـ console"
+                },
+                "code": "const base = { role: \"viewer\" };\nconst user = Object.create(base);\nuser.name = \"Ali\";\nconsole.log(user.role, Object.hasOwn(user, \"role\"));",
+                "expected": {
+                  "stdout": [
+                    "viewer false"
+                  ]
+                }
+              }
+            ]
           }
         },
         {
@@ -670,12 +755,35 @@
             "ar": "<p><strong>الإجابة بالعربي:</strong> closure هي function تحتفظ بإمكانية الوصول للـlexical environment الذي أُنشئت فيه، حتى بعد انتهاء استدعاء الـouter function. مفيدة لعمل private state وcallbacks. ليست leak في حد ذاتها؛ تصبح مشكلة إذا احتفظ callback طويل العمر بمرجع كبير لم نعد نحتاجه. <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures\">MDN closures</a> · <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Memory_management\">MDN memory management</a></p>\n<p><strong>توقع الـoutput:</strong></p>\n\n<p><strong>الحل بالعربي:</strong> <code>1 2 1 3</code>. كل استدعاء <code>counter()</code> أنشأ بيئة مستقلة؛ <code>a</code> و<code>b</code> لا يشتركان في <code>n</code>.</p>\n",
             "en": "<p>A closure is a function that retains access to the lexical environment in which it was created. Each call to counter creates a separate n, so the output is 1, 2, 1, 3. A closure is not inherently a leak; it becomes a problem if a long-lived callback keeps large or obsolete objects reachable unnecessarily.</p>\n"
           },
-          "codeHtml": "<pre><code class=\"language-js\">function counter() {\n  let n = 0;\n  return () =&gt; ++n;\n}\nconst a = counter();\nconst b = counter();\nconsole.log(a(), a(), b(), a());\n</code></pre>",
+          "codeHtml": "",
           "kind": "output",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "ECMAScript behavior · output reproduced in Node.js 24 ESM.",
+            "sources": [
+              {
+                "title": "MDN · Closures",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures"
+              }
+            ]
+          },
+          "exercise": {
+            "runtime": "Node.js 24 · ECMAScript module",
+            "cases": [
+              {
+                "label": {
+                  "en": "Predict the console",
+                  "ar": "توقع ترتيب الـ console"
+                },
+                "code": "function counter() {\n  let n = 0;\n  return () => ++n;\n}\nconst a = counter();\nconst b = counter();\nconsole.log(a(), a(), b(), a());",
+                "expected": {
+                  "stdout": [
+                    "1 2 1 3"
+                  ]
+                }
+              }
+            ]
           }
         },
         {
@@ -688,12 +796,42 @@
             "ar": "\n<p><strong>الحل بالعربي:</strong> <code>end</code> ثم <code>3 3 3</code>. الـcallbacks تقرأ نفس binding الخاص بـ<code>var</code> بعد انتهاء الحلقة. غيّرها إلى <code>let</code> لتحصل على <code>end</code> ثم <code>0 1 2</code>، لأن كل iteration لها binding مستقل.</p>\n",
             "en": "<p>It prints end first, followed by 3, 3, 3. The timer callbacks run after the loop, and all three callbacks read the same function-scoped var binding. Replacing var with let creates a distinct binding for each iteration, giving end, 0, 1, 2.</p>\n"
           },
-          "codeHtml": "<pre><code class=\"language-js\">for (var i = 0; i &lt; 3; i++) {\n  setTimeout(() =&gt; console.log(i), 0);\n}\nconsole.log(&#39;end&#39;);\n</code></pre>",
+          "codeHtml": "",
           "kind": "output",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "ECMAScript behavior · output reproduced in Node.js 24 ESM.",
+            "sources": [
+              {
+                "title": "MDN · var",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var"
+              },
+              {
+                "title": "MDN · Closures",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures"
+              }
+            ]
+          },
+          "exercise": {
+            "runtime": "Node.js 24 · ECMAScript module",
+            "cases": [
+              {
+                "label": {
+                  "en": "Predict the console",
+                  "ar": "توقع ترتيب الـ console"
+                },
+                "code": "for (var i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 0);\n}\nconsole.log('end');",
+                "expected": {
+                  "stdout": [
+                    "end",
+                    "3",
+                    "3",
+                    "3"
+                  ]
+                }
+              }
+            ]
           }
         },
         {
@@ -706,12 +844,40 @@
             "ar": "<p><strong>الإجابة بالعربي:</strong> الكود المتزامن ينتهي أولًا. بعدها تُنفّذ microtasks الجاهزة مثل <code>Promise.then</code> و<code>queueMicrotask</code> قبل الانتقال إلى timer task التالية. الـ<code>setTimeout(..., 0)</code> لا يعني التنفيذ فورًا. المهم تتبع متى <strong>تُجدول</strong> كل callback، لا ترتيب كتابتها فقط.</p>\n\n<p><strong>الحل بالعربي:</strong> <code>A B P1 M P2 T</code>. <code>P2</code> تُضاف للـmicrotask queue أثناء تنفيذ <code>P1</code>، خلف <code>M</code> الموجودة بالفعل.</p>\n",
             "en": "<p>The output is A, B, P1, M, P2, T. Synchronous code runs first. Promise callbacks and queueMicrotask callbacks run as microtasks before the timer task. P2 is scheduled while P1 runs, so it is placed behind M, which was already queued.</p>\n"
           },
-          "codeHtml": "<pre><code class=\"language-js\">console.log(&#39;A&#39;);\nsetTimeout(() =&gt; console.log(&#39;T&#39;), 0);\nPromise.resolve().then(() =&gt; {\n  console.log(&#39;P1&#39;);\n  Promise.resolve().then(() =&gt; console.log(&#39;P2&#39;));\n});\nqueueMicrotask(() =&gt; console.log(&#39;M&#39;));\nconsole.log(&#39;B&#39;);\n</code></pre>",
+          "codeHtml": "",
           "kind": "output",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "ECMAScript behavior · output reproduced in Node.js 24 ESM.",
+            "sources": [
+              {
+                "title": "MDN · JavaScript execution model",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Execution_model"
+              }
+            ]
+          },
+          "exercise": {
+            "runtime": "Node.js 24 · ECMAScript module",
+            "cases": [
+              {
+                "label": {
+                  "en": "Predict the console",
+                  "ar": "توقع ترتيب الـ console"
+                },
+                "code": "console.log('A');\nsetTimeout(() => console.log('T'), 0);\nPromise.resolve().then(() => {\n  console.log('P1');\n  Promise.resolve().then(() => console.log('P2'));\n});\nqueueMicrotask(() => console.log('M'));\nconsole.log('B');",
+                "expected": {
+                  "stdout": [
+                    "A",
+                    "B",
+                    "P1",
+                    "M",
+                    "P2",
+                    "T"
+                  ]
+                }
+              }
+            ]
           }
         },
         {
@@ -725,11 +891,42 @@
             "en": "<p>The output is 3, 1, 5, 2, 4. Calling an async function runs its body synchronously until the first await. The continuation after await is scheduled as a microtask before the later Promise callback that prints 4.</p>\n"
           },
           "codeHtml": "",
-          "kind": "discussion",
+          "kind": "output",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "ECMAScript behavior · output reproduced in Node.js 24 ESM.",
+            "sources": [
+              {
+                "title": "MDN · async function",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function"
+              },
+              {
+                "title": "MDN · JavaScript execution model",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Execution_model"
+              }
+            ]
+          },
+          "exercise": {
+            "runtime": "Node.js 24 · ECMAScript module",
+            "cases": [
+              {
+                "label": {
+                  "en": "Predict the console",
+                  "ar": "توقع ترتيب الـ console"
+                },
+                "code": "async function task() {\n  console.log(1);\n  await Promise.resolve();\n  console.log(2);\n}\nconsole.log(3);\ntask().then(() => console.log(4));\nconsole.log(5);",
+                "expected": {
+                  "stdout": [
+                    "3",
+                    "1",
+                    "5",
+                    "2",
+                    "4"
+                  ]
+                }
+              }
+            ]
           }
         },
         {
@@ -745,27 +942,61 @@
           "codeHtml": "",
           "kind": "discussion",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "Concepts checked against linked documentation.",
+            "sources": [
+              {
+                "title": "MDN · Promise",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+              },
+              {
+                "title": "RxJS · Observable guide",
+                "url": "https://rxjs.dev/guide/observable"
+              }
+            ]
           }
         },
         {
           "id": "q-75",
           "prompt": {
-            "ar": "ما ناتج الكود؟ فسر this والـarrow function.",
-            "en": "What does this code print, and is the second value environment-independent?"
+            "ar": "ما الناتج داخل ECMAScript module، ولماذا لا تستخدم الـarrow الـobject كـthis؟",
+            "en": "What prints in an ECMAScript module, and why does the arrow not use the object as this?"
           },
           "answer": {
-            "ar": "\n<p><strong>الإجابة بالعربي:</strong> أول سطر <code>Mona</code>. الثاني <strong>ليس <code>Mona</code></strong>: الـarrow لا تنشئ <code>this</code> جديدة، بل تلتقط <code>this</code> من lexical scope الخارجي. ناتج السطر الثاني يعتمد على بيئة التشغيل والـtop-level <code>this</code>، فقد يكون <code>undefined</code> أو يحدث خطأ لو كانت <code>this</code> نفسها <code>undefined</code> في ذلك السياق. ما ينفعش أقول ناتج ثابت دون تحديد البيئة. استخدم method عادية حين تحتاج receiver هو <code>user</code>.</p>\n",
-            "en": "<p>The regular method returns <code>Mona</code> because the call receiver is <code>user</code>. The arrow captures the surrounding lexical <code>this</code>, not the object, so its result is environment-dependent and may even throw if that surrounding <code>this</code> is undefined. I would not claim one universal second output without specifying the execution context.</p>\n"
+            "ar": "<p>الناتج <code>Mona</code> ثم <code>undefined</code>. استدعاء الـmethod العادية يجعل <code>this</code> تشير إلى <code>user</code>، أما الـarrow فتأخذ <code>this</code> من نطاق الـmodule العلوي وقيمتها <code>undefined</code>. استخدمنا optional chaining حتى لا يحدث خطأ. تحديد بيئة التشغيل مهم لأن الـclassic script وCommonJS يختلفان.</p>",
+            "en": "<p><code>Mona</code>, then <code>undefined</code>. The regular method receives <code>user</code> as its call receiver. The arrow captures the module’s top-level <code>this</code>, which is <code>undefined</code>; optional chaining makes the second read safe. The runtime is specified because a classic browser script or CommonJS wrapper has a different surrounding <code>this</code>.</p>"
           },
-          "codeHtml": "<pre><code class=\"language-js\">const user = {\n  name: &#39;Mona&#39;,\n  regular() { return this.name; },\n  arrow: () =&gt; this.name,\n};\nconsole.log(user.regular());\nconsole.log(user.arrow());\n</code></pre>",
+          "codeHtml": "",
           "kind": "output",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "ECMAScript behavior · output reproduced in Node.js 24 ESM.",
+            "sources": [
+              {
+                "title": "MDN · this",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this"
+              }
+            ]
+          },
+          "exercise": {
+            "runtime": "Node.js 24 · ECMAScript module",
+            "cases": [
+              {
+                "label": {
+                  "en": "Predict the console",
+                  "ar": "توقع ترتيب الـ console"
+                },
+                "code": "const user = {\n  name: \"Mona\",\n  regular() { return this.name; },\n  arrow: () => this?.name,\n};\nconsole.log(user.regular());\nconsole.log(user.arrow());",
+                "expected": {
+                  "stdout": [
+                    "Mona",
+                    "undefined"
+                  ]
+                }
+              }
+            ]
           }
         },
         {
@@ -778,12 +1009,39 @@
             "ar": "\n<p><strong>الإجابة بالعربي:</strong> الترتيب <code>A E C D B</code>. الـsynchronous code يخلص أولًا؛ <code>then</code> و<code>queueMicrotask</code> يدخلان microtask queue بترتيب إضافتهما، ويُنفذان قبل timer task التالي. <code>setTimeout(..., 0)</code> يعني أقرب فرصة لاحقة وليس تنفيذًا فوريًا. لو microtask أنشأت microtask أخرى، تُفرغ الطابور قبل الانتقال إلى task التالية، ولذلك يمكن إساءة استخدامها وتأخير الرسم.</p>\n",
             "en": "<p>The output is <code>A E C D B</code>. Synchronous statements run first. The promise callback and <code>queueMicrotask</code> then run in enqueue order before the timer task. A zero-delay timer schedules a later task; it does not interrupt the current call stack.</p>\n"
           },
-          "codeHtml": "<pre><code class=\"language-js\">console.log(&#39;A&#39;);\nsetTimeout(() =&gt; console.log(&#39;B&#39;), 0);\nPromise.resolve().then(() =&gt; console.log(&#39;C&#39;));\nqueueMicrotask(() =&gt; console.log(&#39;D&#39;));\nconsole.log(&#39;E&#39;);\n</code></pre>",
+          "codeHtml": "",
           "kind": "output",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "ECMAScript behavior · output reproduced in Node.js 24 ESM.",
+            "sources": [
+              {
+                "title": "MDN · JavaScript execution model",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Execution_model"
+              }
+            ]
+          },
+          "exercise": {
+            "runtime": "Node.js 24 · ECMAScript module",
+            "cases": [
+              {
+                "label": {
+                  "en": "Predict the console",
+                  "ar": "توقع ترتيب الـ console"
+                },
+                "code": "console.log('A');\nsetTimeout(() => console.log('B'), 0);\nPromise.resolve().then(() => console.log('C'));\nqueueMicrotask(() => console.log('D'));\nconsole.log('E');",
+                "expected": {
+                  "stdout": [
+                    "A",
+                    "E",
+                    "C",
+                    "D",
+                    "B"
+                  ]
+                }
+              }
+            ]
           }
         },
         {
@@ -796,12 +1054,35 @@
             "ar": "\n<p><strong>الإجابة بالعربي:</strong> <code>Alex false true</code>. الـspread نسخ المستوى الأول فقط: <code>a</code> و<code>b</code> كائنين مختلفين لكن <code>profile</code> نفس المرجع. عند تحديث state في Angular/NgRx لا أعدل nested object بالخطأ؛ أنسخ المسار المطلوب أو أستخدم طريقة immutable واضحة. <code>structuredClone</code> قد يكون حلًا لبعض البيانات، لكن ليس بديلًا عامًا: لا ينسخ كل الأنواع/السلوكيات بنفس معنى التطبيق.</p>\n",
             "en": "<p>It prints <code>Alex false true</code>. Spread creates a new outer object but keeps the nested <code>profile</code> reference. For immutable state changes, I copy the modified path rather than mutating a shared nested object. I do not treat generic deep cloning as a default state-update strategy.</p>\n"
           },
-          "codeHtml": "<pre><code class=\"language-js\">const a = { profile: { city: &#39;Cairo&#39; } };\nconst b = { ...a };\nb.profile.city = &#39;Alex&#39;;\nconsole.log(a.profile.city, a === b, a.profile === b.profile);\n</code></pre>",
+          "codeHtml": "",
           "kind": "output",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "ECMAScript behavior · output reproduced in Node.js 24 ESM.",
+            "sources": [
+              {
+                "title": "MDN · Spread syntax",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax"
+              }
+            ]
+          },
+          "exercise": {
+            "runtime": "Node.js 24 · ECMAScript module",
+            "cases": [
+              {
+                "label": {
+                  "en": "Predict the console",
+                  "ar": "توقع ترتيب الـ console"
+                },
+                "code": "const a = { profile: { city: 'Cairo' } };\nconst b = { ...a };\nb.profile.city = 'Alex';\nconsole.log(a.profile.city, a === b, a.profile === b.profile);",
+                "expected": {
+                  "stdout": [
+                    "Alex false true"
+                  ]
+                }
+              }
+            ]
           }
         },
         {
@@ -817,27 +1098,56 @@
           "codeHtml": "",
           "kind": "discussion",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "Concepts checked against linked documentation.",
+            "sources": [
+              {
+                "title": "MDN · Promise",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+              }
+            ]
           }
         },
         {
           "id": "q-79",
           "prompt": {
-            "ar": "ما ناتج closure دي، ولماذا يحتفظ المتغير بقيمته؟",
-            "en": "What is the output, and what state does each closure retain?"
+            "ar": "هل الـclosure تحفظ قيمة ثابتة أم الـbinding نفسها؟ توقع الناتج.",
+            "en": "Does a closure capture a frozen value or a live binding? Predict the output."
           },
           "answer": {
-            "ar": "\n<p><strong>الإجابة بالعربي:</strong> <code>1 2 1 3</code>. كل استدعاء <code>makeCounter()</code> ينشئ lexical environment مستقلة، والـfunction الراجعة تحتفظ بالوصول إلى <code>count</code> الخاصة بها بعد انتهاء الاستدعاء الأصلي. Closure ليست leak بحد ذاتها؛ قد تطيل عمر بيانات كبيرة إذا احتفظت بها callback أو listener طويل العمر. أزيل listeners/subscriptions التي لم أعد أحتاجها.</p>\n",
-            "en": "<p>The output is <code>1 2 1 3</code>. Each <code>makeCounter</code> call creates its own lexical environment. The returned function keeps access to that call&#39;s <code>count</code>. A closure is normal JavaScript behavior; retaining unnecessary large objects through long-lived callbacks is the memory concern.</p>\n"
+            "ar": "<p>الناتج <code>2</code>. الـarrow تقرأ الـbinding المسماة <code>value</code> عند الاستدعاء؛ لا تحتفظ بنسخة مجمدة من الـobject الأول. إعادة تعيين الـbinding قبل الاستدعاء تغير ما تراه الـclosure. احتفاظ callback طويل العمر ببيانات كبيرة غير مطلوبة قد يسبب نموًا في الذاكرة.</p>",
+            "en": "<p>It prints <code>2</code>. The arrow reads the <code>value</code> binding when called; it does not freeze the original object. Reassigning the binding before the call changes what the closure sees. A long-lived closure retains reachable state while the closure remains reachable, which matters when the retained graph is large or obsolete.</p>"
           },
-          "codeHtml": "<pre><code class=\"language-js\">function makeCounter() {\n  let count = 0;\n  return () =&gt; ++count;\n}\nconst first = makeCounter();\nconst second = makeCounter();\nconsole.log(first(), first(), second(), first());\n</code></pre>",
+          "codeHtml": "",
           "kind": "output",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "ECMAScript behavior · output reproduced in Node.js 24 ESM.",
+            "sources": [
+              {
+                "title": "MDN · Closures",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures"
+              }
+            ]
+          },
+          "exercise": {
+            "runtime": "Node.js 24 · ECMAScript module",
+            "cases": [
+              {
+                "label": {
+                  "en": "Predict the console",
+                  "ar": "توقع ترتيب الـ console"
+                },
+                "code": "function makeReader() {\n  let value = { count: 1 };\n  const read = () => value.count;\n  value = { count: 2 };\n  return read;\n}\nconsole.log(makeReader()());",
+                "expected": {
+                  "stdout": [
+                    "2"
+                  ]
+                }
+              }
+            ]
           }
         },
         {
@@ -853,9 +1163,19 @@
           "codeHtml": "",
           "kind": "discussion",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "Concepts checked against linked documentation.",
+            "sources": [
+              {
+                "title": "MDN · Event bubbling",
+                "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Event_bubbling"
+              },
+              {
+                "title": "MDN · JavaScript execution model",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Execution_model"
+              }
+            ]
           }
         }
       ]
@@ -1309,9 +1629,19 @@
           "codeHtml": "",
           "kind": "discussion",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "Concept and trade-offs checked against current official documentation.",
+            "sources": [
+              {
+                "title": "Angular · Hierarchical injectors",
+                "url": "https://angular.dev/guide/di/hierarchical-dependency-injection"
+              },
+              {
+                "title": "Angular · takeUntilDestroyed",
+                "url": "https://angular.dev/ecosystem/rxjs-interop/take-until-destroyed"
+              }
+            ]
           }
         },
         {
@@ -1627,9 +1957,27 @@
           "codeHtml": "",
           "kind": "discussion",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "Concept and trade-offs checked against current official documentation.",
+            "sources": [
+              {
+                "title": "RxJS · switchMap",
+                "url": "https://rxjs.dev/api/operators/switchMap"
+              },
+              {
+                "title": "RxJS · mergeMap",
+                "url": "https://rxjs.dev/api/operators/mergeMap"
+              },
+              {
+                "title": "RxJS · concatMap",
+                "url": "https://rxjs.dev/api/operators/concatMap"
+              },
+              {
+                "title": "RxJS · exhaustMap",
+                "url": "https://rxjs.dev/api/operators/exhaustMap"
+              }
+            ]
           }
         },
         {
@@ -1699,9 +2047,15 @@
           "codeHtml": "",
           "kind": "discussion",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "Concept and trade-offs checked against current official documentation.",
+            "sources": [
+              {
+                "title": "RxJS · shareReplay",
+                "url": "https://rxjs.dev/api/operators/shareReplay"
+              }
+            ]
           }
         },
         {
@@ -1768,9 +2122,19 @@
           "codeHtml": "",
           "kind": "discussion",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "Concept and trade-offs checked against current official documentation.",
+            "sources": [
+              {
+                "title": "Angular · Signals",
+                "url": "https://angular.dev/guide/signals"
+              },
+              {
+                "title": "NgRx · Store guide",
+                "url": "https://ngrx.io/guide/store"
+              }
+            ]
           }
         },
         {
@@ -1786,9 +2150,19 @@
           "codeHtml": "",
           "kind": "discussion",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "Concept and trade-offs checked against current official documentation.",
+            "sources": [
+              {
+                "title": "NgRx · Selectors",
+                "url": "https://ngrx.io/guide/store/selectors"
+              },
+              {
+                "title": "NgRx · Store guide",
+                "url": "https://ngrx.io/guide/store"
+              }
+            ]
           }
         },
         {
@@ -1812,19 +2186,29 @@
         {
           "id": "q-102",
           "prompt": {
-            "ar": "متى تكفي Signals، ومتى يصبح NgRx مفيدًا؟",
-            "en": "How do you decide between Angular Signals and NgRx?"
+            "ar": "صمّم الـstate لصفحة بحث منتجات وسلة مشتركة بين صفحات التطبيق. أين تستخدم Signals وأين تستخدم NgRx؟",
+            "en": "Design state for a product search page and a shared shopping cart. Where would Signals and NgRx fit?"
           },
           "answer": {
-            "ar": "<p><strong>الإجابة بالعربي:</strong> Signal ممتازة لstate متزامنة محلية وderived values بـ<code>computed</code>. NgRx يفيد عندما state مشتركة واسعة، updates/events كثيرة، effects معقدة، وتحتاج أدوات tracing واتفاقًا واضحًا على التغييرات. ممكن يستخدم التطبيق الاثنين: NgRx للـfeature/global state وSignals للـlocal UI أو selectors عبر interop. لا أنقل كل state إلى store، ولا أستخدم <code>effect</code> لتقليد reducer من غير داعٍ.</p>\n",
-            "en": "<p>Signals are strong for local synchronous state and derived values. NgRx adds structured events, reducers, effects, selectors, and tooling when state and side effects span features. They can coexist; I decide based on ownership, lifetime, coordination complexity, and debugging needs rather than treating one as a universal replacement.</p>\n"
+            "ar": "<p>أضع نص البحث والفلاتر المفتوحة والـUI state المشتقة في Signals قريبة من feature البحث. السلة المشتركة قد تستفيد من NgRx عندما تحتاج صفحات كثيرة إلى تنسيق التحديثات والحفظ والأسعار والأخطاء؛ أستخدم actions وselectors واضحة، وأترك API calls للـeffects أو services وليس reducer. لا أحتفظ بنسختين مستقلتين من بيانات السلة في Signal وStore؛ يمكن للـSignal عرض بيانات مختارة من Store. القرار يعتمد على ملكية البيانات وتعقيد تدفقها.</p>",
+            "en": "<p>I would keep the search input, open filters, and local derived UI state in Signals near the search feature. I would model the shared cart with explicit commands and derived selectors in NgRx if multiple routes need to coordinate updates, persistence, pricing, and error handling. I would keep API calls in effects or services, not reducers. I would avoid duplicating the same cart state in a Signal and the Store; a Signal may present selected Store data to a component. The boundary can change with product complexity, so I would start with ownership and data flow, then measure the overhead.</p>"
           },
           "codeHtml": "",
           "kind": "discussion",
           "review": {
-            "status": "imported",
-            "lastReviewedAt": null,
-            "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-14",
+            "versionNotes": "Concept and trade-offs checked against current official documentation.",
+            "sources": [
+              {
+                "title": "Angular · Signals",
+                "url": "https://angular.dev/guide/signals"
+              },
+              {
+                "title": "NgRx · Store guide",
+                "url": "https://ngrx.io/guide/store"
+              }
+            ]
           }
         },
         {

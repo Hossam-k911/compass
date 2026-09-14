@@ -110,9 +110,21 @@ import { Question } from './models';
               </button>
             </div>
             <div class="review-note">
-              Imported content · Version-specific details await editorial review.
+              @if (q.review.status === 'reviewed') {
+                Reviewed {{ q.review.lastReviewedAt }} · {{ q.review.versionNotes }}
+              } @else {
+                Imported content · Editorial review pending.
+              }
               <a routerLink="/updates">How we maintain content</a>
             </div>
+            @if (q.review.sources?.length) {
+              <div class="reading">
+                <span class="eyebrow">SOURCES FOR THIS ANSWER</span>
+                @for (source of q.review.sources; track source.url) {
+                  <a [href]="source.url" target="_blank" rel="noopener">{{ source.title }}<c-icon name="external" /></a>
+                }
+              </div>
+            }
           </article>
           <div class="question-navigation">
             <button class="button" [disabled]="position() <= 0" (click)="move(-1)">

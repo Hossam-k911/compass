@@ -11,8 +11,16 @@ for (const topic of track.topics) {
     ids.add(q.id);
     for (const lang of ['ar', 'en'])
       assert(q.prompt[lang]?.trim() && q.answer[lang]?.trim(), `Missing ${lang}: ${q.id}`);
-    if (q.kind === 'output') assert(q.codeHtml.includes('<pre>'), `Missing shared code: ${q.id}`);
+    if (q.kind === 'output') assert(q.exercise?.cases?.length || q.codeHtml.includes('<pre>'), `Missing shared code: ${q.id}`);
     assert(q.review.lastReviewedAt === null || /^\d{4}-\d{2}-\d{2}$/.test(q.review.lastReviewedAt));
+    if (q.review.status === 'reviewed') {
+      assert(q.review.lastReviewedAt && q.review.sources?.length, `Missing review evidence: ${q.id}`);
+      for (const source of q.review.sources) assert(/^https:\/\//.test(source.url) && source.title, `Invalid source: ${q.id}`);
+    }
+    for (const item of q.exercise?.cases ?? []) {
+      assert(item.label.en && item.label.ar && item.code && Array.isArray(item.expected.stdout), `Incomplete exercise: ${q.id}`);
+      assert(!/\/\/\s*(undefined|viewer false|A B|1 2 1 3)/i.test(item.code), `Spoiler in exercise: ${q.id}`);
+    }
     const html = JSON.stringify(q);
     assert(
       !/<script|javascript:|onerror\s*=|file:\/\/|C:\\\\Users/i.test(html),
