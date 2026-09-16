@@ -12,6 +12,20 @@ import { Icon } from './icon';
       </p>
     </div>
     <section class="panel update-banner">
+      <span class="pill green">FRONTEND EXPANSION · 16 SEP 2026</span>
+      <h2>Frontend foundations and senior depth.</h2>
+      <p>
+        130 reviewed Arabic/English questions were added, bringing the Angular path to 238
+        questions. The expansion covers browser internals, advanced CSS and TypeScript, web
+        security, HTTP and caching, modern Angular, RxJS and NgRx, performance, observability,
+        architecture, delivery, and senior troubleshooting scenarios.
+      </p>
+      <p class="review-note">
+        New answers include per-question sources and a review date. The original imported answers
+        keep their existing status until they are reviewed individually.
+      </p>
+    </section>
+    <section class="panel update-banner">
       <span class="pill green">INITIAL RELEASE · 13 SEP 2026</span>
       <h2>A new home for the Angular guide.</h2>
       <p>
@@ -105,5 +119,7 @@ export class Updates {
     },
     { title: 'HTML Living Standard', url: 'https://html.spec.whatwg.org/multipage/' },
     { title: 'MDN Web Docs', url: 'https://developer.mozilla.org/en-US/' },
+    { title: 'web.dev performance & security', url: 'https://web.dev/learn/performance/' },
+    { title: 'OWASP Web Security Testing Guide', url: 'https://owasp.org/www-project-web-security-testing-guide/' },
   ];
 }

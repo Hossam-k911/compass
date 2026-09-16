@@ -4,7 +4,7 @@
 
 [Open Compass](https://hossam-k911.github.io/compass/) · [Original study guide](https://hossam-k911.github.io/senior-angular-study-guide/)
 
-A dark, responsive Angular application for focused interview preparation. The first track is Senior Angular, with 108 Arabic/English questions across 13 topics. This is a new repository; the original `senior-angular-study-guide` site remains separate.
+A dark, responsive Angular application for focused interview preparation. The first track is Senior Angular and frontend engineering, with 238 Arabic/English questions across 13 topics. This is a new repository; the original `senior-angular-study-guide` site remains separate.
 
 ## What works in this first release
 
@@ -25,6 +25,7 @@ Use Node 24.15 or newer in the Node 24 line (or another Angular 22 compatible ve
 npm ci
 npm start
 npm run check:content
+npm run check:exercises
 npm run build
 ```
 
@@ -40,7 +41,7 @@ GitHub Settings → Pages → Source: **GitHub Actions**. The Pages workflow bui
 
 ## Content provenance and limitations
 
-The original 107 answers were imported, not re-reviewed. Metadata and the content page disclose this. The personal biography was excluded and replaced by a placeholder-based introduction template. Topic documentation links are further reading rather than per-answer verification claims. See `content-ops/REVIEW.md` for the process to turn imported questions into reviewed content.
+The original 107 answers were imported with their review status preserved. Phase 1 reviewed 20 of them, and the September frontend expansion added 130 reviewed questions with per-answer sources. The personal biography was excluded and replaced by a placeholder-based introduction template. See `content-ops/REVIEW.md` for the editorial workflow.
 
 Progress is stored under `compass.progress.v1` in localStorage. No learner data is sent to a backend. Clearing browser storage loses progress unless it was exported. Google Fonts is an external typography dependency with local font fallbacks.
 

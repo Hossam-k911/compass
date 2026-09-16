@@ -1,6 +1,6 @@
 # Content review workflow
 
-The initial 107 study questions were imported from senior-angular-study-guide. Phase 1 has reviewed 20 of them: 14 JavaScript and six targeted Angular/RxJS/NgRx questions. The remaining 87 stay marked imported; the introduction template remains a draft. `lastReviewedAt` stays null until a documented review occurs.
+The initial 107 study questions were imported from senior-angular-study-guide. Phase 1 reviewed 20 of them. The frontend expansion added 130 reviewed questions on 16 September 2026, bringing the bank to 238 questions: 150 reviewed, 87 imported, and one introduction draft. `lastReviewedAt` stays null until a documented review occurs.
 
 1. Inspect weekly GitHub Actions reports and manually submitted market signals. The automated checker covers stable release tags only; it does not infer market demand.
 2. Map a proposed update to existing question IDs. Prefer correcting or deepening an existing question over adding duplicates. Record source URL, publication date, technology version, role level, and reason for inclusion.
@@ -14,7 +14,7 @@ The initial release baseline is a monitoring starting point, not an assertion th
 
 ## Next editorial work
 
-- Continue auditing the 87 imported answers, prioritizing Angular core, RxJS, NgRx, then HTML/CSS and engineering scenarios.
+- Continue auditing the 87 imported answers and consolidate any overlap revealed by the larger bank.
 - Add browser-specific exercises in a controlled browser runner when runtime differences matter; current executable cases explicitly use Node.js 24 ESM.
 - Review the imported answer HTML for examples that are visible only in one language mode, and move them to shared prompts or equivalent bilingual answers.
 - Validate market relevance from multiple dated sources; do not label one anecdote as a trend.

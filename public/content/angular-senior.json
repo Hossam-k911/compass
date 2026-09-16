@@ -179,6 +179,266 @@
             "lastReviewedAt": null,
             "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
           }
+        },
+        {
+          "id": "q-109",
+          "prompt": {
+            "en": "How does the CSS cascade choose a winning declaration?",
+            "ar": "كيف تختار CSS الـdeclaration الفائزة في الـcascade؟"
+          },
+          "answer": {
+            "en": "<p>I compare origin and importance, cascade layer, specificity, scoping proximity, then source order. I use layers and low-specificity selectors to make the result predictable instead of escalating with <code>!important</code>.</p>",
+            "ar": "<p>أقارن origin وimportance ثم cascade layer وspecificity وscoping proximity وأخيرًا ترتيب المصدر. أستخدم layers وselectors قليلة specificity بدل الدخول في حرب <code>!important</code>.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · CSS",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-110",
+          "prompt": {
+            "en": "What problem do CSS cascade layers solve?",
+            "ar": "ما المشكلة التي تحلها CSS cascade layers؟"
+          },
+          "answer": {
+            "en": "<p><code>@layer</code> defines an explicit priority between groups such as reset, vendor, components, and utilities. Unlayered author styles outrank layered normal styles, so the layer order must be designed deliberately.</p>",
+            "ar": "<p><code>@layer</code> يحدد أولوية واضحة بين reset وvendor وcomponents وutilities. الـauthor styles غير الموجودة داخل layer تتغلب عادة على layered normal styles، لذلك يجب تصميم الترتيب بوضوح.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · CSS",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-111",
+          "prompt": {
+            "en": "When do container queries beat viewport media queries?",
+            "ar": "متى تكون container queries أنسب من viewport media queries؟"
+          },
+          "answer": {
+            "en": "<p>A reusable component should respond to the space its container provides, not the entire viewport. I use media queries for page-level conditions and container queries for component-level layout changes.</p>",
+            "ar": "<p>الـcomponent القابل لإعادة الاستخدام يجب أن يستجيب لمساحة الـcontainer وليس عرض الشاشة كله. أستخدم media queries لتخطيط الصفحة وcontainer queries لتغيرات الـcomponent.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · CSS",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-112",
+          "prompt": {
+            "en": "Explain intrinsic sizing: min-content, max-content, and fit-content.",
+            "ar": "اشرح intrinsic sizing: ‏min-content وmax-content وfit-content."
+          },
+          "answer": {
+            "en": "<p><code>min-content</code> is the smallest size without avoidable overflow, <code>max-content</code> is the ideal unwrapped size, and <code>fit-content</code> clamps an intrinsic size to available space. They help build resilient layouts without hard-coded widths.</p>",
+            "ar": "<p><code>min-content</code> أصغر حجم ممكن دون overflow يمكن تجنبه، و<code>max-content</code> الحجم المثالي بلا wrapping، و<code>fit-content</code> يقيّد الحجم بالمساحة المتاحة. تفيد في layouts مرنة دون أرقام ثابتة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · CSS",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-113",
+          "prompt": {
+            "en": "How do stacking contexts cause unexpected z-index bugs?",
+            "ar": "كيف تسبب stacking contexts مشاكل غير متوقعة في z-index؟"
+          },
+          "answer": {
+            "en": "<p>A child cannot escape its parent stacking context even with a huge z-index. I inspect context creators such as positioned elements with z-index, transforms, opacity, isolation, and top-layer elements before changing numbers.</p>",
+            "ar": "<p>الـchild لا يستطيع الخروج من stacking context الأب حتى بقيمة z-index ضخمة. أفحص أسباب إنشاء context مثل position مع z-index وtransform وopacity وisolation وعناصر top layer قبل تغيير الأرقام.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · CSS",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-114",
+          "prompt": {
+            "en": "What are subgrid and grid auto-placement useful for?",
+            "ar": "فيم تستخدم subgrid وgrid auto-placement؟"
+          },
+          "answer": {
+            "en": "<p>Subgrid lets nested content align to parent tracks; auto-placement fills items according to the grid algorithm. I use them for consistent card internals and data layouts, while checking source order remains logical for accessibility.</p>",
+            "ar": "<p>تسمح subgrid للمحتوى الداخلي بمحاذاة tracks الخاصة بالأب، ويملأ auto-placement العناصر حسب خوارزمية grid. أستخدمهما لاتساق البطاقات مع الحفاظ على source order منطقي للـaccessibility.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · CSS",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+              },
+              {
+                "title": "W3C · WCAG 2.2",
+                "url": "https://www.w3.org/TR/WCAG22/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-115",
+          "prompt": {
+            "en": "How do you design motion that respects user preferences?",
+            "ar": "كيف تصمم الحركة مع احترام تفضيلات المستخدم؟"
+          },
+          "answer": {
+            "en": "<p>I use motion to explain state changes, keep it short, animate compositor-friendly properties when possible, and provide a <code>prefers-reduced-motion</code> path that removes nonessential movement.</p>",
+            "ar": "<p>أستخدم الحركة لتوضيح تغير الحالة، وأجعلها قصيرة، وأحرك خصائص مناسبة للـcompositor قدر الإمكان، وأوفر مسار <code>prefers-reduced-motion</code> يلغي الحركة غير الضرورية.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · CSS",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+              },
+              {
+                "title": "W3C · WCAG 2.2",
+                "url": "https://www.w3.org/TR/WCAG22/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-116",
+          "prompt": {
+            "en": "What makes a robust design-token system?",
+            "ar": "ما الذي يجعل design-token system قويًا؟"
+          },
+          "answer": {
+            "en": "<p>Tokens represent semantic decisions such as surface, text, spacing, and focus rather than raw component values. I separate primitive and semantic tokens, support themes through variables, document ownership, and test contrast.</p>",
+            "ar": "<p>الـtokens تمثل قرارات semantic مثل surface وtext وspacing وfocus بدل قيم component خام. أفصل primitive عن semantic tokens، وأدعم themes بالـvariables، وأوثق الملكية وأختبر contrast.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · CSS",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+              },
+              {
+                "title": "W3C · WCAG 2.2",
+                "url": "https://www.w3.org/TR/WCAG22/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-117",
+          "prompt": {
+            "en": "How do you avoid layout shift caused by fonts?",
+            "ar": "كيف تتجنب layout shift الناتج عن الخطوط؟"
+          },
+          "answer": {
+            "en": "<p>I subset and preload only critical fonts, use an appropriate display strategy, provide metric-compatible fallbacks with size-adjust when needed, and measure CLS rather than assuming a font optimization helped.</p>",
+            "ar": "<p>أقسّم الخط وأحمّل الخط الضروري مبكرًا فقط، وأختار font-display مناسبًا، وأستخدم fallback متوافق المقاييس وsize-adjust عند الحاجة، ثم أقيس CLS.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · CSS",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+              },
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-118",
+          "prompt": {
+            "en": "How would you audit RTL beyond flipping the layout?",
+            "ar": "كيف تراجع RTL أبعد من مجرد قلب الـlayout؟"
+          },
+          "answer": {
+            "en": "<p>I verify logical spacing, start/end alignment, icons with directional meaning, mixed bidi text, form controls, charts, keyboard order, truncation, and screenshots in both directions. Some icons mirror; neutral symbols do not.</p>",
+            "ar": "<p>أراجع logical spacing وstart/end والأيقونات ذات الاتجاه والنص المختلط والنماذج والرسوم وترتيب الكيبورد والـtruncation وscreenshots في الاتجاهين. بعض الأيقونات تُعكس وبعضها لا.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · CSS",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+              },
+              {
+                "title": "W3C · WCAG 2.2",
+                "url": "https://www.w3.org/TR/WCAG22/"
+              }
+            ]
+          }
         }
       ]
     },
@@ -589,6 +849,266 @@
             "status": "imported",
             "lastReviewedAt": null,
             "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-119",
+          "prompt": {
+            "en": "What is the accessibility tree, and how can CSS affect it?",
+            "ar": "ما هي accessibility tree وكيف يمكن أن تؤثر CSS عليها؟"
+          },
+          "answer": {
+            "en": "<p>Assistive technology consumes a semantic tree derived from DOM, roles, names, states, and browser rules. Hiding content with <code>display:none</code> or <code>hidden</code> removes it from that tree, while visually-hidden techniques can keep meaningful text available.</p>",
+            "ar": "<p>تقنيات المساعدة تستخدم شجرة semantic مشتقة من DOM والroles والأسماء والحالات. إخفاء المحتوى بـ<code>display:none</code> أو <code>hidden</code> يزيله منها، بينما visually-hidden قد يبقي النص متاحًا.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTML",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+              },
+              {
+                "title": "W3C · WCAG 2.2",
+                "url": "https://www.w3.org/TR/WCAG22/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-120",
+          "prompt": {
+            "en": "How do accessible name and description computation work?",
+            "ar": "كيف يتم حساب accessible name وdescription؟"
+          },
+          "answer": {
+            "en": "<p>A control name can come from visible text, an associated label, <code>aria-labelledby</code>, or <code>aria-label</code> with defined precedence. I prefer visible native labels and use descriptions for supporting help, not as a replacement for the name.</p>",
+            "ar": "<p>قد يأتي اسم العنصر من النص المرئي أو label أو <code>aria-labelledby</code> أو <code>aria-label</code> حسب أولوية محددة. أفضل label مرئي وأستخدم description للمساعدة الإضافية لا كبديل للاسم.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "W3C · WCAG 2.2",
+                "url": "https://www.w3.org/TR/WCAG22/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-121",
+          "prompt": {
+            "en": "When should focus move after a UI update?",
+            "ar": "متى يجب نقل focus بعد تحديث الواجهة؟"
+          },
+          "answer": {
+            "en": "<p>I move focus when context changes and the user would otherwise be lost, such as opening a modal or removing the focused item. I avoid stealing focus after routine updates and return it to a sensible trigger when a modal closes.</p>",
+            "ar": "<p>أنقل focus عندما يتغير السياق وقد يضيع المستخدم، مثل فتح modal أو حذف العنصر المحدد. لا أسرق focus بعد تحديث عادي وأعيده لمكان منطقي عند غلق modal.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "W3C · WCAG 2.2",
+                "url": "https://www.w3.org/TR/WCAG22/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-122",
+          "prompt": {
+            "en": "How do live regions differ from moving focus?",
+            "ar": "ما الفرق بين live regions ونقل focus؟"
+          },
+          "answer": {
+            "en": "<p>A live region announces an asynchronous status without changing the user’s position. Focus movement changes navigation context. I use polite announcements for nonurgent updates, assertive sparingly, and avoid repeatedly announcing noisy content.</p>",
+            "ar": "<p>تعلن live region حالة غير متزامنة دون تغيير مكان المستخدم، بينما نقل focus يغير سياق التنقل. أستخدم polite للتحديثات غير العاجلة وassertive بحذر وأتجنب الإعلانات المتكررة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "W3C · WCAG 2.2",
+                "url": "https://www.w3.org/TR/WCAG22/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-123",
+          "prompt": {
+            "en": "What makes a custom keyboard widget accessible?",
+            "ar": "ما الذي يجعل custom keyboard widget accessible؟"
+          },
+          "answer": {
+            "en": "<p>It needs the correct role, accessible name, state, focus model, and keyboard pattern defined by the platform convention. I prefer native controls; for composite widgets I implement roving tabindex or aria-activedescendant and test with keyboard and screen readers.</p>",
+            "ar": "<p>يحتاج role صحيحًا واسمًا وحالة ونموذج focus ونمط keyboard متعارفًا عليه. أفضل العناصر الأصلية؛ وفي widgets المركبة أطبق roving tabindex أو aria-activedescendant وأختبر فعليًا.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "W3C · WCAG 2.2",
+                "url": "https://www.w3.org/TR/WCAG22/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-124",
+          "prompt": {
+            "en": "What is progressive enhancement in a modern SPA?",
+            "ar": "ما معنى progressive enhancement داخل SPA حديث؟"
+          },
+          "answer": {
+            "en": "<p>Core content and actions should remain understandable with resilient HTML and server behavior, then JavaScript enhances speed and interaction. The exact baseline depends on product needs, but failures should degrade intentionally rather than leave a blank shell.</p>",
+            "ar": "<p>يجب أن يبقى المحتوى والفعل الأساسي مفهومًا عبر HTML وserver behavior قويين، ثم تضيف JavaScript السرعة والتفاعل. مستوى الأساس حسب المنتج، لكن الفشل يجب أن يتدهور بشكل مقصود لا أن يترك صفحة فارغة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTML",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+              },
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-125",
+          "prompt": {
+            "en": "How do native popover and dialog differ?",
+            "ar": "ما الفرق بين native popover وdialog؟"
+          },
+          "answer": {
+            "en": "<p>Popover handles nonmodal top-layer UI with light-dismiss behavior; dialog models a dialog and can be modal through <code>showModal()</code>. I choose by interaction semantics, then verify focus, naming, dismissal, and browser support.</p>",
+            "ar": "<p>Popover مناسب لواجهة nonmodal في top layer مع light-dismiss، أما dialog فيمثل نافذة ويمكن جعله modal عبر <code>showModal()</code>. أختار حسب semantics ثم أراجع focus والاسم والإغلاق والدعم.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTML",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+              },
+              {
+                "title": "W3C · WCAG 2.2",
+                "url": "https://www.w3.org/TR/WCAG22/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-126",
+          "prompt": {
+            "en": "What are declarative shadow DOM and slots for?",
+            "ar": "فيم تستخدم declarative shadow DOM وslots؟"
+          },
+          "answer": {
+            "en": "<p>Declarative shadow DOM lets a server deliver a shadow tree in HTML, which can help SSR for Web Components. Slots project light-DOM content. I use shadow boundaries deliberately because styling, events, forms, and accessibility still need design.</p>",
+            "ar": "<p>يسمح declarative shadow DOM للسيرفر بإرسال shadow tree داخل HTML ويفيد SSR للـWeb Components. تمرر slots محتوى light DOM. أستخدم الحدود بحذر لأن styling وevents وforms وaccessibility تحتاج تصميمًا.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTML",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-127",
+          "prompt": {
+            "en": "How do you prevent duplicate IDs in component-driven UIs?",
+            "ar": "كيف تمنع duplicate IDs في واجهات مبنية من components؟"
+          },
+          "answer": {
+            "en": "<p>Reusable components generate stable instance-specific IDs and connect labels, help text, and errors with those IDs. I do not derive them from array indexes when reordering could change identity.</p>",
+            "ar": "<p>تولد الـcomponents IDs ثابتة وفريدة لكل instance وتربط بها labels وhelp text وerrors. لا أشتقها من index إذا كان الترتيب قد يتغير.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTML",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+              },
+              {
+                "title": "W3C · WCAG 2.2",
+                "url": "https://www.w3.org/TR/WCAG22/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-128",
+          "prompt": {
+            "en": "What is the difference between hidden, inert, aria-hidden, and visually hidden?",
+            "ar": "ما الفرق بين hidden وinert وaria-hidden وvisually hidden؟"
+          },
+          "answer": {
+            "en": "<p><code>hidden</code> removes rendering, <code>inert</code> blocks interaction and focus in a subtree, <code>aria-hidden</code> hides from the accessibility tree but not visually, and visually-hidden CSS keeps content available to assistive technology. Using the wrong one can create focusable but unannounced controls.</p>",
+            "ar": "<p><code>hidden</code> يمنع العرض، و<code>inert</code> يمنع التفاعل وfocus داخل subtree، و<code>aria-hidden</code> يخفي من accessibility tree فقط، وvisually-hidden يبقي المحتوى لقارئ الشاشة. الاختيار الخاطئ قد يصنع control قابلًا للتركيز بلا إعلان.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTML",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+              },
+              {
+                "title": "W3C · WCAG 2.2",
+                "url": "https://www.w3.org/TR/WCAG22/"
+              }
+            ]
           }
         }
       ]
@@ -1177,6 +1697,254 @@
               }
             ]
           }
+        },
+        {
+          "id": "q-129",
+          "prompt": {
+            "en": "How do lexical environments differ from the call stack?",
+            "ar": "ما الفرق بين lexical environments والـcall stack؟"
+          },
+          "answer": {
+            "en": "<p>The call stack tracks active execution contexts; lexical environments hold identifier bindings and outer references used for scope resolution. A closure can keep an environment reachable after its creating call has left the stack.</p>",
+            "ar": "<p>الـcall stack يتابع execution contexts النشطة، بينما lexical environments تحفظ bindings وروابط النطاق الخارجي. قد تُبقي closure البيئة موجودة بعد خروج الاستدعاء من stack.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · JavaScript",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-130",
+          "prompt": {
+            "en": "How do property descriptors affect object behavior?",
+            "ar": "كيف تؤثر property descriptors على سلوك الـobject؟"
+          },
+          "answer": {
+            "en": "<p>Data properties have value and writable; all properties have enumerable and configurable. Accessor properties use get/set. Descriptor defaults in <code>defineProperty</code> are false, which can surprise code relying on enumeration or reassignment.</p>",
+            "ar": "<p>خصائص البيانات لها value وwritable، وكل الخصائص لها enumerable وconfigurable، وaccessor تستخدم get/set. القيم الافتراضية في <code>defineProperty</code> تكون false وقد تفاجئ كود enumeration أو التعديل.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · JavaScript",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-131",
+          "prompt": {
+            "en": "What is the difference between equality, identity, and SameValueZero?",
+            "ar": "ما الفرق بين equality وidentity وSameValueZero؟"
+          },
+          "answer": {
+            "en": "<p><code>===</code> avoids coercion but treats NaN as unequal and +0/-0 as equal. <code>Object.is</code> changes those two cases. Map, Set, and includes use SameValueZero, where NaN matches itself and signed zero is equal.</p>",
+            "ar": "<p><code>===</code> لا يقوم coercion لكنه يعتبر NaN غير مساوية لنفسها و+0/-0 متساويين. <code>Object.is</code> يعكس هاتين الحالتين. Map وSet وincludes تستخدم SameValueZero.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · JavaScript",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-132",
+          "prompt": {
+            "en": "When does structuredClone work, and what does it not preserve?",
+            "ar": "متى تعمل structuredClone وما الذي لا تحتفظ به؟"
+          },
+          "answer": {
+            "en": "<p>It deep-clones many structured values and supports transferable objects, cycles, Map, Set, and typed arrays. It does not clone functions or DOM nodes, and custom prototypes or property descriptors should not be assumed to survive as application semantics.</p>",
+            "ar": "<p>تنسخ كثيرًا من القيم بعمق وتدعم transferable objects والدورات وMap وSet وtyped arrays. لا تنسخ functions أو DOM nodes، ولا أعتمد عليها للحفاظ على custom prototypes أو descriptors كسلوك للتطبيق.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · JavaScript",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-133",
+          "prompt": {
+            "en": "How do iterators, iterables, and generators relate?",
+            "ar": "ما علاقة iterators وiterables وgenerators ببعضها؟"
+          },
+          "answer": {
+            "en": "<p>An iterable exposes <code>Symbol.iterator</code>; an iterator returns <code>{value, done}</code>. A generator function creates an object implementing both, suspending at <code>yield</code>. I use them for lazy sequences and protocol integration.</p>",
+            "ar": "<p>الـiterable يوفّر <code>Symbol.iterator</code> والـiterator يعيد <code>{value, done}</code>. generator ينشئ object يطبق الاثنين ويتوقف عند <code>yield</code>. أستخدمها للتسلسلات lazy والبروتوكولات.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · JavaScript",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-134",
+          "prompt": {
+            "en": "What are WeakMap and WeakSet actually good for?",
+            "ar": "فيم تستخدم WeakMap وWeakSet فعلًا؟"
+          },
+          "answer": {
+            "en": "<p>They hold object keys weakly, so membership does not keep those objects alive. They are useful for per-object metadata and cycle guards. They are intentionally non-enumerable, so they are not general caches with inspectable contents.</p>",
+            "ar": "<p>تحتفظ بمفاتيح objects بشكل weak فلا تمنع جمعها من الذاكرة. تفيد metadata لكل object ومنع الدورات. لا يمكن enumerate محتواها عمدًا، لذلك ليست cache عامة قابلة للفحص.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · JavaScript",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-135",
+          "prompt": {
+            "en": "How do AbortController and AbortSignal improve async design?",
+            "ar": "كيف يحسن AbortController وAbortSignal تصميم العمليات async؟"
+          },
+          "answer": {
+            "en": "<p>They provide a composable cancellation signal for fetch and other APIs. I pass the signal through layers, stop obsolete work, distinguish cancellation from failure, and still design server operations because aborting the client does not guarantee server rollback.</p>",
+            "ar": "<p>يوفران cancellation signal قابلًا للتمرير إلى fetch وغيرها. أمرر signal بين الطبقات وأوقف العمل القديم وأفرق cancellation عن failure، مع تذكر أن إلغاء العميل لا يضمن rollback على السيرفر.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · JavaScript",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-136",
+          "prompt": {
+            "en": "What is backpressure, and why can a frontend care?",
+            "ar": "ما هي backpressure ولماذا تهم الـfrontend؟"
+          },
+          "answer": {
+            "en": "<p>A producer can emit work faster than the consumer or UI can process it. I respond with batching, sampling, bounded queues, cancellation, virtualization, or flow control instead of allowing unbounded memory and stale work.</p>",
+            "ar": "<p>قد ينتج المصدر عملًا أسرع من قدرة المستهلك أو الواجهة. أعالج ذلك بالـbatching أوsampling أوqueues محدودة أوcancellation أوvirtualization بدل نمو الذاكرة والعمل القديم.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · JavaScript",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+              },
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-137",
+          "prompt": {
+            "en": "How do ESM live bindings differ from copied values?",
+            "ar": "كيف تختلف ESM live bindings عن القيم المنسوخة؟"
+          },
+          "answer": {
+            "en": "<p>An imported binding reflects updates made by the exporting module, but the importer cannot reassign that binding. Module evaluation is cached per realm, dependencies execute before dependents, and cycles require care around initialization order.</p>",
+            "ar": "<p>تعكس imported binding تحديثات الـmodule المصدر لكن لا يستطيع المستورد إعادة تعيينها. يتم cache للتقييم داخل realm، وتعمل dependencies قبل dependents، والدورات تحتاج حذرًا مع ترتيب initialization.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · JavaScript modules",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-138",
+          "prompt": {
+            "en": "How would you investigate a JavaScript memory leak?",
+            "ar": "كيف تحقق في JavaScript memory leak؟"
+          },
+          "answer": {
+            "en": "<p>I reproduce a stable navigation or interaction loop, compare heap snapshots, inspect retained size and retainer paths, and look for detached DOM, listeners, timers, subscriptions, and unbounded caches. I verify the fix by repeating the same scenario and allowing GC.</p>",
+            "ar": "<p>أكرر سيناريو ثابتًا، وأقارن heap snapshots، وأفحص retained size وretainer paths، وأبحث عن detached DOM وlisteners وtimers وsubscriptions وcaches بلا حد، ثم أعيد القياس بعد السماح بـGC.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · JavaScript",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+              },
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
         }
       ]
     },
@@ -1300,6 +2068,246 @@
             "lastReviewedAt": null,
             "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
           }
+        },
+        {
+          "id": "q-139",
+          "prompt": {
+            "en": "How do mapped types transform an object type?",
+            "ar": "كيف تحول mapped types نوع object؟"
+          },
+          "answer": {
+            "en": "<p>A mapped type iterates over property keys and can change value types, optionality, readonly status, or remap keys. I use it to encode repeatable relationships, not to create unreadable type-level programs.</p>",
+            "ar": "<p>تدور mapped type على مفاتيح الخصائص ويمكنها تغيير النوع وoptional وreadonly أو إعادة تسمية المفاتيح. أستخدمها لعلاقات متكررة واضحة لا لبرامج type-level يصعب قراءتها.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "TypeScript · Creating types from types",
+                "url": "https://www.typescriptlang.org/docs/handbook/2/types-from-types.html"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-140",
+          "prompt": {
+            "en": "What are conditional types and distributivity?",
+            "ar": "ما هي conditional types وما معنى distributivity؟"
+          },
+          "answer": {
+            "en": "<p>A conditional type selects a type using <code>T extends U ? X : Y</code>. With a naked type parameter it distributes over unions; wrapping both sides in tuples suppresses distribution. I document that behavior because it is easy to misread.</p>",
+            "ar": "<p>تختار conditional type نوعًا بصيغة <code>T extends U ? X : Y</code>. عندما يكون T parameter مباشرًا تتوزع على union، ووضع الطرفين داخل tuples يمنع ذلك. أوثّق السلوك لأنه سهل الالتباس.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "TypeScript · Creating types from types",
+                "url": "https://www.typescriptlang.org/docs/handbook/2/types-from-types.html"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-141",
+          "prompt": {
+            "en": "When is infer useful inside a conditional type?",
+            "ar": "متى تكون infer مفيدة داخل conditional type؟"
+          },
+          "answer": {
+            "en": "<p><code>infer</code> captures a type part while pattern-matching, such as a function return, promise value, or tuple element. I prefer standard utilities where available and keep custom inference types small and testable.</p>",
+            "ar": "<p>تلتقط <code>infer</code> جزءًا من النوع أثناء pattern matching مثل return type أوقيمة Promise أوعنصر tuple. أفضل utility types الجاهزة وأجعل الأنواع المخصصة صغيرة وقابلة للاختبار.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "TypeScript · Creating types from types",
+                "url": "https://www.typescriptlang.org/docs/handbook/2/types-from-types.html"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-142",
+          "prompt": {
+            "en": "What does satisfies provide that an annotation or assertion does not?",
+            "ar": "ماذا توفر satisfies مقارنة بالـannotation أوassertion؟"
+          },
+          "answer": {
+            "en": "<p><code>satisfies</code> checks compatibility while retaining the expression’s more specific inferred type. An annotation may widen the value; an assertion can silence a mismatch. I use satisfies for configuration objects and exhaustive maps.</p>",
+            "ar": "<p>تتحقق <code>satisfies</code> من التوافق مع الاحتفاظ بالنوع المحدد المستنتج. قد توسع annotation النوع، وقد تخفي assertion خطأ. أستخدم satisfies في config وmaps الشاملة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "TypeScript Handbook",
+                "url": "https://www.typescriptlang.org/docs/handbook/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-143",
+          "prompt": {
+            "en": "Explain TypeScript structural typing and excess-property checks.",
+            "ar": "اشرح structural typing وexcess-property checks في TypeScript."
+          },
+          "answer": {
+            "en": "<p>Compatibility is based mainly on members, not declared names. Fresh object literals receive an extra check for unexpected properties, while variables can be structurally assignable with additional fields. Runtime validation remains separate.</p>",
+            "ar": "<p>يعتمد التوافق أساسًا على الأعضاء لا أسماء الأنواع. object literal جديد يخضع لفحص properties الزائدة، بينما variable قد يكون متوافقًا رغم حقول إضافية. runtime validation موضوع منفصل.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "TypeScript Handbook",
+                "url": "https://www.typescriptlang.org/docs/handbook/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-144",
+          "prompt": {
+            "en": "What are variance and strictFunctionTypes?",
+            "ar": "ما معنى variance وstrictFunctionTypes؟"
+          },
+          "answer": {
+            "en": "<p>Variance describes how generic relationships follow their type arguments. Function parameter checking under strictFunctionTypes prevents unsafe substitutions in many callback positions. I rarely add explicit variance annotations because TypeScript infers them and they do not rewrite structural behavior.</p>",
+            "ar": "<p>تصف variance كيف تنتقل علاقات الأنواع عبر generic arguments. يمنع strictFunctionTypes استبدالات غير آمنة في كثير من callbacks. نادرًا ما أضيف annotations لأن TypeScript تستنتجها ولا تغير structural behavior.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "TypeScript Handbook",
+                "url": "https://www.typescriptlang.org/docs/handbook/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-145",
+          "prompt": {
+            "en": "How do template literal types help API design?",
+            "ar": "كيف تساعد template literal types في تصميم API؟"
+          },
+          "answer": {
+            "en": "<p>They compose string unions into constrained event names, paths, or property accessors. They improve autocomplete for finite conventions, but I avoid huge unions that slow the checker or pretend arbitrary external strings are validated.</p>",
+            "ar": "<p>تركّب string unions إلى event names أوpaths أوaccessors مقيدة. تحسن autocomplete للاتفاقات المحدودة، لكن أتجنب unions ضخمة أوادعاء التحقق من strings خارجية.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "TypeScript · Creating types from types",
+                "url": "https://www.typescriptlang.org/docs/handbook/2/types-from-types.html"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-146",
+          "prompt": {
+            "en": "When do branded types help in a structurally typed system?",
+            "ar": "متى تفيد branded types في نظام structural؟"
+          },
+          "answer": {
+            "en": "<p>A private or unique-symbol brand distinguishes values with the same runtime representation, such as UserId and OrderId. Construction must go through a validated boundary; the brand itself adds no runtime validation.</p>",
+            "ar": "<p>تميز brand خاصة أوunique symbol قيمًا لها نفس التمثيل مثل UserId وOrderId. يجب إنشاء القيمة بعد validation؛ الـbrand نفسها لا تضيف تحققًا وقت التشغيل.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "TypeScript Handbook",
+                "url": "https://www.typescriptlang.org/docs/handbook/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-147",
+          "prompt": {
+            "en": "How do noUncheckedIndexedAccess and exactOptionalPropertyTypes change safety?",
+            "ar": "كيف يغير noUncheckedIndexedAccess وexactOptionalPropertyTypes الأمان؟"
+          },
+          "answer": {
+            "en": "<p><code>noUncheckedIndexedAccess</code> adds undefined to unchecked index reads. <code>exactOptionalPropertyTypes</code> distinguishes an absent optional property from one explicitly set to undefined unless allowed. Both reveal assumptions that looser projects hide.</p>",
+            "ar": "<p>يضيف <code>noUncheckedIndexedAccess</code> احتمال undefined لقراءة index غير مؤكدة. ويميز <code>exactOptionalPropertyTypes</code> بين غياب property ووجودها بقيمة undefined. يكشفان افتراضات مخفية.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "TypeScript Handbook",
+                "url": "https://www.typescriptlang.org/docs/handbook/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-148",
+          "prompt": {
+            "en": "How do you keep complex TypeScript types maintainable and fast?",
+            "ar": "كيف تحافظ على complex TypeScript types قابلة للصيانة وسريعة؟"
+          },
+          "answer": {
+            "en": "<p>I name intermediate types, limit recursion and giant unions, prefer readable domain types, inspect compiler diagnostics when checking slows, and avoid encoding runtime business logic entirely in types. A simpler API often beats clever inference.</p>",
+            "ar": "<p>أسمي الأنواع الوسيطة وأحد recursion وunions الضخمة وأفضل domain types واضحة وأفحص compiler diagnostics عند البطء. لا أحول business logic كاملًا إلى types؛ API أبسط غالبًا أفضل.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "TypeScript Handbook",
+                "url": "https://www.typescriptlang.org/docs/handbook/"
+              }
+            ]
+          }
         }
       ]
     },
@@ -1422,6 +2430,246 @@
             "status": "imported",
             "lastReviewedAt": null,
             "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-149",
+          "prompt": {
+            "en": "How do you recognize a God service in a frontend?",
+            "ar": "كيف تكتشف God service في frontend؟"
+          },
+          "answer": {
+            "en": "<p>A service that owns unrelated state, transport, formatting, navigation, and policy has too many reasons to change. I split around cohesive capabilities and stable interfaces, then keep orchestration explicit rather than replacing one giant class with many trivial wrappers.</p>",
+            "ar": "<p>الـservice التي تملك state وtransport وformatting وnavigation وسياسات غير مترابطة لها أسباب كثيرة للتغيير. أقسمها حول capabilities متماسكة وinterfaces ثابتة مع orchestration واضح.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Refactoring Guru · Design patterns",
+                "url": "https://refactoring.guru/design-patterns"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-150",
+          "prompt": {
+            "en": "What is the difference between domain, application, and infrastructure logic?",
+            "ar": "ما الفرق بين domain وapplication وinfrastructure logic؟"
+          },
+          "answer": {
+            "en": "<p>Domain logic expresses business rules, application logic coordinates use cases, and infrastructure talks to HTTP, storage, and frameworks. The boundaries need not become a heavy architecture, but separating volatile IO from rules improves testing and migration.</p>",
+            "ar": "<p>تعبر domain logic عن قواعد العمل، وتنسق application logic حالات الاستخدام، وتتحدث infrastructure مع HTTP وstorage والframework. فصل IO المتغير عن القواعد يحسن الاختبار والنقل دون مبالغة معمارية.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Refactoring Guru · Design patterns",
+                "url": "https://refactoring.guru/design-patterns"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-151",
+          "prompt": {
+            "en": "When is an Adapter useful around a third-party library?",
+            "ar": "متى يفيد Adapter حول مكتبة خارجية؟"
+          },
+          "answer": {
+            "en": "<p>An adapter translates the vendor API into an interface shaped for the application. It localizes version churn, makes behavior explicit, and simplifies testing. I add it when the boundary is meaningful, not around every one-line library call.</p>",
+            "ar": "<p>يترجم Adapter واجهة المكتبة إلى interface مناسبة للتطبيق، ويعزل تغير الإصدارات ويسهل الاختبار. أضيفه عند وجود boundary حقيقية لا حول كل استدعاء بسيط.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Refactoring Guru · Design patterns",
+                "url": "https://refactoring.guru/design-patterns"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-152",
+          "prompt": {
+            "en": "How is Strategy different from a large conditional?",
+            "ar": "كيف يختلف Strategy عن conditional كبيرة؟"
+          },
+          "answer": {
+            "en": "<p>Strategy encapsulates interchangeable behavior behind one contract and lets composition select it. It is valuable when algorithms evolve independently or need testing; a short stable conditional is often clearer when variation is tiny.</p>",
+            "ar": "<p>تغلف Strategy سلوكيات قابلة للتبديل خلف contract واحد ويختارها composition. تفيد عندما تتطور الخوارزميات مستقلًا؛ أما conditional قصيرة وثابتة فقد تكون أوضح.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Refactoring Guru · Design patterns",
+                "url": "https://refactoring.guru/design-patterns"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-153",
+          "prompt": {
+            "en": "What are the risks of a frontend Facade?",
+            "ar": "ما مخاطر Facade في frontend؟"
+          },
+          "answer": {
+            "en": "<p>A facade can simplify a feature boundary and hide state implementation, but a universal facade may become a God object, duplicate selectors, or obscure events. I keep it feature-scoped, intention-revealing, and thin enough that data flow stays debuggable.</p>",
+            "ar": "<p>قد تبسط Facade حدود feature وتخفي implementation، لكن facade عامة قد تصبح God object وتكرر selectors وتخفي الأحداث. أجعلها feature-scoped وبأسماء نوايا واضحة وتدفق قابل للتتبع.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Refactoring Guru · Design patterns",
+                "url": "https://refactoring.guru/design-patterns"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-154",
+          "prompt": {
+            "en": "Where does the Command pattern appear in UI systems?",
+            "ar": "أين يظهر Command pattern في UI؟"
+          },
+          "answer": {
+            "en": "<p>A command represents an action as data or an object, enabling queues, retries, undo, logging, and authorization checks. State-management actions resemble commands/events, but I distinguish a requested action from a fact that already happened.</p>",
+            "ar": "<p>تمثل Command فعلًا كبيانات أوobject مما يتيح queue وretry وundo وlogging وفحص الصلاحية. قد تشبه state actions لكن أفرق بين طلب الفعل وحقيقة حدثت بالفعل.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Refactoring Guru · Design patterns",
+                "url": "https://refactoring.guru/design-patterns"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-155",
+          "prompt": {
+            "en": "How would you design undo and redo?",
+            "ar": "كيف تصمم undo وredo؟"
+          },
+          "answer": {
+            "en": "<p>I choose between inverse commands and state snapshots based on operation cost and determinism. I bound history, group related edits, define behavior around remote changes, and avoid storing huge mutable object graphs.</p>",
+            "ar": "<p>أختار بين inverse commands وstate snapshots حسب التكلفة والحتمية. أحدد history، وأجمع التعديلات المرتبطة، وأحدد التعامل مع remote changes، ولا أخزن object graphs ضخمة mutable.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Refactoring Guru · Design patterns",
+                "url": "https://refactoring.guru/design-patterns"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-156",
+          "prompt": {
+            "en": "What does dependency inversion look like without a DI framework?",
+            "ar": "كيف تطبق dependency inversion دون DI framework؟"
+          },
+          "answer": {
+            "en": "<p>High-level code accepts behavior through parameters, factories, or constructor interfaces rather than importing a concrete transport. A container automates wiring; it is not the principle itself.</p>",
+            "ar": "<p>يستقبل الكود عالي المستوى السلوك عبر parameters أوfactories أوconstructor interfaces بدل استيراد transport concrete. الـcontainer يسهل wiring لكنه ليس المبدأ نفسه.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Refactoring Guru · Design patterns",
+                "url": "https://refactoring.guru/design-patterns"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-157",
+          "prompt": {
+            "en": "How do you keep abstractions from becoming speculative?",
+            "ar": "كيف تمنع abstractions من أن تصبح speculative؟"
+          },
+          "answer": {
+            "en": "<p>I extract an abstraction after seeing a stable shared reason to change, give it a narrow contract, and keep callers simple. I avoid generic repositories, factories, or base classes created only because another implementation might exist someday.</p>",
+            "ar": "<p>أستخرج abstraction بعد ظهور سبب تغيير مشترك وثابت، وأعطيها contract ضيقة. أتجنب repositories أوfactories أوbase classes عامة فقط لاحتمال implementation آخر مستقبلًا.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Refactoring Guru · Design patterns",
+                "url": "https://refactoring.guru/design-patterns"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-158",
+          "prompt": {
+            "en": "How do you evaluate composition versus inheritance in UI code?",
+            "ar": "كيف تقيّم composition مقابل inheritance في UI؟"
+          },
+          "answer": {
+            "en": "<p>Composition combines behaviors and data explicitly and avoids fragile base-class coupling. Inheritance is reasonable for a true substitutable relationship with a stable contract, but component trees and directives usually favor composition.</p>",
+            "ar": "<p>تجمع composition السلوك والبيانات بوضوح وتتجنب coupling هش مع base class. inheritance مناسبة لعلاقة substitutable حقيقية وcontract ثابتة، لكن UI components غالبًا تستفيد من composition.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Refactoring Guru · Design patterns",
+                "url": "https://refactoring.guru/design-patterns"
+              }
+            ]
           }
         }
       ]
@@ -1563,6 +2811,502 @@
             "status": "imported",
             "lastReviewedAt": null,
             "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-159",
+          "prompt": {
+            "en": "How do browser caching and CDN caching differ?",
+            "ar": "ما الفرق بين browser caching وCDN caching؟"
+          },
+          "answer": {
+            "en": "<p>Browser caches are private to a client; CDN caches are shared near users. Cache-Control directives, validators, Vary, authorization, and cache keys determine correctness. I version immutable assets and design HTML/API caching separately.</p>",
+            "ar": "<p>Browser cache خاصة بالعميل وCDN cache مشتركة قرب المستخدمين. تتحكم Cache-Control وvalidators وVary وauthorization وcache keys في الصحة. أستخدم versioning للأصول وأصمم caching للHTML والAPI منفصلًا.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTTP",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-160",
+          "prompt": {
+            "en": "What is the difference between strong and weak ETags?",
+            "ar": "ما الفرق بين strong وweak ETags؟"
+          },
+          "answer": {
+            "en": "<p>A strong ETag represents byte-for-byte equivalence and supports range semantics; a weak validator represents semantic equivalence. Clients send validators in conditional requests so a server can reply 304 without resending the body.</p>",
+            "ar": "<p>يمثل strong ETag تطابق bytes ويدعم range semantics، بينما weak validator يمثل تكافؤًا semantic. يرسل العميل validator في conditional request وقد يعيد السيرفر 304 بلا body.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTTP",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-161",
+          "prompt": {
+            "en": "How do HTTP/2 and HTTP/3 change frontend optimization?",
+            "ar": "كيف يغير HTTP/2 وHTTP/3 تحسينات الـfrontend؟"
+          },
+          "answer": {
+            "en": "<p>Multiplexing reduces the old need for domain sharding and concatenating everything. HTTP/3 runs over QUIC and improves connection behavior under loss and migration. Bundling still matters for compression, caching, parse cost, and request overhead.</p>",
+            "ar": "<p>يقلل multiplexing الحاجة القديمة لـdomain sharding ودمج كل الملفات. يعمل HTTP/3 فوق QUIC ويحسن الاتصال مع loss والتنقل. يظل bundling مهمًا للضغط والcache وparse cost والoverhead.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTTP",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP"
+              },
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-162",
+          "prompt": {
+            "en": "When would you use WebSocket, Server-Sent Events, or polling?",
+            "ar": "متى تستخدم WebSocket أوSSE أوpolling؟"
+          },
+          "answer": {
+            "en": "<p>WebSocket supports bidirectional low-latency messaging; SSE is simpler server-to-client text streaming with HTTP reconnection semantics; polling is widely compatible and can be sufficient for infrequent updates. I compare direction, frequency, infrastructure, ordering, and recovery.</p>",
+            "ar": "<p>يدعم WebSocket اتصالًا ثنائيًا منخفض التأخير، وSSE بثًا نصيًا من السيرفر للعميل مع reconnection، وpolling بسيطًا مناسبًا للتحديثات القليلة. أقارن الاتجاه والتكرار والبنية والترتيب والتعافي.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTTP",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-163",
+          "prompt": {
+            "en": "How do retries create duplicate writes?",
+            "ar": "كيف تسبب retries عمليات كتابة مكررة؟"
+          },
+          "answer": {
+            "en": "<p>A timeout does not prove the server failed; retrying a non-idempotent operation can duplicate it. I use idempotency keys or idempotent resource design, retry only suitable failures with bounds and jitter, and surface uncertain outcomes.</p>",
+            "ar": "<p>الـtimeout لا يثبت فشل السيرفر، وإعادة non-idempotent operation قد تكررها. أستخدم idempotency key أوتصميمًا idempotent، وأعيد أخطاء مناسبة فقط بحدود وjitter وأوضح النتائج غير المؤكدة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTTP",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-164",
+          "prompt": {
+            "en": "What is optimistic concurrency control?",
+            "ar": "ما هي optimistic concurrency control؟"
+          },
+          "answer": {
+            "en": "<p>The client submits a version or validator such as If-Match; the server rejects stale writes instead of silently overwriting newer data. The UI then asks the user to merge, reload, or retry based on product rules.</p>",
+            "ar": "<p>يرسل العميل version أوvalidator مثل If-Match، ويرفض السيرفر الكتابة القديمة بدل overwrite صامت. تعرض الواجهة خيار merge أوreload أوretry حسب قواعد المنتج.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTTP",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-165",
+          "prompt": {
+            "en": "How do CORS and the same-origin policy differ?",
+            "ar": "ما الفرق بين CORS وsame-origin policy؟"
+          },
+          "answer": {
+            "en": "<p>The same-origin policy restricts script access to cross-origin resources. CORS is a server-controlled opt-in that lets browsers expose selected responses. It is not authentication, and a server-to-server client is not protected by browser CORS enforcement.</p>",
+            "ar": "<p>تقيّد same-origin policy وصول scripts لمصادر cross-origin. CORS سماح يحدده السيرفر ليكشف المتصفح responses محددة. ليست authentication ولا تطبقها المتصفحات على server-to-server clients.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTTP",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP"
+              },
+              {
+                "title": "OWASP · Web Security Testing Guide",
+                "url": "https://owasp.org/www-project-web-security-testing-guide/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-166",
+          "prompt": {
+            "en": "How do you reason about a preflight request?",
+            "ar": "كيف تفكر في preflight request؟"
+          },
+          "answer": {
+            "en": "<p>The browser sends OPTIONS before certain cross-origin requests to ask which methods, headers, credentials, and origins are allowed. I inspect the actual request origin and requested headers, then fix server policy rather than adding random client headers.</p>",
+            "ar": "<p>يرسل المتصفح OPTIONS قبل طلبات cross-origin معينة ليسأل عن methods وheaders وcredentials وorigins المسموحة. أفحص origin والheaders المطلوبة وأصلح سياسة السيرفر بدل headers عشوائية في العميل.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTTP",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-167",
+          "prompt": {
+            "en": "What is content negotiation, and why does Vary matter?",
+            "ar": "ما هو content negotiation ولماذا يهم Vary؟"
+          },
+          "answer": {
+            "en": "<p>Servers may select a representation using Accept, encoding, or language headers. Shared caches need <code>Vary</code> so variants do not leak across incompatible requests, but excessive Vary values can destroy cache efficiency.</p>",
+            "ar": "<p>قد يختار السيرفر representation عبر Accept أوencoding أوlanguage. تحتاج shared caches إلى <code>Vary</code> حتى لا تختلط variants، لكن قيم Vary كثيرة قد تدمر كفاءة cache.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTTP",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-168",
+          "prompt": {
+            "en": "How do you solve a frontend performance regression using Git?",
+            "ar": "كيف تحل frontend performance regression باستخدام Git؟"
+          },
+          "answer": {
+            "en": "<p>I establish a reproducible metric and environment, find a known-good commit, then use <code>git bisect</code> with a reliable manual or automated check. After identifying the change, I verify causation with profiling rather than blaming the commit correlation alone.</p>",
+            "ar": "<p>أثبت metric وبيئة قابلة للتكرار وأحدد commit سليمة ثم أستخدم <code>git bisect</code> مع check موثوق. بعد العثور على التغيير أؤكد السبب بالprofiling لا بمجرد الارتباط.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-169",
+          "prompt": {
+            "en": "What does a Content Security Policy protect, and what does it not?",
+            "ar": "ماذا تحمي Content Security Policy وما حدودها؟"
+          },
+          "answer": {
+            "en": "<p>Content Security Policy restricts where scripts and other resources may load or execute, reducing the impact of injection. I prefer nonce or hash-based strict policies, deploy report-only first, and still fix the underlying XSS because CSP is defense in depth.</p>",
+            "ar": "<p>تقيّد Content Security Policy مصادر وتنفيذ scripts والموارد فتقلل أثر injection. أفضل strict policy بالnonce أوhash وأبدأ report-only، مع إصلاح XSS نفسها لأن CSP دفاع إضافي وليست بديلًا.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "web.dev · Security headers",
+                "url": "https://web.dev/articles/security-headers"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-170",
+          "prompt": {
+            "en": "What problem do Trusted Types solve?",
+            "ar": "ما المشكلة التي تحلها Trusted Types؟"
+          },
+          "answer": {
+            "en": "<p>Trusted Types can require dangerous DOM sinks such as innerHTML to receive values created by an approved policy. This concentrates sanitization and blocks accidental string injection, but the policy itself must not blindly trust input.</p>",
+            "ar": "<p>يمكن لـTrusted Types إجبار sinks خطرة مثل innerHTML على استقبال قيم من policy معتمدة. تجمع sanitization وتمنع string injection العرضية، لكن يجب ألا تثق policy في input بلا تحقق.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "web.dev · Security headers",
+                "url": "https://web.dev/articles/security-headers"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-171",
+          "prompt": {
+            "en": "How does CSRF happen, and how is it mitigated?",
+            "ar": "كيف يحدث CSRF وكيف تمنعه؟"
+          },
+          "answer": {
+            "en": "<p>A browser can attach ambient credentials such as cookies to a forged cross-site request. Defenses include SameSite cookies, anti-CSRF tokens, origin checks, and avoiding state changes through safe methods. XSS can bypass many CSRF defenses.</p>",
+            "ar": "<p>قد يرفق المتصفح credentials مثل cookies بطلب مزور cross-site. تشمل الحماية SameSite وanti-CSRF token وفحص origin وعدم تغيير state بsafe methods. تستطيع XSS تجاوز كثير من وسائل CSRF.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "OWASP · Web Security Testing Guide",
+                "url": "https://owasp.org/www-project-web-security-testing-guide/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-172",
+          "prompt": {
+            "en": "How do HttpOnly, Secure, and SameSite cookie attributes differ?",
+            "ar": "ما الفرق بين HttpOnly وSecure وSameSite في cookies؟"
+          },
+          "answer": {
+            "en": "<p>HttpOnly blocks JavaScript access, Secure restricts transport to HTTPS, and SameSite controls cross-site attachment. Path, Domain, lifetime, prefixes, and server-side session design also matter; no single attribute makes a session secure.</p>",
+            "ar": "<p>يمنع HttpOnly وصول JavaScript، ويقيد Secure النقل على HTTPS، ويتحكم SameSite في الإرسال cross-site. يهم أيضًا Path وDomain والعمر والprefixes وتصميم session على السيرفر؛ لا توجد attribute سحرية.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · HTTP",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP"
+              },
+              {
+                "title": "OWASP · Web Security Testing Guide",
+                "url": "https://owasp.org/www-project-web-security-testing-guide/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-173",
+          "prompt": {
+            "en": "How do you defend against clickjacking?",
+            "ar": "كيف تمنع clickjacking؟"
+          },
+          "answer": {
+            "en": "<p>The server restricts who may frame the page using CSP <code>frame-ancestors</code> and, for legacy support, X-Frame-Options. Sensitive actions also need clear confirmation and robust authorization; frontend frame-busting scripts are not a reliable control.</p>",
+            "ar": "<p>يقيد السيرفر من يستطيع وضع الصفحة داخل frame عبر CSP <code>frame-ancestors</code> وX-Frame-Options للدعم القديم. تحتاج الأفعال الحساسة تأكيدًا وصلاحيات؛ frame-busting scripts ليست حماية موثوقة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "web.dev · Security headers",
+                "url": "https://web.dev/articles/security-headers"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-174",
+          "prompt": {
+            "en": "How do you use postMessage safely?",
+            "ar": "كيف تستخدم postMessage بأمان؟"
+          },
+          "answer": {
+            "en": "<p>I send to an exact targetOrigin, validate event.origin and the sender relationship, validate the payload schema, and expose a narrow message protocol. Using <code>*</code> or trusting a message by shape alone can leak data or trigger actions.</p>",
+            "ar": "<p>أرسل إلى targetOrigin محددة وأتحقق من event.origin وعلاقة المصدر وschema للpayload وأصمم protocol ضيقة. استخدام <code>*</code> أوالثقة في شكل الرسالة فقط قد يسرب بيانات أوينفذ أفعالًا.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "OWASP · Web Security Testing Guide",
+                "url": "https://owasp.org/www-project-web-security-testing-guide/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-175",
+          "prompt": {
+            "en": "What is prototype pollution in frontend JavaScript?",
+            "ar": "ما هي prototype pollution في JavaScript؟"
+          },
+          "answer": {
+            "en": "<p>Unsafe recursive merging or path assignment can write attacker-controlled properties such as __proto__ into shared prototypes. I validate keys, use safe libraries and patched versions, prefer allowlists, and avoid treating plain objects as untrusted dictionaries.</p>",
+            "ar": "<p>قد تكتب عمليات merge أوpath assignment غير الآمنة properties يتحكم بها مهاجم مثل __proto__ داخل prototypes مشتركة. أتحقق من المفاتيح وأستخدم مكتبات محدثة وallowlists ولا أتعامل مع object عادي كdictionary غير موثوقة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "OWASP · Web Security Testing Guide",
+                "url": "https://owasp.org/www-project-web-security-testing-guide/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-176",
+          "prompt": {
+            "en": "How do you reduce frontend dependency supply-chain risk?",
+            "ar": "كيف تقلل مخاطر supply chain في dependencies؟"
+          },
+          "answer": {
+            "en": "<p>I minimize dependencies, pin and lock reproducible versions, review provenance and maintenance, scan advisories, restrict install scripts in sensitive pipelines, protect publishing credentials, and update through tested small changes.</p>",
+            "ar": "<p>أقلل dependencies وأثبت versions عبر lockfile وأراجع provenance والصيانة وأفحص advisories وأقيد install scripts في pipelines الحساسة وأحمي publishing credentials وأحدّث بتغييرات صغيرة مختبرة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "OWASP · Web Security Testing Guide",
+                "url": "https://owasp.org/www-project-web-security-testing-guide/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-177",
+          "prompt": {
+            "en": "What does Subresource Integrity provide?",
+            "ar": "ماذا توفر Subresource Integrity؟"
+          },
+          "answer": {
+            "en": "<p>SRI lets a browser verify that a fetched script or stylesheet matches an expected cryptographic hash. It is useful for fixed third-party assets, requires compatible CORS behavior for cross-origin resources, and needs hash updates when the asset changes.</p>",
+            "ar": "<p>تسمح SRI للمتصفح بالتحقق أن script أوstylesheet يطابق hash متوقعة. تفيد مع assets خارجية ثابتة وتتطلب CORS مناسبًا للcross-origin ويجب تحديث hash عند تغير الملف.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "web.dev · Security headers",
+                "url": "https://web.dev/articles/security-headers"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-178",
+          "prompt": {
+            "en": "Where should access and refresh tokens be stored?",
+            "ar": "أين يجب تخزين access وrefresh tokens؟"
+          },
+          "answer": {
+            "en": "<p>There is no universal answer: I start from the threat model. Long-lived session secrets are often safer in Secure HttpOnly SameSite cookies with CSRF defenses; keeping tokens in JavaScript-accessible storage increases XSS exposure. Rotation, expiry, revocation, and server validation remain essential.</p>",
+            "ar": "<p>لا توجد إجابة واحدة؛ أبدأ بالthreat model. غالبًا تكون session secrets طويلة العمر أكثر أمانًا داخل Secure HttpOnly SameSite cookies مع CSRF defenses، بينما التخزين الذي تقرؤه JavaScript يزيد أثر XSS. يظل rotation وexpiry وrevocation والتحقق على السيرفر ضروريًا.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "OWASP · Web Security Testing Guide",
+                "url": "https://owasp.org/www-project-web-security-testing-guide/"
+              },
+              {
+                "title": "MDN · HTTP",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP"
+              }
+            ]
           }
         }
       ]
@@ -1769,6 +3513,254 @@
             "lastReviewedAt": null,
             "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
           }
+        },
+        {
+          "id": "q-179",
+          "prompt": {
+            "en": "How does modern Angular schedule change detection without Zone.js?",
+            "ar": "كيف يجدول Angular الحديث change detection بدون Zone.js؟"
+          },
+          "answer": {
+            "en": "<p>Zoneless Angular reacts to explicit notifications such as updating a template-read signal, AsyncPipe emissions, bound listeners, input updates, and markForCheck. Code that changes state outside these paths must notify Angular deliberately.</p>",
+            "ar": "<p>يعتمد Zoneless Angular على إشعارات واضحة مثل تحديث signal مستخدمة في template وAsyncPipe وlisteners وinputs وmarkForCheck. الكود خارج هذه المسارات يجب أن يخطر Angular صراحة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular roadmap",
+                "url": "https://angular.dev/roadmap"
+              },
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-180",
+          "prompt": {
+            "en": "What changes when OnPush becomes the default strategy?",
+            "ar": "ماذا يتغير عندما تصبح OnPush هي الاستراتيجية الافتراضية؟"
+          },
+          "answer": {
+            "en": "<p>Components should update through inputs, signals, events, AsyncPipe, or explicit notifications rather than broad eager checks. Mutating an object in place can still hide a change when no notification occurs, so state boundaries and identity remain important.</p>",
+            "ar": "<p>يجب أن تتحدث components عبر inputs وsignals وevents وAsyncPipe أوإشعارات صريحة بدل checks واسعة. mutation داخل object قد يخفي التغيير إذا لم يحدث notification، لذلك تظل identity وحدود state مهمة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular roadmap",
+                "url": "https://angular.dev/roadmap"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-181",
+          "prompt": {
+            "en": "When do you use signal, linkedSignal, resource, and httpResource?",
+            "ar": "متى تستخدم signal وlinkedSignal وresource وhttpResource؟"
+          },
+          "answer": {
+            "en": "<p>A signal owns synchronous state; linkedSignal derives writable state that resets with dependencies; resource coordinates async state; httpResource specializes reactive HTTP fetching. I choose the narrowest primitive and keep mutation and cancellation semantics explicit.</p>",
+            "ar": "<p>تملك signal state متزامنة، وتشتق linkedSignal state قابلة للكتابة يعاد ضبطها مع dependencies، وتنسق resource async state، ويتخصص httpResource في HTTP reactive. أختار أبسط primitive وأوضح mutation وcancellation.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular roadmap",
+                "url": "https://angular.dev/roadmap"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-182",
+          "prompt": {
+            "en": "How do signal inputs, outputs, and model inputs affect component APIs?",
+            "ar": "كيف تؤثر signal inputs وoutputs وmodel inputs على component APIs؟"
+          },
+          "answer": {
+            "en": "<p>Signal inputs provide reactive readonly input state, outputs emit events, and model inputs support explicit two-way value contracts. I still design one-way ownership first and reserve two-way models for controls with a clear value abstraction.</p>",
+            "ar": "<p>توفر signal inputs حالة input reactive للقراءة، وتطلق outputs أحداثًا، وتدعم model inputs عقد two-way واضحة. أبدأ بملكية one-way وأحصر two-way في controls لها value abstraction واضحة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-183",
+          "prompt": {
+            "en": "What are viewChild and contentChild signal queries?",
+            "ar": "ما هي viewChild وcontentChild signal queries؟"
+          },
+          "answer": {
+            "en": "<p>They expose query results as signals that update as the view or projected content changes. View queries inspect the component template; content queries inspect projected content. I avoid using queries as a substitute for clear data flow.</p>",
+            "ar": "<p>تعرض نتائج query كsignals تتغير مع view أوprojected content. تفحص view queries template الخاصة بالcomponent، وتفحص content queries المحتوى المسقط. لا أستخدم queries بدل data flow واضحة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-184",
+          "prompt": {
+            "en": "How does Angular injection context constrain inject()?",
+            "ar": "كيف يقيّد Angular injection context استخدام inject()؟"
+          },
+          "answer": {
+            "en": "<p><code>inject()</code> works while Angular is creating a class, in field initializers, provider factories, and code run in an injection context. Calling it later in an arbitrary callback fails unless a captured Injector is used with runInInjectionContext.</p>",
+            "ar": "<p>تعمل <code>inject()</code> أثناء إنشاء class وفي field initializers وprovider factories وكود داخل injection context. تفشل داخل callback عشوائية لاحقًا إلا باستخدام Injector محفوظة مع runInInjectionContext.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-185",
+          "prompt": {
+            "en": "What is EnvironmentInjector ownership and destruction?",
+            "ar": "ما معنى ملكية EnvironmentInjector وتدميرها؟"
+          },
+          "answer": {
+            "en": "<p>An EnvironmentInjector owns provider instances created in its scope and runs destruction hooks when destroyed. Dynamically created injectors and components need explicit lifecycle ownership; losing the reference without destroying them can retain services and resources.</p>",
+            "ar": "<p>تملك EnvironmentInjector provider instances في نطاقها وتشغل destruction hooks عند تدميرها. injectors وcomponents المنشأة ديناميكيًا تحتاج lifecycle واضحة؛ فقد المرجع دون destroy قد يحتفظ بموارد.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-186",
+          "prompt": {
+            "en": "When would you create a custom Angular directive with hostDirectives?",
+            "ar": "متى تنشئ Angular directive مخصصة باستخدام hostDirectives؟"
+          },
+          "answer": {
+            "en": "<p>Host directives compose reusable host behavior, bindings, and providers into components or directives without inheritance. I use them for cohesive behaviors such as focus or analytics and expose only intentional inputs and outputs.</p>",
+            "ar": "<p>تجمع hostDirectives سلوك host وbindings وproviders قابلة لإعادة الاستخدام دون inheritance. أستخدمها لسلوك متماسك مثل focus أوanalytics وأكشف inputs وoutputs المقصودة فقط.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-187",
+          "prompt": {
+            "en": "How do built-in control flow and track affect list performance?",
+            "ar": "كيف يؤثر built-in control flow وtrack على أداء القوائم؟"
+          },
+          "answer": {
+            "en": "<p><code>@for</code> uses the track expression to associate data identity with DOM views. Stable unique keys minimize DOM destruction and preserve local state; tracking by index is suitable only when identity truly follows position.</p>",
+            "ar": "<p>تستخدم <code>@for</code> تعبير track لربط هوية البيانات بالDOM views. مفاتيح فريدة وثابتة تقلل destruction وتحفظ local state؛ track بالindex مناسب فقط عندما تتبع الهوية الموضع فعلًا.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-188",
+          "prompt": {
+            "en": "How would you profile an Angular component before optimizing it?",
+            "ar": "كيف تعمل profiling لـAngular component قبل تحسينها؟"
+          },
+          "answer": {
+            "en": "<p>I reproduce a user-visible slowdown, inspect Angular DevTools change-detection and signal information, use the browser performance panel for scripting/layout/paint, and compare before/after traces. Render counts alone do not prove impact.</p>",
+            "ar": "<p>أكرر البطء الظاهر للمستخدم وأفحص Angular DevTools وbrowser performance panel للscripting وlayout وpaint وأقارن traces قبل وبعد. عدد renders وحده لا يثبت التأثير.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              },
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
         }
       ]
     },
@@ -1909,6 +3901,266 @@
             "status": "imported",
             "lastReviewedAt": null,
             "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-189",
+          "prompt": {
+            "en": "How do functional route guards and resolvers use DI?",
+            "ar": "كيف تستخدم functional route guards وresolvers الـDI؟"
+          },
+          "answer": {
+            "en": "<p>They call <code>inject()</code> in the router-provided injection context and return sync values, Promises, Observables, or redirects as appropriate. I keep authorization authoritative on the server and guards focused on navigation UX.</p>",
+            "ar": "<p>تستخدم <code>inject()</code> داخل injection context للrouter وتعيد قيمًا أوPromises أوObservables أوredirects. تبقى authorization حقيقية على السيرفر وتخدم guards تجربة التنقل.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-190",
+          "prompt": {
+            "en": "How do route-level providers affect service lifetime?",
+            "ar": "كيف تؤثر route-level providers على عمر الـservice؟"
+          },
+          "answer": {
+            "en": "<p>A route can create an EnvironmentInjector for its providers, sharing instances within that route subtree. The lifetime follows router ownership and reuse behavior, so custom reuse strategies and retained handles must be reviewed when state appears to survive navigation.</p>",
+            "ar": "<p>قد ينشئ route EnvironmentInjector لمزوداته ويشارك instances داخل subtree. يتبع العمر ملكية router وسلوك reuse، لذلك أراجع reuse strategies والhandles المحتفظ بها إذا استمرت state بعد navigation.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-191",
+          "prompt": {
+            "en": "How do you choose CSR, SSR, prerendering, or route-level render modes?",
+            "ar": "كيف تختار CSR أوSSR أوprerendering أوroute-level render modes؟"
+          },
+          "answer": {
+            "en": "<p>I choose per route: static public pages can prerender, personalized crawlable pages may SSR, highly interactive private areas may CSR. I compare freshness, hosting, TTFB, caching, hydration cost, and operational complexity.</p>",
+            "ar": "<p>أختار لكل route: الصفحات العامة الثابتة قد تستخدم prerender، والمخصصة القابلة للفهرسة SSR، والمناطق الخاصة شديدة التفاعل CSR. أقارن freshness وhosting وTTFB وcache وhydration والتعقيد.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular roadmap",
+                "url": "https://angular.dev/roadmap"
+              },
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-192",
+          "prompt": {
+            "en": "What does @defer load, and what should trigger it?",
+            "ar": "ماذا يحمّل @defer وما الـtrigger المناسب؟"
+          },
+          "answer": {
+            "en": "<p><code>@defer</code> can split standalone dependencies into a lazy chunk and render placeholder, loading, and error states. I select viewport, interaction, idle, or explicit triggers from UX needs and avoid deferring content critical to LCP or accessibility.</p>",
+            "ar": "<p>يمكن لـ<code>@defer</code> فصل standalone dependencies في chunk كسول مع placeholder وloading وerror. أختار viewport أوinteraction أوidle حسب UX ولا أؤجل محتوى مهمًا لـLCP أوaccessibility.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-193",
+          "prompt": {
+            "en": "How do Signal Forms differ from Reactive Forms?",
+            "ar": "كيف تختلف Signal Forms عن Reactive Forms؟"
+          },
+          "answer": {
+            "en": "<p>Signal Forms model form state and schema rules through signals and are stable in Angular v22, with interoperability for progressive migration. Reactive Forms remain valid and Observable-centric. I choose based on project version, ecosystem, complexity, and migration cost.</p>",
+            "ar": "<p>تبني Signal Forms حالة النموذج وقواعد schema بالsignals وهي stable في Angular v22 مع interoperability للهجرة التدريجية. تظل Reactive Forms صالحة وتعتمد Observables. أختار حسب الإصدار والنظام والتعقيد وتكلفة النقل.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular roadmap",
+                "url": "https://angular.dev/roadmap"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-194",
+          "prompt": {
+            "en": "How do you build accessible custom form controls?",
+            "ar": "كيف تبني custom form controls accessible؟"
+          },
+          "answer": {
+            "en": "<p>The control needs a real label, keyboard and focus behavior, value semantics, disabled/read-only handling, validation state, and error association. Angular integration does not replace native accessibility; I prefer wrapping native inputs when possible.</p>",
+            "ar": "<p>يحتاج control label حقيقية وسلوك keyboard وfocus ومعنى value وتعامل disabled/readonly وحالة validation وربط errors. تكامل Angular لا يعوض accessibility الأصلية؛ أفضل تغليف native inputs.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              },
+              {
+                "title": "W3C · WCAG 2.2",
+                "url": "https://www.w3.org/TR/WCAG22/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-195",
+          "prompt": {
+            "en": "How do you prevent refresh-token request storms?",
+            "ar": "كيف تمنع request storm أثناء refresh token؟"
+          },
+          "answer": {
+            "en": "<p>I allow one refresh operation, share its result with queued eligible requests, avoid intercepting the refresh itself, bound retries, and force a clean logout on terminal failure. The backend must rotate and validate tokens securely.</p>",
+            "ar": "<p>أسمح بعملية refresh واحدة وأشارك نتيجتها مع الطلبات المنتظرة المناسبة وأمنع interceptor من اعتراض refresh نفسها وأحد retries وأنفذ logout واضحًا عند الفشل النهائي. السيرفر مسؤول عن الأمان.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              },
+              {
+                "title": "OWASP · Web Security Testing Guide",
+                "url": "https://owasp.org/www-project-web-security-testing-guide/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-196",
+          "prompt": {
+            "en": "Where should authorization rules live in an Angular application?",
+            "ar": "أين تعيش authorization rules في تطبيق Angular؟"
+          },
+          "answer": {
+            "en": "<p>The server enforces every protected operation. The frontend may centralize capability checks to hide or disable UI consistently and guards may improve navigation, but neither is a security boundary.</p>",
+            "ar": "<p>يفرض السيرفر كل عملية محمية. قد تجمع الواجهة capability checks لإظهار UI متسق وتستخدم guards لتحسين navigation، لكن أيًا منهما ليس security boundary.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              },
+              {
+                "title": "OWASP · Web Security Testing Guide",
+                "url": "https://owasp.org/www-project-web-security-testing-guide/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-197",
+          "prompt": {
+            "en": "How do you preserve unsaved form work across navigation?",
+            "ar": "كيف تحفظ تعديلات form غير المحفوظة أثناء navigation؟"
+          },
+          "answer": {
+            "en": "<p>I define what counts as dirty, warn with a canDeactivate flow for in-app navigation, persist drafts when product requirements justify it, and handle version conflicts. Browser unload prompts are limited and should not be the only protection.</p>",
+            "ar": "<p>أحدد معنى dirty وأحذر عبر canDeactivate داخل التطبيق وأحفظ drafts إذا احتاج المنتج وأتعامل مع version conflicts. browser unload prompts محدودة ولا يجب الاعتماد عليها وحدها.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-198",
+          "prompt": {
+            "en": "How do you test a complex validation flow?",
+            "ar": "كيف تختبر validation flow معقدة؟"
+          },
+          "answer": {
+            "en": "<p>I test pure rules directly, integration between control state and visible accessible errors, async validator cancellation and races, submit gating, server-error mapping, and keyboard behavior. I avoid asserting framework internals.</p>",
+            "ar": "<p>أختبر القواعد النقية مباشرة، وربط control state بالerrors المرئية والمتاحة، وإلغاء async validators والسباقات، ومنع submit وربط server errors وسلوك keyboard، دون اختبار internals للframework.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              },
+              {
+                "title": "Angular · Testing",
+                "url": "https://angular.dev/guide/testing"
+              }
+            ]
           }
         }
       ]
@@ -2074,6 +4326,250 @@
             "status": "imported",
             "lastReviewedAt": null,
             "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-199",
+          "prompt": {
+            "en": "What is the difference between unicast and multicast Observables?",
+            "ar": "ما الفرق بين unicast وmulticast Observables؟"
+          },
+          "answer": {
+            "en": "<p>A cold unicast source normally creates independent work per subscriber. Multicasting shares one source subscription through a Subject-like connector. I make sharing explicit because it changes execution, lifetime, caching, and error behavior.</p>",
+            "ar": "<p>ينشئ cold unicast عملًا مستقلًا لكل subscriber عادة. تشارك multicasting subscription واحدة عبر connector شبيه Subject. أوضح المشاركة لأنها تغير التنفيذ والعمر والcache والأخطاء.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "RxJS documentation",
+                "url": "https://rxjs.dev/guide/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-200",
+          "prompt": {
+            "en": "What do share reset options control?",
+            "ar": "ما الذي تتحكم فيه reset options داخل share؟"
+          },
+          "answer": {
+            "en": "<p><code>share</code> can reset its connector on error, completion, or when the reference count reaches zero. The right policy depends on whether data is a live stream, restartable computation, or finite request; defaults should be understood rather than copied.</p>",
+            "ar": "<p>يمكن لـ<code>share</code> إعادة connector عند error أوcomplete أووصول ref count للصفر. السياسة تعتمد على stream حي أوحساب قابل للإعادة أوطلب finite؛ يجب فهم defaults.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "RxJS documentation",
+                "url": "https://rxjs.dev/guide/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-201",
+          "prompt": {
+            "en": "How do schedulers affect RxJS execution?",
+            "ar": "كيف تؤثر schedulers على تنفيذ RxJS؟"
+          },
+          "answer": {
+            "en": "<p>Schedulers control when queued work executes and can change recursion, batching, and interaction with the event loop. I use them for a specific timing or testing need, not as a generic performance switch.</p>",
+            "ar": "<p>تتحكم schedulers في توقيت العمل وقد تغير recursion وbatching وعلاقتها بالevent loop. أستخدمها لحاجة timing أوtesting محددة، لا كمفتاح أداء عام.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "RxJS documentation",
+                "url": "https://rxjs.dev/guide/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-202",
+          "prompt": {
+            "en": "When are higher-order streams preferable to nested subscriptions?",
+            "ar": "متى تكون higher-order streams أفضل من nested subscriptions؟"
+          },
+          "answer": {
+            "en": "<p>Flattening operators make concurrency, cancellation, ordering, error scope, and teardown part of one pipeline. Nested subscriptions hide those policies and often complicate cleanup, though a deliberately bounded imperative subscription can still be clear.</p>",
+            "ar": "<p>تجعل flattening operators التزامن والإلغاء والترتيب ونطاق الخطأ والcleanup جزءًا من pipeline واحدة. تخفي nested subscriptions هذه السياسات، رغم أن imperative subscription محدودة قد تكون واضحة أحيانًا.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "RxJS documentation",
+                "url": "https://rxjs.dev/guide/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-203",
+          "prompt": {
+            "en": "How do you preserve an outer stream after an inner request fails?",
+            "ar": "كيف تحافظ على outer stream بعد فشل inner request؟"
+          },
+          "answer": {
+            "en": "<p>I place <code>catchError</code> inside the flattening operator when one request should recover without terminating the source interaction stream. Catching outside instead handles failure for the whole composed stream and may end future interactions.</p>",
+            "ar": "<p>أضع <code>catchError</code> داخل flattening operator عندما يجب أن يتعافى طلب واحد دون إنهاء stream التفاعل. وضعها بالخارج يعالج pipeline كلها وقد يمنع تفاعلات لاحقة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "RxJS documentation",
+                "url": "https://rxjs.dev/guide/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-204",
+          "prompt": {
+            "en": "What is the role of finalize?",
+            "ar": "ما دور finalize؟"
+          },
+          "answer": {
+            "en": "<p><code>finalize</code> runs when an Observable terminates through completion, error, or unsubscription. It is useful for cleanup or paired UI state, but I avoid using it to hide shared mutable state whose ordering is unclear.</p>",
+            "ar": "<p>تعمل <code>finalize</code> عند complete أوerror أوunsubscribe. تفيد cleanup أوحالة UI مرتبطة، لكن لا أستخدمها لإخفاء shared mutable state بترتيب غامض.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "RxJS documentation",
+                "url": "https://rxjs.dev/guide/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-205",
+          "prompt": {
+            "en": "How do you model request state without multiple drifting booleans?",
+            "ar": "كيف تمثل request state دون booleans متعددة غير متسقة؟"
+          },
+          "answer": {
+            "en": "<p>I use a discriminated state such as idle, loading, success with data, or error with context. One state prevents impossible combinations like loading and success simultaneously and makes templates and tests exhaustive.</p>",
+            "ar": "<p>أستخدم discriminated state مثل idle وloading وsuccess مع data أوerror مع context. تمنع state واحدة حالات مستحيلة مثل loading وsuccess معًا وتجعل template والtests شاملة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "RxJS documentation",
+                "url": "https://rxjs.dev/guide/overview"
+              },
+              {
+                "title": "TypeScript Handbook",
+                "url": "https://www.typescriptlang.org/docs/handbook/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-206",
+          "prompt": {
+            "en": "When can combineLatest appear to do nothing?",
+            "ar": "متى يبدو combineLatest وكأنه لا يعمل؟"
+          },
+          "answer": {
+            "en": "<p>It waits until every input has emitted at least once. A never-emitting source, a filtered initial value, or a late subscription can block output. I seed only when a real domain initial value exists, not merely to force emission.</p>",
+            "ar": "<p>ينتظر emission واحدة من كل input. قد يمنعه source لا يصدر أوinitial value مفلترة أوlate subscription. أضيف seed فقط إذا كانت هناك قيمة ابتدائية حقيقية في domain.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "RxJS documentation",
+                "url": "https://rxjs.dev/guide/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-207",
+          "prompt": {
+            "en": "How do you test RxJS time-dependent behavior?",
+            "ar": "كيف تختبر سلوك RxJS المعتمد على الزمن؟"
+          },
+          "answer": {
+            "en": "<p>I use a test scheduler or controlled fake time to express emissions and subscription windows, then assert cancellation and completion as well as values. Real timers make tests slow and flaky.</p>",
+            "ar": "<p>أستخدم test scheduler أوfake time متحكمًا به للتعبير عن emissions وsubscription windows، وأختبر cancellation وcompletion بجانب القيم. timers الحقيقية تجعل الاختبارات بطيئة ومتذبذبة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "RxJS documentation",
+                "url": "https://rxjs.dev/guide/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-208",
+          "prompt": {
+            "en": "How do you apply backpressure-like strategies in RxJS?",
+            "ar": "كيف تطبق استراتيجيات شبيهة بالbackpressure في RxJS؟"
+          },
+          "answer": {
+            "en": "<p>RxJS push streams do not provide universal backpressure, so I choose domain controls: debounce, throttle, sample, buffer, window, bounded concurrency, cancellation, or dropping. The operator must match what data may safely be delayed or lost.</p>",
+            "ar": "<p>لا توفر RxJS backpressure عامة، لذلك أختار حسب domain: debounce أوthrottle أوsample أوbuffer أوwindow أوconcurrency محدودة أوcancellation أوdrop. يجب أن يناسب operator البيانات التي يمكن تأخيرها أوفقدها.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "RxJS documentation",
+                "url": "https://rxjs.dev/guide/overview"
+              }
+            ]
           }
         }
       ]
@@ -2246,6 +4742,254 @@
             "lastReviewedAt": null,
             "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
           }
+        },
+        {
+          "id": "q-209",
+          "prompt": {
+            "en": "What makes a Signal computation glitch-free?",
+            "ar": "ما معنى أن Signal computation تكون glitch-free؟"
+          },
+          "answer": {
+            "en": "<p>Computed values are memoized and dependencies are tracked dynamically, so consumers observe a consistent derived value rather than every intermediate assignment. I keep derivation in computed and use effects for external side effects.</p>",
+            "ar": "<p>تكون computed memoized وتتعقب dependencies ديناميكيًا، فيرى المستهلك قيمة مشتقة متسقة بدل كل assignment وسيطة. أضع derivation في computed وأستخدم effects للside effects الخارجية.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-210",
+          "prompt": {
+            "en": "When is untracked appropriate in Signal code?",
+            "ar": "متى يكون untracked مناسبًا في Signal code؟"
+          },
+          "answer": {
+            "en": "<p><code>untracked</code> reads a signal without making it a dependency. I use it for incidental context in an effect, not to suppress a dependency that should actually trigger recomputation.</p>",
+            "ar": "<p>تقرأ <code>untracked</code> signal دون تسجيلها dependency. أستخدمها لمعلومة جانبية داخل effect، لا لإخفاء dependency يجب أن تعيد الحساب.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-211",
+          "prompt": {
+            "en": "How do effect cleanup and service lifetime interact?",
+            "ar": "كيف يتفاعل effect cleanup مع عمر الـservice؟"
+          },
+          "answer": {
+            "en": "<p>An effect is destroyed with its injection context unless manually managed. A root service effect can therefore live for the application lifetime and retain what it captures; I keep captures small and use cleanup for external subscriptions or resources.</p>",
+            "ar": "<p>تُدمر effect مع injection context إلا إذا أديرت يدويًا. effect داخل root service قد تعيش عمر التطبيق وتحتفظ بما تلتقطه؛ أقلل captures وأستخدم cleanup للموارد الخارجية.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-212",
+          "prompt": {
+            "en": "What should and should not live in NgRx Store?",
+            "ar": "ما الذي يجب وما لا يجب وضعه في NgRx Store؟"
+          },
+          "answer": {
+            "en": "<p>I store shared durable domain state and workflow state that benefits from events and replayable transitions. Ephemeral DOM state, duplicated derived data, nonserializable resources, and every local form keystroke usually belong elsewhere.</p>",
+            "ar": "<p>أخزن shared durable domain state وworkflow state التي تستفيد من events وانتقالات قابلة للتتبع. DOM state المؤقتة والبيانات المشتقة المكررة والموارد غير القابلة للserialization وكل keystroke محلية غالبًا مكانها خارج Store.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "NgRx documentation",
+                "url": "https://ngrx.io/guide/store"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-213",
+          "prompt": {
+            "en": "How do entity adapters affect NgRx state design?",
+            "ar": "كيف تؤثر entity adapters على تصميم NgRx state؟"
+          },
+          "answer": {
+            "en": "<p>An entity adapter normalizes collections into ids and entities and provides immutable update helpers and selectors. It reduces boilerplate but does not decide ownership, ordering, pagination, optimistic metadata, or cache invalidation.</p>",
+            "ar": "<p>تطبّع entity adapter collections إلى ids وentities وتوفر update helpers وselectors immutable. تقلل boilerplate لكنها لا تقرر الملكية أوالترتيب أوpagination أوoptimistic metadata أوcache invalidation.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "NgRx documentation",
+                "url": "https://ngrx.io/guide/store"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-214",
+          "prompt": {
+            "en": "How do you choose a flattening operator inside an NgRx effect?",
+            "ar": "كيف تختار flattening operator داخل NgRx effect؟"
+          },
+          "answer": {
+            "en": "<p>The action semantics decide: switch for latest-only reads, concat for ordered writes, exhaust for ignoring duplicate triggers while busy, and merge for safe concurrency. I also define error recovery so the effect source does not die.</p>",
+            "ar": "<p>تحدد semantics للaction الاختيار: switch لأحدث read، وconcat لكتابات مرتبة، وexhaust لتجاهل triggers مكررة أثناء العمل، وmerge لتوازي آمن. أحدد error recovery حتى لا تنتهي effect.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "NgRx documentation",
+                "url": "https://ngrx.io/guide/store"
+              },
+              {
+                "title": "RxJS documentation",
+                "url": "https://rxjs.dev/guide/overview"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-215",
+          "prompt": {
+            "en": "What are optimistic updates and rollback in NgRx?",
+            "ar": "ما هي optimistic updates وrollback في NgRx؟"
+          },
+          "answer": {
+            "en": "<p>The reducer applies an immediate local change, an effect sends the request, and success reconciles authoritative data while failure rolls back or marks conflict. I attach operation identity so overlapping requests do not revert the wrong state.</p>",
+            "ar": "<p>يطبق reducer تغييرًا محليًا فورًا وترسل effect الطلب، ثم يصالح success بيانات السيرفر ويعيد failure الحالة أويسجل conflict. أربط operation identity حتى لا يرجع طلب متداخل state خاطئة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "NgRx documentation",
+                "url": "https://ngrx.io/guide/store"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-216",
+          "prompt": {
+            "en": "How do selector props and factory selectors affect memoization?",
+            "ar": "كيف تؤثر selector props وfactory selectors على memoization؟"
+          },
+          "answer": {
+            "en": "<p>Selectors memoize based on input identity and their selector instance. Creating a new selector repeatedly or passing unstable objects defeats reuse. I create parameterized selectors at stable ownership boundaries and measure recomputation.</p>",
+            "ar": "<p>تعمل memoization حسب identity للinputs وinstance للselector. إنشاء selector جديدة باستمرار أوتمرير objects غير ثابتة يهدر reuse. أنشئ parameterized selectors في حدود ملكية ثابتة وأقيس recomputation.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "NgRx documentation",
+                "url": "https://ngrx.io/guide/store"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-217",
+          "prompt": {
+            "en": "How do you debug an NgRx action loop?",
+            "ar": "كيف تكتشف NgRx action loop؟"
+          },
+          "answer": {
+            "en": "<p>I inspect DevTools action history and effects that emit actions also matched by themselves or each other. I narrow ofType filters, separate command and success events, avoid unconditional redispatch, and test the effect sequence.</p>",
+            "ar": "<p>أفحص action history في DevTools وeffects التي تطلق actions تطابق نفسها أوغيرها. أضيق ofType وأفصل command عنsuccess وأمنع redispatch غير المشروط وأختبر تسلسل effect.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "NgRx documentation",
+                "url": "https://ngrx.io/guide/store"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-218",
+          "prompt": {
+            "en": "How can Signals and NgRx interoperate without duplicate sources of truth?",
+            "ar": "كيف تتكامل Signals وNgRx دون sources of truth مكررة؟"
+          },
+          "answer": {
+            "en": "<p>The Store remains authoritative for shared domain state; components can consume selected state through signal interop and keep local UI signals nearby. Writes flow through one chosen boundary rather than synchronizing two independently mutable copies.</p>",
+            "ar": "<p>تبقى Store المصدر الحقيقي للdomain state المشتركة، ويمكن للcomponents استهلاك selected state عبر signal interop مع local UI signals. تمر الكتابات عبر boundary واحدة بدل مزامنة نسختين mutable.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "NgRx documentation",
+                "url": "https://ngrx.io/guide/store"
+              },
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              }
+            ]
+          }
         }
       ]
     },
@@ -2369,6 +5113,258 @@
             "lastReviewedAt": null,
             "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
           }
+        },
+        {
+          "id": "q-219",
+          "prompt": {
+            "en": "Explain the critical rendering path.",
+            "ar": "اشرح critical rendering path."
+          },
+          "answer": {
+            "en": "<p>The browser parses HTML into DOM, CSS into CSSOM, combines them for layout, then paints and composites. Blocking resources, large DOM/CSS, synchronous scripts, layout invalidation, and heavy paint can delay useful pixels; I profile the actual bottleneck.</p>",
+            "ar": "<p>يفسر المتصفح HTML إلى DOM وCSS إلى CSSOM ثم ينفذ layout وpaint وcomposite. قد تؤخر blocking resources وDOM/CSS ضخمة وscripts متزامنة وlayout invalidation وpaint ثقيل ظهور المحتوى؛ أقيس عنق الزجاجة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-220",
+          "prompt": {
+            "en": "What causes layout thrashing?",
+            "ar": "ما الذي يسبب layout thrashing؟"
+          },
+          "answer": {
+            "en": "<p>Alternating DOM writes with layout reads can force repeated synchronous style and layout calculations. I batch reads and writes, use observers where appropriate, reduce DOM work, and verify the improvement in a performance trace.</p>",
+            "ar": "<p>التبديل بين DOM writes وlayout reads قد يفرض حساب style وlayout متزامنًا مرات كثيرة. أجمع القراءات والكتابات وأستخدم observers وأقلل DOM وأتحقق بالtrace.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-221",
+          "prompt": {
+            "en": "How do long tasks damage INP?",
+            "ar": "كيف تضر long tasks مقياس INP؟"
+          },
+          "answer": {
+            "en": "<p>A long main-thread task delays input handling or the next presentation. I split or yield noncritical work, reduce JavaScript and rendering cost, move suitable computation to a worker, and measure input delay, processing, and presentation delay separately.</p>",
+            "ar": "<p>تؤخر long task على main thread معالجة input أوالعرض التالي. أقسم العمل أوأعمل yield وأقلل JavaScript وrendering وأنقل الحساب المناسب إلى worker وأقيس أجزاء INP منفصلة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-222",
+          "prompt": {
+            "en": "When does code splitting hurt instead of help?",
+            "ar": "متى يضر code splitting بدل أن يفيد؟"
+          },
+          "answer": {
+            "en": "<p>Too many tiny chunks add request, scheduling, evaluation, and cache complexity; poorly chosen boundaries create waterfalls or duplicate dependencies. I split by navigation and expensive optional features, then inspect chunk graphs and real traces.</p>",
+            "ar": "<p>قد تضيف chunks صغيرة كثيرة overhead وscheduling وevaluation وتعقيد cache، وقد تسبب boundaries سيئة waterfalls أوdependencies مكررة. أقسم حسب navigation وfeatures اختيارية مكلفة وأفحص graphs وtraces.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-223",
+          "prompt": {
+            "en": "What is the difference between lab and field performance data?",
+            "ar": "ما الفرق بين lab وfield performance data؟"
+          },
+          "answer": {
+            "en": "<p>Lab data is controlled and reproducible for diagnosis; field data reflects real devices, networks, caches, and user behavior over distributions. I use field data to prioritize and lab traces to reproduce and fix.</p>",
+            "ar": "<p>بيانات lab متحكم بها وقابلة للتكرار للتشخيص، وfield تعكس أجهزة وشبكات وcache وسلوك مستخدمين حقيقيين كتوزيعات. أستخدم field للأولوية وlab لإعادة المشكلة وإصلاحها.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-224",
+          "prompt": {
+            "en": "How do you set a frontend performance budget?",
+            "ar": "كيف تضع performance budget للfrontend؟"
+          },
+          "answer": {
+            "en": "<p>I define user-centered targets and enforce measurable limits such as JavaScript, image weight, route chunks, or CWV thresholds in CI and monitoring. Budgets need owners and an exception process; a number without enforcement is documentation only.</p>",
+            "ar": "<p>أحدد أهدافًا مرتبطة بالمستخدم وحدودًا قابلة للقياس مثل JavaScript وimages وroute chunks أوCWV في CI وmonitoring. تحتاج budgets مالكًا وآلية exceptions؛ الرقم بلا تطبيق مجرد توثيق.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-225",
+          "prompt": {
+            "en": "What causes hydration mismatches?",
+            "ar": "ما أسباب hydration mismatches؟"
+          },
+          "answer": {
+            "en": "<p>Server and client DOM can differ because of invalid HTML repaired by the parser, nondeterministic values, browser-only branches, direct DOM mutation, whitespace configuration, or third-party scripts. I make rendering deterministic and delay DOM-mutating integrations.</p>",
+            "ar": "<p>قد يختلف DOM بين السيرفر والعميل بسبب HTML غير صالح يصلحه parser أوقيم غير حتمية أوbrowser-only branches أوDOM mutation أوwhitespace config أوthird-party scripts. أجعل rendering حتميًا وأؤجل integrations المعدلة للDOM.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular documentation",
+                "url": "https://angular.dev/overview"
+              },
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-226",
+          "prompt": {
+            "en": "What does incremental hydration trade off?",
+            "ar": "ما trade-offs الخاصة بـincremental hydration؟"
+          },
+          "answer": {
+            "en": "<p>It hydrates deferred regions on triggers and can reduce initial work while preserving server-rendered content and event replay. It adds boundary and trigger design, testing complexity, and potential delayed interactivity if priorities are wrong.</p>",
+            "ar": "<p>تقوم بhydration لمناطق مؤجلة حسب triggers وقد تقلل العمل الأولي مع حفظ server content وevent replay. تضيف تعقيد boundaries وtriggers والاختبار وقد تؤخر interactivity إذا كانت الأولويات خاطئة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular roadmap",
+                "url": "https://angular.dev/roadmap"
+              },
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-227",
+          "prompt": {
+            "en": "How do source maps affect production debugging and security?",
+            "ar": "كيف تؤثر source maps على debugging والأمان في production؟"
+          },
+          "answer": {
+            "en": "<p>They map minified errors to source and materially improve observability. I upload private maps to the error service or restrict public access according to risk, verify release identifiers, and avoid embedding secrets because source maps are not a secret-management boundary.</p>",
+            "ar": "<p>تربط الأخطاء minified بالمصدر وتحسن observability. أرفع maps خاصة لخدمة الأخطاء أوأقيد الوصول حسب المخاطر وأتحقق من release IDs ولا أضع secrets لأن source maps ليست حماية أسرار.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              },
+              {
+                "title": "OWASP · Web Security Testing Guide",
+                "url": "https://owasp.org/www-project-web-security-testing-guide/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-228",
+          "prompt": {
+            "en": "What should frontend observability capture?",
+            "ar": "ماذا يجب أن تلتقط frontend observability؟"
+          },
+          "answer": {
+            "en": "<p>I capture errors with release and source maps, route and interaction context, performance spans and Web Vitals, failed network metadata, and sampling that protects privacy. Logs, traces, and metrics need correlation and actionable ownership.</p>",
+            "ar": "<p>ألتقط errors مع release وsource maps وسياق route وinteraction وperformance spans وWeb Vitals وmetadata للطلبات الفاشلة مع sampling يحمي الخصوصية. تحتاج logs وtraces وmetrics إلى correlation وملكية واضحة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
         }
       ]
     },
@@ -2491,6 +5487,270 @@
             "status": "imported",
             "lastReviewedAt": null,
             "versionNotes": "Imported from the original guide; version-specific answers await editorial review."
+          }
+        },
+        {
+          "id": "q-229",
+          "prompt": {
+            "en": "A page freezes with 10,000 rows. What is your investigation plan?",
+            "ar": "صفحة تتجمد مع 10,000 صف؛ ما خطة التحقيق؟"
+          },
+          "answer": {
+            "en": "<p>I record a trace and separate data, scripting, style/layout, paint, and memory costs. Likely tools include pagination or virtualization, stable identity, cheaper cells, batching, and moving pure computation off-thread, but the trace chooses the fix.</p>",
+            "ar": "<p>أسجل trace وأفصل تكلفة البيانات وscripting وstyle/layout وpaint والذاكرة. قد أستخدم pagination أوvirtualization وidentity ثابتة وخلايا أخف وbatching أوworker، لكن القياس يحدد الحل.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-230",
+          "prompt": {
+            "en": "Users see stale data after editing in another tab. What would you design?",
+            "ar": "المستخدم يرى بيانات قديمة بعد التعديل في tab أخرى؛ ماذا تصمم؟"
+          },
+          "answer": {
+            "en": "<p>I define consistency requirements, then use focus revalidation, BroadcastChannel or storage events for local coordination, server push when justified, version validators, and conflict UX. I avoid silently overwriting unsaved local work.</p>",
+            "ar": "<p>أحدد متطلبات consistency ثم أستخدم revalidation عند focus أوBroadcastChannel أوstorage events أوserver push عند الحاجة وversion validators وconflict UX، ولا أكتب فوق عمل محلي غير محفوظ.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "MDN · JavaScript",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+              },
+              {
+                "title": "MDN · HTTP",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-231",
+          "prompt": {
+            "en": "A deployment breaks only a subset of users. How do you respond?",
+            "ar": "deployment عطّل جزءًا فقط من المستخدمين؛ كيف تتصرف؟"
+          },
+          "answer": {
+            "en": "<p>I segment by release, browser, route, region, cache, and feature flag, inspect errors and asset loading, then mitigate with rollback or flag. I check stale HTML referencing removed hashed assets and keep deploys backward-compatible during cache propagation.</p>",
+            "ar": "<p>أقسم حسب release وbrowser وroute وregion وcache وfeature flag وأفحص errors وتحميل assets ثم أعمل rollback أوflag. أراجع HTML قديمة تشير إلى hashed assets محذوفة وأحافظ على compatibility أثناء انتشار cache.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              },
+              {
+                "title": "MDN · HTTP",
+                "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-232",
+          "prompt": {
+            "en": "How do you review a large frontend pull request?",
+            "ar": "كيف تراجع frontend pull request كبيرة؟"
+          },
+          "answer": {
+            "en": "<p>I understand the user behavior and risk first, inspect architecture and data flow, then correctness, accessibility, security, performance, tests, and maintainability. I separate blocking defects from suggestions and ask for smaller PRs when review quality is compromised.</p>",
+            "ar": "<p>أفهم behavior والمخاطر أولًا ثم architecture وdata flow وبعدها correctness وaccessibility وsecurity وperformance والtests والصيانة. أفصل blocking defects عنsuggestions وأطلب PRs أصغر إذا تضررت جودة المراجعة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular · Testing",
+                "url": "https://angular.dev/guide/testing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-233",
+          "prompt": {
+            "en": "How would you migrate a large Angular app incrementally?",
+            "ar": "كيف تنقل Angular app كبيرة تدريجيًا؟"
+          },
+          "answer": {
+            "en": "<p>I establish a supported version path, automated migrations, representative tests and telemetry, then move bounded features behind stable contracts. I avoid simultaneous framework, architecture, design-system, and state rewrites unless evidence demands them.</p>",
+            "ar": "<p>أحدد مسار إصدارات مدعومًا وmigrations آلية وtests وtelemetry ممثلة ثم أنقل features محددة خلف contracts ثابتة. أتجنب تغيير framework وarchitecture وdesign system وstate معًا بلا ضرورة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular roadmap",
+                "url": "https://angular.dev/roadmap"
+              },
+              {
+                "title": "Angular · Testing",
+                "url": "https://angular.dev/guide/testing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-234",
+          "prompt": {
+            "en": "How do you decide whether to add a dependency?",
+            "ar": "كيف تقرر إضافة dependency؟"
+          },
+          "answer": {
+            "en": "<p>I compare problem fit, maintenance, security, bundle and runtime cost, browser support, API stability, licensing, and exit cost against a small in-house solution. Popularity alone is not evidence, and custom code also has ownership cost.</p>",
+            "ar": "<p>أقارن ملاءمة المشكلة والصيانة والأمان وحجم bundle وكلفة runtime ودعم المتصفح وثبات API والترخيص وكلفة الخروج بحل داخلي صغير. الشهرة وحدها ليست دليلًا والكود الداخلي له تكلفة ملكية.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "OWASP · Web Security Testing Guide",
+                "url": "https://owasp.org/www-project-web-security-testing-guide/"
+              },
+              {
+                "title": "web.dev · Performance",
+                "url": "https://web.dev/learn/performance/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-235",
+          "prompt": {
+            "en": "What belongs in a frontend CI pipeline?",
+            "ar": "ما الذي يجب أن يوجد في frontend CI pipeline؟"
+          },
+          "answer": {
+            "en": "<p>At minimum I run deterministic install, type checking, linting, unit and integration tests, production build, content/schema checks, and targeted browser tests. Mature pipelines add dependency scanning, accessibility and performance budgets, previews, and safe deployment gates.</p>",
+            "ar": "<p>أشغل deterministic install وtype checking وlinting وunit/integration tests وproduction build وcontent checks وbrowser tests محددة. قد أضيف dependency scanning وaccessibility وperformance budgets وpreview وdeployment gates.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular · Testing",
+                "url": "https://angular.dev/guide/testing"
+              },
+              {
+                "title": "OWASP · Web Security Testing Guide",
+                "url": "https://owasp.org/www-project-web-security-testing-guide/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-236",
+          "prompt": {
+            "en": "How do feature flags fail in practice?",
+            "ar": "كيف تفشل feature flags عمليًا؟"
+          },
+          "answer": {
+            "en": "<p>Stale flags create combinatorial paths, client-only flags cannot enforce security, and inconsistent evaluation can split behavior unexpectedly. I define ownership, expiry, rollout and rollback, telemetry, server authority, and tests for both states.</p>",
+            "ar": "<p>تخلق flags القديمة مسارات كثيرة، ولا تفرض client-only flags أمانًا، وقد يقسم evaluation غير المتسق السلوك. أحدد owner وexpiry وrollout/rollback وtelemetry وسلطة السيرفر وأختبر الحالتين.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Angular · Testing",
+                "url": "https://angular.dev/guide/testing"
+              },
+              {
+                "title": "OWASP · Web Security Testing Guide",
+                "url": "https://owasp.org/www-project-web-security-testing-guide/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-237",
+          "prompt": {
+            "en": "How do you handle an inaccessible design handed to engineering?",
+            "ar": "كيف تتعامل مع design غير accessible وصل للفريق؟"
+          },
+          "answer": {
+            "en": "<p>I identify the user impact and violated interaction requirement, offer a concrete accessible alternative preserving the product intent, involve design early, and document the decision. Accessibility is a product constraint, not a polish step after implementation.</p>",
+            "ar": "<p>أوضح أثر المشكلة ومتطلب التفاعل المخالف وأقترح بديلًا accessible يحفظ هدف المنتج وأشرك design مبكرًا وأوثق القرار. accessibility قيد منتج وليست polish بعد التنفيذ.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "W3C · WCAG 2.2",
+                "url": "https://www.w3.org/TR/WCAG22/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "q-238",
+          "prompt": {
+            "en": "How do you explain a technical trade-off to non-engineers?",
+            "ar": "كيف تشرح technical trade-off لغير المهندسين؟"
+          },
+          "answer": {
+            "en": "<p>I frame the user or business outcome, present two or three viable options with cost, risk, reversibility, and evidence, recommend one, and state what signal would make us revisit it. I avoid jargon and false certainty.</p>",
+            "ar": "<p>أربط القرار بنتيجة للمستخدم أوbusiness وأعرض خيارات قابلة للتنفيذ مع التكلفة والمخاطر وقابلية الرجوع والدليل وأوصي بواحد وأحدد متى نعيد القرار، دون jargon أوثقة زائفة.</p>"
+          },
+          "codeHtml": "",
+          "kind": "discussion",
+          "review": {
+            "status": "reviewed",
+            "lastReviewedAt": "2026-09-16",
+            "versionNotes": "Senior frontend expansion · checked against linked official documentation.",
+            "sources": [
+              {
+                "title": "Refactoring Guru · Design patterns",
+                "url": "https://refactoring.guru/design-patterns"
+              }
+            ]
           }
         }
       ]

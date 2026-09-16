@@ -28,8 +28,21 @@ for (const topic of track.topics) {
     );
   }
 }
-assert.equal(ids.size, 108);
+assert(ids.size >= 220, `Question bank is too small for the senior frontend track: ${ids.size}`);
+const searchable = track.topics
+  .flatMap((topic) => topic.questions)
+  .map((question) => `${question.prompt.en} ${question.answer.en}`.toLowerCase())
+  .join('\n');
+for (const concept of [
+  'critical rendering path',
+  'content security policy',
+  'conditional types',
+  'zoneless',
+  'observability',
+]) {
+  assert(searchable.includes(concept), `Missing advanced frontend coverage: ${concept}`);
+}
 assert(!track.topics.some((t) => t.id === 'topic-12'), 'Personal biography must not be imported');
 console.log(
-  `Content checks passed: ${ids.size} bilingual questions, 13 topics, shared output prompts, no local file links.`,
+  `Content checks passed: ${ids.size} bilingual questions, 13 topics, advanced coverage, shared output prompts, no local file links.`,
 );

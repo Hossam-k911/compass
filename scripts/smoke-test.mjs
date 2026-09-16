@@ -16,6 +16,7 @@ try {
     page.on('pageerror', (e) => errors.push(e.message));
     await page.goto(base);
     await page.getByRole('heading', { name: /Your next chapter/ }).waitFor();
+    await page.getByText('238 bilingual questions', { exact: true }).waitFor();
     assert.equal(await page.locator('.track-card').count(), 3);
     await page.screenshot({ path: `work/screenshots/home-${width}.png`, fullPage: true });
     assert(
@@ -60,7 +61,7 @@ try {
     assert.equal(await page.locator('.question-list a').count(), 1);
     await page.goto(base + '#/study?topic=topic-13');
     await page.locator('.question-list a').first().waitFor();
-    assert.equal(await page.locator('.question-list a').count(), 22);
+    assert.equal(await page.locator('.question-list a').count(), 32);
     await page.getByRole('searchbox', { name: 'Search questions' }).fill('zzzznotfound');
     await page.getByRole('heading', { name: 'No matching questions.' }).waitFor();
     await page.goto(base + '#/practice');
@@ -108,6 +109,7 @@ try {
     assert.equal((await downloadPromise).suggestedFilename(), 'compass-progress.json');
     await page.goto(base + '#/updates');
     await page.getByRole('heading', { name: 'Content with a paper trail.' }).waitFor();
+    await page.getByRole('heading', { name: 'Frontend foundations and senior depth.' }).waitFor();
     assert(
       await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
       `Updates overflow ${width}`,
